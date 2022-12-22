@@ -8,9 +8,9 @@
 // Stretch Goals:
 // Display Quarter Finals, Semi Finals, and Final games in the Brachets tab. 
 // Display Standing of each group in all of the season in the Standings tab. 
-// Display the most goals players
-// User can search match score of the date by the name of country
+// Display the 10 top players based on their total number of goals in the season 
 // Implement auto fill functionality for the name of players. 
+// Load Players profile pictures from a different API possibly? 
 
 
 // Psuedocode
