@@ -1,13 +1,13 @@
 const plSchedule = {};
 
-plSchedule.apiKey = '216fc317fce14a3e92c6759cc84f2ceb';
+plSchedule.apiKey = 'Auth-token';
 
 plSchedule.getSchedule = () => {
 
     fetch('https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/PL/matches', {
         method: 'GET',
         headers: {
-            'X-Auth-Token': '216fc317fce14a3e92c6759cc84f2ceb',
+            'X-Auth-Token': 'Auth-token',
         },
         competitions: '2021',
         dateFrom: '2022-01-01',
