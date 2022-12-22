@@ -1,5 +1,20 @@
 // Title: FIFA WORLDCUP 2022
 
+
+// MVP :
+// Display match scores based on date with name, flag of the teams on the Matches tab 
+// Implement search functionality to search for stats of input team/player. 
+
+// Stretch Goals:
+// Display Quarter Finals, Semi Finals, and Final games in the Brachets tab. 
+// Display Standing of each group in all of the season in the Standings tab. 
+// Display the most goals players
+// User can search match score of the date by the name of country
+// Implement auto fill functionality for the name of players. 
+
+
+// Psuedocode
+
 // landing page with header FIFA WORLD CUP 2022
 
 // Navigation bar with 3 tabs that display the API data in different formats according to different parameters : { 1. Matches 2. Bracket 3. Players}
