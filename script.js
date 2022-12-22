@@ -1,12 +1,17 @@
 const plSchedule = {};
 
+plSchedule.apiKey = '216fc317fce14a3e92c6759cc84f2ceb';
+
 plSchedule.getSchedule = () => {
 
-    fetch('https://proxy-ugwolsldnq-uc.a.run.app/?url=https://api.football-data.org/v4/competitions/CL/matches', {
+    fetch('https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/PL/matches', {
         method: 'GET',
         headers: {
             'X-Auth-Token': '216fc317fce14a3e92c6759cc84f2ceb',
         },
+        competitions: '2021',
+        dateFrom: '2022-01-01',
+        DateTo: '2022-10-31',
         mode: 'cors',
         cache: 'default',
     })
@@ -14,8 +19,7 @@ plSchedule.getSchedule = () => {
             return res.json();
         })
         .then((res) => {
-            console.log(res)
-  
+            console.log(res);
         })
 }
 
