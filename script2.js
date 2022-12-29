@@ -2,6 +2,33 @@
 const footballStats = {};
 // initialize apikey
 footballStats.apikey = '216fc317fce14a3e92c6759cc84f2ceb';
+footballStats.matchesTable = document.querySelector('ul.dates')
+footballStats.display = (content) => {
+    const liElement  = document.createElement('li')
+    liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
+    footballStats.matchesTable.appendChild(liElement)
+}
+
+footballStats.getMatches = (matches) => {
+    footballStats.matches = matches
+    console.log(footballStats.matches)
+    footballStats.matches.forEach(match => {
+        header = {date:match.utcDate, group:match.group, matchday:match.matchday}
+        footballStats.display(header)
+        if(match.score.winner == 'HOME_TEAM'){
+            winner = 'homeTeam'
+        }
+        if (match.score.winner == 'AWAY_TEAM'){
+            winner = 'awayTeam' 
+        }
+        results = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:match[winner].name}
+        // footballStats.display()
+       
+        console.log(match.awayTeam.name, match.homeTeam.name, match[winner].name)  
+    });
+
+
+}
 
 
 footballStats.getData = () => {
@@ -38,26 +65,14 @@ footballStats.getData = () => {
     .then((jsonData) => {
         console.log(jsonData)
         footballStats.cupLogoHref = jsonData.competition.emblem
-        footballStats.matches = jsonData.matches
-        console.log(footballStats.matches)
         footballStats.seasonStart = jsonData.resultSet.first
         footballStats.seasonEnd = jsonData.resultSet.last
         footballStats.seasonTotal = jsonData.resultSet.played
         console.log(footballStats.seasonStart, footballStats.seasonEnd, footballStats.seasonTotal)
-        // look at the matches array, go through the array and console log utcDate, homeTeam, awayTeam, scores, winner, stage, status
-        footballStats.matches.forEach(match => {
-            console.log(match.utcDate, match.group, match.matchday)
-            if(match.score.winner == 'HOME_TEAM'){
-                winner = 'homeTeam'
-            }
-            if (match.score.winner == 'AWAY_TEAM'){
-                winner = 'awayTeam' 
-            }
-           
-            console.log(match.awayTeam.name, match.homeTeam.name, match[winner].name) 
+        footballStats.getMatches(jsonData.matches)
 
-            
-        });
+        // look at the matches array, go through the array and console log utcDate, homeTeam, awayTeam, scores, winner, stage, status
+        // go through the array, create an li for each utcDate and update it's textContent 
 
     })
 }
