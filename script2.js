@@ -14,18 +14,22 @@ footballStats.getDates = (matches) => {
     return uniqueDates
 }
 
-footballStats.display = (content) => {
-    const liElement  = document.createElement('li')
-    liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
-    footballStats.matchesTable.appendChild(liElement)
+footballStats.display = (array) => {
+    // liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
+    console.log(array)
+    array.forEach(item => {
+        const liElement  = document.createElement('li')
+        liElement.textContent = `${item}`
+        footballStats.matchesTable.appendChild(liElement)
+    })
 }
 
 footballStats.getMatches = (matches) => {
     footballStats.matches = matches
     console.log(footballStats.matches)
     footballStats.matches.forEach(match => {
-        header = {date:match.utcDate, group:match.group, matchday:match.matchday}
-        footballStats.display(header)
+        // header = {date:match.utcDate, group:match.group, matchday:match.matchday}
+        // footballStats.display(header)
         if(match.score.winner == 'HOME_TEAM'){
             winner = 'homeTeam'
         }
@@ -79,6 +83,8 @@ footballStats.getData = () => {
         footballStats.seasonTotal = jsonData.resultSet.played
         console.log(footballStats.seasonStart, footballStats.seasonEnd, footballStats.seasonTotal)
         footballStats.getMatches(jsonData.matches)
+        footballStats.dates = footballStats.getDates(jsonData.matches)
+        footballStats.display(footballStats.dates)
         console.log(footballStats.getDates(jsonData.matches))
 
 
