@@ -3,6 +3,17 @@ const footballStats = {};
 // initialize apikey
 footballStats.apikey = '216fc317fce14a3e92c6759cc84f2ceb';
 footballStats.matchesTable = document.querySelector('ul.dates')
+
+footballStats.getDates = (matches) => {
+    const dates = []
+    matches.forEach(match => {
+        date = new Date(match.utcDate)
+        dates.push(date.toDateString())
+    })
+    const uniqueDates = [...new Set(dates)]
+    return uniqueDates
+}
+
 footballStats.display = (content) => {
     const liElement  = document.createElement('li')
     liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
@@ -27,9 +38,7 @@ footballStats.getMatches = (matches) => {
         console.log(match.awayTeam.name, match.homeTeam.name, match[winner].name)  
     });
 
-
 }
-
 
 footballStats.getData = () => {
     // setup url: endpoint https://api.football-data.org/v4/competitions/WC
@@ -70,6 +79,8 @@ footballStats.getData = () => {
         footballStats.seasonTotal = jsonData.resultSet.played
         console.log(footballStats.seasonStart, footballStats.seasonEnd, footballStats.seasonTotal)
         footballStats.getMatches(jsonData.matches)
+        console.log(footballStats.getDates(jsonData.matches))
+
 
         // look at the matches array, go through the array and console log utcDate, homeTeam, awayTeam, scores, winner, stage, status
         // go through the array, create an li for each utcDate and update it's textContent 
