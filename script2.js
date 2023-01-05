@@ -8,7 +8,7 @@ footballStats.display = (array) => {
     // liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
     array.forEach(item => {
         const dateDivElement  = document.createElement('div')
-        dateDivElement.textContent = `${item}`
+        dateDivElement.innerHTML = `${item} <div class="group">Group:</div><div class="match">Match:</div>`
         footballStats.matchesTable.appendChild(dateDivElement)
         dateDivElement.classList.add('date')
         dateDivElement.setAttribute('id', item)
@@ -44,8 +44,8 @@ footballStats.getMatches = (matches) => {
         if (match.score.winner == 'AWAY_TEAM'){
             winner = 'awayTeam' 
         }
-        results = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:match[winner].name}
-        // footballStats.display()
+        results = {team1:{name:match.awayTeam.name, flag:match.awayTeam.crest}, team2:{name:match.homeTeam.name, flag:match.homeTeam.crest}, winner:match[winner].name}
+        console.log(results)
        
         console.log(match.awayTeam.name, match.homeTeam.name, match[winner].name)  
     });
