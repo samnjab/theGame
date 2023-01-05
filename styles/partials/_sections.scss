@@ -1,12 +1,17 @@
 @use 'variables'as *;
 
 header {
+    padding: 0.67em 0;
+    background-color: $primary-color;
     .wrapper{
         display: flex;
         flex-wrap:wrap;
         justify-content: space-between;
         h1{
             flex-basis:45%;
+            margin:0;
+            font-size: 1.75em;
+            color: white;
         }
         fieldset{
             flex-basis:45%;
@@ -29,12 +34,7 @@ header {
         }
 
     }
-    display: flex;
-    background-color: $primary-color;
-}
-
-h1 {
-    color: white;
+    
 }
 
 
