@@ -1,0 +1,37 @@
+@use "variables"as *;
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    color: black;
+    font-size: 125%;
+    
+}
+body{
+    line-height:2rem;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+input,
+textarea,
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+
+fieldset{
+    border:none;
+}

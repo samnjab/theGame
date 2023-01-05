@@ -1,0 +1,10 @@
+.dates{
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+.date{
+    height:10rem;
+}

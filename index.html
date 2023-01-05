@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <title>FIFA World Cup</title>
 </head>
 <body>
@@ -14,13 +14,13 @@
             
             <fieldset class="Search">
                 <form action="submit">
-                    <label class="sr-only" for="search">search team/player stats</label>
+                    <label for="search" class="sr-only">search team/player stats</label>
                     <input type="text" id="search" placeholder="search team/player stats">
                 </form>
             </fieldset>
             
             <nav>
-                <ul>
+                <ul class="nav-bar" >
                     <li>
                         <a href="#">Matches</a>
                     </li>
@@ -38,11 +38,12 @@
         </div>
        
     </header>
+
     <h1>Matches</h1>
     <div class="matches">
-        <ul class="dates">
-            
-        </ul>
+        <div class="dates">
+
+        </div>
     </div>
 
     <script src = "script2.js"></script>
