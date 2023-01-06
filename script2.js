@@ -118,7 +118,7 @@ footballStats.init = () => {
         footballStats.getMatches(promisedData.matches)
          footballStats.dates = footballStats.getDates(promisedData.matches)
          console.log(footballStats.dates)
-        return promisedData.value
+        // return promisedData.value
     })
     
     // .catch((message) => {
