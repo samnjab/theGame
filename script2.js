@@ -16,6 +16,12 @@ footballStats.display = (array) => {
     })
 }
 
+footballStats.convertDate = (utcDate) => {
+    date = new Date(utcDate)
+
+    return date.toDateString()
+}
+
 footballStats.getDates = (matches) => {
     const dates = []
     footballStats.sortedByDateMatches = {}
@@ -26,18 +32,14 @@ footballStats.getDates = (matches) => {
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
-    // console.log(uniqueDates)
-    // console.log(uniqueDates)
     footballStats.display(uniqueDates)
     return uniqueDates
 }
 
-
 footballStats.getMatches = (matches) => {
     footballStats.matches = matches
     const resultsArray = []
-    // console.log(footballStats.matches)
-    // console.log(footballStats.matches)
+  
     footballStats.matches.forEach(match => {
         // header = {date:match.utcDate, group:match.group, matchday:match.matchday}
         // footballStats.display(header)
@@ -51,16 +53,25 @@ footballStats.getMatches = (matches) => {
         team1: {name:match.awayTeam.name, flag:match.awayTeam.crest}, 
         team2: {name:match.homeTeam.name, flag:match.homeTeam.crest}, 
         winner: match[winner].name,
-        date: match.utcDate
+        date: footballStats.convertDate(match.utcDate)
     }
-        
-        // console.log(results)
-        // console.log(match.awayTeam.name, match.homeTeam.name, match[winner].name) 
+    
         resultsArray.push(results) 
     });
 
     return resultsArray
+}
 
+footballStats.sortByDate = (dates, matches) => {
+    sortedMatches = {}
+    for(let i = 0; i < dates.length; i++) {
+        dateArray = matches.filter(match => match.date == dates[i])
+        sortedMatches[dates[i]] = dateArray
+    }
+    
+    console.log(sortedMatches)
+    return sortedMatches
+   
 }
 
 footballStats.getData = (url) => {
@@ -111,14 +122,6 @@ footballStats.getData = (url) => {
 
     })
     
-     //   
-        // // footballStats.display(footballStats.dates)
-        // // console.log(footballStats.getDates(jsonData.matches))
-
-
-        // look at the matches array, go through the array and console log utcDate, homeTeam, awayTeam, scores, winner, stage, status
-        // go through the array, create an li for each utcDate and update it's textContent 
-
     })
 }
 
@@ -130,13 +133,14 @@ footballStats.init = () => {
          footballStats.dates = footballStats.getDates(promisedData.matches)
          console.log(footballStats.dates)
         // return promisedData.value
-
+       footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         console.log(footballStats.matchResultsArray)
     })
     
     // .catch((message) => {
     //     return message
     // })
+
     console.log(footballStats.jsonData)
     
     
