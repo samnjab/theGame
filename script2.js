@@ -22,11 +22,11 @@ footballStats.getDates = (matches) => {
     matches.forEach(match => {
         date = new Date(match.utcDate)
         dates.push(date.toDateString())
-        footballStats.sortedByDateMatches.date = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:match[winner].name, date:date.toDateString()};
+        footballStats.sortedByDateMatches[date].push({team1:match.awayTeam.name, team2:match.homeTeam.name, winner:match[winner].name, date:date.toDateString()});
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
-    console.log(uniqueDates)
+    // console.log(uniqueDates)
     footballStats.display(uniqueDates)
     return uniqueDates
 }
@@ -34,7 +34,7 @@ footballStats.getDates = (matches) => {
 
 footballStats.getMatches = (matches) => {
     footballStats.matches = matches
-    console.log(footballStats.matches)
+    // console.log(footballStats.matches)
     footballStats.matches.forEach(match => {
         // header = {date:match.utcDate, group:match.group, matchday:match.matchday}
         // footballStats.display(header)
@@ -73,6 +73,7 @@ footballStats.getData = (url) => {
         mode: 'cors',
         cache: 'default'
     })
+    // fetch, extract json, console log object 
     return new Promise((resolve, reject) => {
         fetch(url, {
             method: 'GET',
@@ -98,12 +99,8 @@ footballStats.getData = (url) => {
             }
 
     })
-    // fetch, extract json, console log object 
-
-        ///////////////////////////////////////////////
-        // footballStats.getMatches(jsonData.matches)
-        
-        // footballStats.dates = footballStats.getDates(jsonData.matches)
+    
+       
         // footballStats.display(footballStats.dates)
         // console.log(footballStats.getDates(jsonData.matches))
 
@@ -118,6 +115,9 @@ footballStats.init = () => {
     footballStats.jsonData = footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
         console.log(promisedData)
+        footballStats.getMatches(promisedData.matches)
+         footballStats.dates = footballStats.getDates(promisedData.matches)
+         console.log(footballStats.dates)
         return promisedData.value
     })
     
