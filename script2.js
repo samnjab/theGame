@@ -35,6 +35,7 @@ footballStats.getDates = (matches) => {
 
 footballStats.getMatches = (matches) => {
     footballStats.matches = matches
+    const resultsArray = []
     // console.log(footballStats.matches)
     // console.log(footballStats.matches)
     footballStats.matches.forEach(match => {
@@ -46,11 +47,19 @@ footballStats.getMatches = (matches) => {
         if (match.score.winner == 'AWAY_TEAM'){
             winner = 'awayTeam' 
         }
-        results = {team1:{name:match.awayTeam.name, flag:match.awayTeam.crest}, team2:{name:match.homeTeam.name, flag:match.homeTeam.crest}, winner:match[winner].name}
+       results = {
+        team1: {name:match.awayTeam.name, flag:match.awayTeam.crest}, 
+        team2: {name:match.homeTeam.name, flag:match.homeTeam.crest}, 
+        winner: match[winner].name,
+        date: match.utcDate
+    }
+        
         // console.log(results)
-       
-        // console.log(match.awayTeam.name, match.homeTeam.name, match[winner].name)  
+        // console.log(match.awayTeam.name, match.homeTeam.name, match[winner].name) 
+        resultsArray.push(results) 
     });
+
+    return resultsArray
 
 }
 
@@ -117,10 +126,12 @@ footballStats.init = () => {
     footballStats.jsonData = footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
         console.log(promisedData)
-        footballStats.getMatches(promisedData.matches)
+        footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
          footballStats.dates = footballStats.getDates(promisedData.matches)
          console.log(footballStats.dates)
         // return promisedData.value
+
+        console.log(footballStats.matchResultsArray)
     })
     
     // .catch((message) => {
