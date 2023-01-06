@@ -1,6 +1,7 @@
 const plSchedule = {};
 
 plSchedule.apiKey = 'Auth-token';
+plSchedule.jsonData = {};
 
 plSchedule.getSchedule = () => {
 
@@ -24,14 +25,16 @@ plSchedule.getSchedule = () => {
             return res.json();
         })
         .then((res) => {
-            console.log(res);
+            plSchedule.jsonData = res;
+            // console.log(res);
         })
 }
 
 
 plSchedule.init = () => {
      plSchedule.getSchedule();
-    
+    console.log(plSchedule.jsonData);
 };
 
 plSchedule.init();
+console.log(plSchedule.jsonData);
