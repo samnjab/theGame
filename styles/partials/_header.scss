@@ -1,24 +1,12 @@
 @use "variables"as *;
 
 header {
-    position: relative;
+    background-color: $primary-color;
     .wrapper {
         height: 100%;
         @include flex-center(column, space-between, center);
         padding: 20px 0px;
         nav {
-            align-self: flex-end;
-            width: 50%;
-            @include flex-center(row, space-between, center);
-            .menu-btn {
-                &.closed {
-                    display: none;
-                    @media (max-width:$sm-scr) {
-                        @include flex-center(row, center, center);
-                    }
-                }
-            
-            }
             .nav-bar {
                 @include flex-center(row, space-between, center);
                 flex-wrap: wrap;

@@ -355,7 +355,7 @@ p,
 }
 
 header {
-  position: relative;
+  background-color: #09639d;
 }
 header .wrapper {
   height: 100%;
@@ -373,44 +373,6 @@ header .wrapper {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px 0px;
-}
-header .wrapper nav {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-header .wrapper nav .menu-btn.closed {
-  display: none;
-}
-@media (max-width: 1024px) {
-  header .wrapper nav .menu-btn.closed {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
 }
 header .wrapper nav .nav-bar {
   display: -webkit-box;
@@ -495,10 +457,6 @@ input::placeholder {
   text-align: center;
 }
 
-header {
-  padding: 0.67em 0;
-  background-color: #09639d;
-}
 header .wrapper fieldset {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
