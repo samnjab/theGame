@@ -7,8 +7,7 @@ $tablet:768px;
 $sm-scr:1024px;
 $lg-scr:1200px;
 
-$canary:#FDFA69;
-$sea-green:#4CEEA7;
+
 $black:#2C2C2C;
 $white:#FAFAFA;
 $ice:#EFFDF3;
@@ -43,7 +42,7 @@ $font-weights:("thin":100, "reg":400, "medium":500, "bold":700);
 }
 
 @mixin responsive-border($px-size, $px-weight, $vw-weight) {
-    border: calc($px-size * $px-weight + $vw-weight) $canary solid;
+    border: calc($px-size * $px-weight + $vw-weight) $black solid;
 }
 
 @mixin z-layer($z-index) {

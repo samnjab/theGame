@@ -302,8 +302,8 @@ section {
   letter-spacing: 1px;
   line-height: 32px;
   text-transform: uppercase;
-  background-color: #4CEEA7;
-  border: solid 2px #4CEEA7;
+  background-color: #09639d;
+  border: solid 2px #09639d;
   padding: 0.5rem 1.5rem;
   margin: 1rem;
   width: -webkit-fit-content;
@@ -445,7 +445,7 @@ header .wrapper nav .nav-bar li {
   max-width: fit-content;
 }
 header .wrapper nav .nav-bar .active {
-  border-bottom: #4CEEA7 5px solid;
+  border-bottom: #FAFAFA 5px solid;
 }
 header .wrapper nav .nav-bar .linked {
   border-bottom: rgba(255, 255, 255, 0) 5px solid;
