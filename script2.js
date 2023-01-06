@@ -86,8 +86,8 @@ footballStats.getData = (url) => {
         .then((res) => {
             return res.json()
         })
-        .then((res) => {
-            // footballStats.jsonData = res;
+        .then((jsonData) => {
+            // footballStats.jsonData = jsonData;
             // footballStats.cupLogoHref = jsonData.competition.emblem
             // footballStats.seasonStart = jsonData.resultSet.first
             // footballStats.seasonEnd = jsonData.resultSet.last
@@ -95,7 +95,7 @@ footballStats.getData = (url) => {
         //     // console.log(footballStats.seasonStart, footballStats.seasonEnd, footballStats.seasonTotal)
         //     // console.log(footballStats.jsonData)
             if (jsonData){
-        //         resolve(jsonData)
+                resolve(jsonData)
             }else{
                 reject('data could not be loaded')
             }
