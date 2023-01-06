@@ -266,6 +266,186 @@ section {
   padding: 1rem 0;
 }
 
+h1 {
+  font-size: calc(1.6666666667rem + 7vw);
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: calc(1rem + 5vw);
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-size: calc(0.3333333333rem + 1vw);
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h4 {
+  font-size: calc(0.8rem + 1vw);
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+section {
+  padding: 80px 0;
+  margin: 0;
+}
+
+.button {
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 32px;
+  text-transform: uppercase;
+  background-color: #09639d;
+  border: solid 2px #09639d;
+  padding: 0.5rem 1.5rem;
+  margin: 1rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.button:hover {
+  background-color: #FAFAFA;
+  color: #2C2C2C;
+  border: solid 2px #2C2C2C;
+}
+.button:focus {
+  background-color: #FAFAFA;
+  color: #2C2C2C;
+}
+.button a {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+.button a:hover {
+  opacity: 1;
+}
+.button a:focus {
+  opacity: 1;
+}
+
+p,
+.paragraph {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.nav-bar {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 29px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+header {
+  background-color: #09639d;
+}
+header .wrapper {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0px;
+}
+header .wrapper nav .nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+header .wrapper nav .nav-bar li {
+  margin: 0 7px;
+  -ms-flex-preferred-size: calc(25% - 14px);
+      flex-basis: calc(25% - 14px);
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+header .wrapper nav .nav-bar .active {
+  border-bottom: #FAFAFA 5px solid;
+}
+header .wrapper nav .nav-bar .linked {
+  border-bottom: rgba(255, 255, 255, 0) 5px solid;
+}
+header .wrapper h1 {
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: calc(1.3333333333rem + 4vw);
+  z-index: 20;
+  margin-bottom: 250px;
+}
+
 .wrapper {
   max-width: 1440px;
   width: 90%;
@@ -299,27 +479,6 @@ input::placeholder {
   text-align: center;
 }
 
-header {
-  padding: 0.67em 0;
-  background-color: #09639d;
-}
-header .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-header .wrapper h1 {
-  -ms-flex-preferred-size: 45%;
-      flex-basis: 45%;
-  margin: 0;
-  font-size: 1.75em;
-  color: white;
-}
 header .wrapper fieldset {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;

@@ -1,0 +1,45 @@
+@use "./variables" as *;
+form {
+    fieldset {
+        border: none;
+        @include flex-center();
+        flex-wrap: wrap;
+        input {
+            @include style-2();
+            border-bottom: $white 2px solid;
+            padding: 1rem;
+            margin: 5px;
+            @include wrap($margin:5px, $number-in-a-row:2, $min-width:200px, $max-width:calc(800px/2 - 10px));
+            margin: 10px 5px 10px 5px;
+
+            &::placeholder {
+                @include style-2();
+                font-size: 20px;
+                line-height: 32px;
+            }
+        }
+        textarea {
+            @include style-2();
+            border: $white 2px solid;
+            padding: 1rem;
+            margin: 5px;
+            @include wrap($margin:5px, $number-in-a-row:1, $min-width:10px, $max-width:790px);
+            margin: 10px 5px 10px 5px;
+
+            &::placeholder {
+                @include style-2();
+                font-size: 20px;
+                line-height: 32px;
+            }
+        }
+        button {
+            @include wrap($margin:5px, $number-in-a-row:1, $min-width:10px, $max-width:790px);
+            margin: 10px 5px 10px 5px;
+        }
+        .message{
+            @include wrap($margin:5px, $number-in-a-row:1, $min-width:10px, $max-width:790px);
+            margin: 10px 5px 10px 5px;
+        }
+
+    }
+}
