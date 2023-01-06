@@ -1,2 +1,84 @@
 $primary-color: #09639d;
 $text-color:white;
+
+$min-dim:320px;
+$mobile:480px;
+$tablet:768px;
+$sm-scr:1024px;
+$lg-scr:1200px;
+
+
+$black:#2C2C2C;
+$white:#FAFAFA;
+$ice:#EFFDF3;
+
+$font-1:'Playfair Display';
+$font-2:'Roboto';
+$font-weights:("thin":100, "reg":400, "medium":500, "bold":700);
+
+@mixin style-1 {
+    font-family: $font-1;
+    font-weight: map-get($font-weights, bold);
+    font-style: italic;
+}
+
+@mixin style-2 {
+    font-family: $font-2;
+    font-weight: map-get($font-weights, reg)
+}
+
+@mixin flex-center($direction:row, $main-axis:flex-start, $cross-axis:flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $main-axis;
+    align-items: $cross-axis;
+}
+
+
+@mixin p-styler($max-width, $min-width) {
+    font-family: $font-2;
+    font-weight: map-get($font-weights, reg);
+    display: inline-block;
+    max-width: $max-width;
+    min-width: $min-width;
+    margin: 20px 0;
+}
+
+@mixin heading-styler() {
+    @include style-1();
+    margin: 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@mixin responsive-size($rem-size, $rem-weight, $vw-weight) {
+    font-size: calc(($rem-size * $rem-weight) + $vw-weight);
+}
+
+@mixin bleed($max-width) {
+    max-width: $max-width;
+    width: 100%;
+}
+
+@mixin wrap($margin:0px, $number-in-a-row:2, $min-width, $max-width) {
+    margin: 0 $margin;
+    flex-basis: calc((100%/$number-in-a-row) - (2*$margin));
+    min-width: $min-width;
+    flex-grow: 1;
+    max-width: $max-width;
+}
+
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+
+}
+
+@mixin mobile {
+    @media (max-width:$mobile) {
+        @content
+    }
+}

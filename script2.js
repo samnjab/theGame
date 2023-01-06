@@ -12,8 +12,7 @@ footballStats.display = (array) => {
         dateDivElement.innerHTML = `${item} <div class="group">Group:</div><div class="match">Match:</div>`
         footballStats.matchesTable.appendChild(dateDivElement)
         dateDivElement.classList.add('date')
-        dateDivElement.setAttribute('id', item)
-        
+        dateDivElement.setAttribute('id', item)     
     })
 }
 
@@ -28,6 +27,7 @@ footballStats.getDates = (matches) => {
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
     // console.log(uniqueDates)
+    // console.log(uniqueDates)
     footballStats.display(uniqueDates)
     return uniqueDates
 }
@@ -35,6 +35,7 @@ footballStats.getDates = (matches) => {
 
 footballStats.getMatches = (matches) => {
     footballStats.matches = matches
+    // console.log(footballStats.matches)
     // console.log(footballStats.matches)
     footballStats.matches.forEach(match => {
         // header = {date:match.utcDate, group:match.group, matchday:match.matchday}
@@ -75,30 +76,35 @@ footballStats.getData = (url) => {
         cache: 'default'
     })
     // fetch, extract json, console log object 
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': footballStats.apikey,
-        },
-    })
-    .then((res) => {
-        return res.json()
-    })
-    .then((res) => {
-        footballStats.jsonData = res;
-        // footballStats.cupLogoHref = jsonData.competition.emblem
-        // footballStats.seasonStart = jsonData.resultSet.first
-        // footballStats.seasonEnd = jsonData.resultSet.last
-        // footballStats.seasonTotal = jsonData.resultSet.played
-        // console.log(footballStats.seasonStart, footballStats.seasonEnd, footballStats.seasonTotal)
-        // console.log(footballStats.jsonData)
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-Auth-Token': footballStats.apikey,
+            },
+        })
+        .then((res) => {
+            return res.json()
+        })
+        .then((res) => {
+            // footballStats.jsonData = res;
+            // footballStats.cupLogoHref = jsonData.competition.emblem
+            // footballStats.seasonStart = jsonData.resultSet.first
+            // footballStats.seasonEnd = jsonData.resultSet.last
+            // footballStats.seasonTotal = jsonData.resultSet.played
+        //     // console.log(footballStats.seasonStart, footballStats.seasonEnd, footballStats.seasonTotal)
+        //     // console.log(footballStats.jsonData)
+            if (jsonData){
+        //         resolve(jsonData)
+            }else{
+                reject('data could not be loaded')
+            }
 
-        ///////////////////////////////////////////////
-        // footballStats.getMatches(jsonData.matches)
-        
-        // footballStats.dates = footballStats.getDates(jsonData.matches)
-        // footballStats.display(footballStats.dates)
-        // console.log(footballStats.getDates(jsonData.matches))
+    })
+    
+     //   
+        // // footballStats.display(footballStats.dates)
+        // // console.log(footballStats.getDates(jsonData.matches))
 
 
         // look at the matches array, go through the array and console log utcDate, homeTeam, awayTeam, scores, winner, stage, status
@@ -108,19 +114,25 @@ footballStats.getData = (url) => {
 }
 
 footballStats.init = () => {
-    footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`);
-    // .then(() => {
-    //     console.log(footballStats.jsonData)
+    footballStats.jsonData = footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
+    .then((promisedData) =>{
+        console.log(promisedData)
+        footballStats.getMatches(promisedData.matches)
+         footballStats.dates = footballStats.getDates(promisedData.matches)
+         console.log(footballStats.dates)
+        // return promisedData.value
+    })
+    
+    // .catch((message) => {
+    //     return message
     // })
+    console.log(footballStats.jsonData)
     
-    // footballStats.getDates(footballStats.jsonData.matches)
     
-    
-    // console.log(footballStats.apiUrl)
 }
 
 footballStats.init();
-console.log(footballStats.jsonData)
+
 
 
 
