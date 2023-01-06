@@ -22,7 +22,7 @@ footballStats.getDates = (matches) => {
     matches.forEach(match => {
         date = new Date(match.utcDate)
         dates.push(date.toDateString())
-        footballStats.sortedByDateMatches[date].push({team1:match.awayTeam.name, team2:match.homeTeam.name, winner:match[winner].name, date:date.toDateString()});
+        footballStats.sortedByDateMatches.date = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:match[winner].name, date:date.toDateString()};
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
@@ -126,8 +126,6 @@ footballStats.init = () => {
     // })
     console.log(footballStats.jsonData)
     
-    
-    // footballStats.getDates(footballStats.jsonData.matches)
     
 }
 
