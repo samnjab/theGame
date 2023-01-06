@@ -11,8 +11,7 @@ footballStats.display = (array) => {
         dateDivElement.innerHTML = `${item} <div class="group">Group:</div><div class="match">Match:</div>`
         footballStats.matchesTable.appendChild(dateDivElement)
         dateDivElement.classList.add('date')
-        dateDivElement.setAttribute('id', item)
-        
+        dateDivElement.setAttribute('id', item)     
     })
 }
 

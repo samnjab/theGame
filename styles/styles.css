@@ -267,31 +267,52 @@ section {
 }
 
 h1 {
-  font-size: calc(2.3rem + 7vw);
+  font-size: calc(1.6666666667rem + 7vw);
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h2 {
-  font-size: calc(1.3333333333rem + 7vw);
-  line-height: 92px;
+  font-size: calc(1rem + 5vw);
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h3 {
-  font-size: calc(1.05rem + 1vw);
-  letter-spacing: 1px;
+  font-size: calc(0.3333333333rem + 1vw);
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h4 {
   font-size: calc(0.8rem + 1vw);
-  letter-spacing: 1px;
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-style: italic;
+  margin: 20px 0;
+  text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 section {
   padding: 80px 0;
   margin: 0;
-  width: 100vw;
 }
 
 .button {
@@ -326,6 +347,7 @@ section {
   width: 100%;
   text-align: center;
   opacity: 0.8;
+  text-transform: uppercase;
 }
 .button a:hover {
   opacity: 1;
@@ -342,10 +364,9 @@ p,
   line-height: 32px;
 }
 
-.menu-nav {
-  font-family: "Playfair Display";
-  font-weight: 700;
-  font-style: italic;
+.nav-bar {
+  font-family: "Roboto";
+  font-weight: 400;
   font-size: 1rem;
   letter-spacing: 1px;
   text-align: center;
@@ -419,6 +440,7 @@ header .wrapper h1 {
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: calc(1.3333333333rem + 4vw);
   z-index: 20;
   margin-bottom: 250px;

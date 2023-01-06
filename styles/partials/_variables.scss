@@ -34,21 +34,6 @@ $font-weights:("thin":100, "reg":400, "medium":500, "bold":700);
     align-items: $cross-axis;
 }
 
-@mixin fix-header($url, $height) {
-    width: 100vw;
-    height: $height;
-    background-image: url($url);
-    background-size: cover;
-}
-
-@mixin responsive-border($px-size, $px-weight, $vw-weight) {
-    border: calc($px-size * $px-weight + $vw-weight) $black solid;
-}
-
-@mixin z-layer($z-index) {
-    position: relative;
-    z-index: $z-index;
-}
 
 @mixin p-styler($max-width, $min-width) {
     font-family: $font-2;
@@ -64,6 +49,7 @@ $font-weights:("thin":100, "reg":400, "medium":500, "bold":700);
     margin: 20px 0;
     text-align: center;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 @mixin responsive-size($rem-size, $rem-weight, $vw-weight) {
@@ -83,17 +69,6 @@ $font-weights:("thin":100, "reg":400, "medium":500, "bold":700);
     max-width: $max-width;
 }
 
-@mixin detach($top, $right, $bottom, $left) {
-    position: relative;
-    top: $top;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
-}
-
-@mixin responsive-height($px-height, $px-weight, $vw-weight) {
-    height: calc($px-height * $px-weight - $vw-weight);
-}
 
 @mixin transform($property) {
     -webkit-transform: $property;
