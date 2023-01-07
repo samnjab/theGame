@@ -4,17 +4,37 @@ const footballStats = {};
 footballStats.apikey = '216fc317fce14a3e92c6759cc84f2ceb';
 footballStats.jsonData = {};
 
-footballStats.display = (array) => {
-    footballStats.matchesTable = document.querySelector('div.dates')
+    // arguments for this function dates array which will be the unique type dates, locally sorted matches 
+    // grab the template and go through the dates array with a for loop, display the content of the dates as each for our template, go through dated array for loop again and grab matches correspond to that date, and create a div and create a template 
+footballStats.display = (dates, sortedMatches) => {
+    const matchTemplate = document.querySelector("[data-match-template]")
+    const matchContainer = document.querySelector(".matches")
+
+    console.log(sortedMatches)
+    // footballStats.matchesTable = document.querySelector('div.dates')
     // liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
-    array.forEach(item => {
-        const dateDivElement  = document.createElement('div')
-        dateDivElement.innerHTML = `${item} <div class="group">Group:</div><div class="match">Match:</div>`
-        footballStats.matchesTable.appendChild(dateDivElement)
-        dateDivElement.classList.add('date')
-        dateDivElement.setAttribute('id', item)     
-    })
+
+    for (let i=0; i<dates.length; i++){
+        const dateElement = matchTemplate.content.cloneNode(true).children[0]
+        const matchHeader = dateElement.querySelector("[data-match-header]")
+        matchHeader.textContent = dates[i].substring(4,10)
+        matchContainer.append(dateElement)
+
+        const matchTable = dateElement.querySelector("[data-match-Table]")
+        sortedMatches[dates[i]].forEach(match => {
+            const matchDiv = document.createElement("div")
+            matchDiv.textContent = `${match.team1.name} || ${match.team2.name}`
+            matchDiv.classList.add("match")
+        })
+
+        // const matchTable = sortedMatches
+        // console.log(dateElement)
+        // console.log(matchHeader)
+       
+    }
+    
 }
+
 
 footballStats.convertDate = (utcDate) => {
     date = new Date(utcDate)
@@ -126,24 +146,26 @@ footballStats.getData = (url) => {
 }
 
 footballStats.init = () => {
-    footballStats.jsonData = footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
+     footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
+        // footballStats.jsonData = promisedData
         console.log(promisedData)
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
-         footballStats.dates = footballStats.getDates(promisedData.matches)
-         console.log(footballStats.dates)
+        footballStats.dates = footballStats.getDates(promisedData.matches)
+        console.log(footballStats.dates)
         // return promisedData.value
-       footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
+        footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
+
+        console.log(footballStats.sortedMatches)
+
         console.log(footballStats.matchResultsArray)
+
+        footballStats.display(footballStats.dates, footballStats.sortedMatches)
     })
-    
     // .catch((message) => {
     //     return message
     // })
-
-    console.log(footballStats.jsonData)
-    
-    
+ 
 }
 
 footballStats.init();
