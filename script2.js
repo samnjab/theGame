@@ -9,6 +9,7 @@ footballStats.jsonData = {};
 footballStats.display = (dates, sortedMatches) => {
     const matchTemplate = document.querySelector("[data-match-template]")
     const matchContainer = document.querySelector(".matches")
+    console.log(sortedMatches)
 
 
     // footballStats.matchesTable = document.querySelector('div.dates')
@@ -155,13 +156,8 @@ footballStats.init = () => {
         console.log(footballStats.dates)
         // return promisedData.value
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
-
-        console.log(footballStats.sortedMatches)
-
         console.log(footballStats.matchResultsArray)
-
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
-        
     })
     // .catch((message) => {
     //     return message
