@@ -10,7 +10,7 @@ footballStats.display = (dates, sortedMatches) => {
     const matchTemplate = document.querySelector("[data-match-template]")
     const matchContainer = document.querySelector(".matches")
 
-    console.log(sortedMatches)
+
     // footballStats.matchesTable = document.querySelector('div.dates')
     // liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
 
@@ -161,6 +161,7 @@ footballStats.init = () => {
         console.log(footballStats.matchResultsArray)
 
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
+        
     })
     // .catch((message) => {
     //     return message
