@@ -54,6 +54,23 @@
         </div>
 
     </section>
+
+    <!-- template pseudocode 
+    - use <template> tags to create the input on the page with the following:
+        - div with a class of date
+        - Inside date div, use h4 tags to label/display the date of the match as the title
+        - sibling to the h4, use a div with a class of matchTable
+        - insert all the matches for that day in matchTable, with seperate divs for each match, with a class of match for each div
+    -->
+
+    <template data-match-template>
+        <div class="date">
+            <h4></h4>
+            <div class="matchTable"></div>
+        </div>
+    </template>
+
+
     <script src = "script2.js"></script>
 </body>
 </html>
