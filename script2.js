@@ -23,8 +23,9 @@ footballStats.display = (dates, sortedMatches) => {
         const matchTable = dateElement.querySelector("[data-match-Table]")
         sortedMatches[dates[i]].forEach(match => {
             const matchDiv = document.createElement("div")
-            matchDiv.textContent = `${match.team1.name} || ${match.team2.name}`
+            matchDiv.textContent = `${match.team1.name} ${match.team1.score} || ${match.team2.name} ${match.team2.score}`
             matchDiv.classList.add("match")
+            matchTable.append(matchDiv)
         })
 
         // const matchTable = sortedMatches
@@ -52,17 +53,22 @@ footballStats.getDates = (matches) => {
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
-    footballStats.display(uniqueDates)
+
     return uniqueDates
 }
 
 footballStats.getMatches = (matches) => {
+    
+    console.log(matches)
     footballStats.matches = matches
     const resultsArray = []
   
     footballStats.matches.forEach(match => {
         // header = {date:match.utcDate, group:match.group, matchday:match.matchday}
         // footballStats.display(header)
+        const scoreAway = match.score.fullTime.away
+        const scoreHome = match.score.fullTime.home
+
         if(match.score.winner == 'HOME_TEAM'){
             winner = 'homeTeam'
         }
@@ -70,8 +76,8 @@ footballStats.getMatches = (matches) => {
             winner = 'awayTeam' 
         }
        results = {
-        team1: {name:match.awayTeam.name, flag:match.awayTeam.crest}, 
-        team2: {name:match.homeTeam.name, flag:match.homeTeam.crest}, 
+        team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:scoreAway}, 
+        team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:scoreHome}, 
         winner: match[winner].name,
         date: footballStats.convertDate(match.utcDate)
     }
@@ -156,7 +162,7 @@ footballStats.init = () => {
         // return promisedData.value
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
 
-        console.log(footballStats.sortedMatches)
+        // console.log(footballStats.sortedMatches)
 
         console.log(footballStats.matchResultsArray)
 
