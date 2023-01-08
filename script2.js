@@ -27,33 +27,10 @@ footballStats.display = (dates, sortedMatches) => {
 
         // const matchTable = sortedMatches
         // console.log(dateElement)
-        // console.log(matchHeader)
-       
-    }
-    
-}
-
-
-footballStats.display = (dates, sortedMatches) => {
-    const matchTemplate = document.querySelector("[data-match-template]")
-    const matchContainer = document.querySelector(".matches")
-    console.log(sortedMatches)
-
-    for (let i=0; i<dates.length; i++){
-        const dateElement = matchTemplate.content.cloneNode(true).children[0]
-        const matchHeader = dateElement.querySelector("[data-match-header]")
-        matchHeader.textContent = dates[i].substring(4,10)
-        matchContainer.append(dateElement)
-
-        const matchTable = dateElement.querySelector("[data-match-Table]")
-        sortedMatches[dates[i]].forEach(match => {
-            const matchDiv = document.createElement("div")
-            matchDiv.textContent = `${match.team1.name} || ${match.team2.name}`
-            matchDiv.classList.add("match")
-        })
-        
+        // console.log(matchHeader)   
     }
 }
+
 
 footballStats.convertDate = (utcDate) => {
     date = new Date(utcDate)
