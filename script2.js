@@ -11,10 +11,6 @@ footballStats.display = (dates, sortedMatches) => {
     const matchContainer = document.querySelector(".matches")
     console.log(sortedMatches)
 
-
-    // footballStats.matchesTable = document.querySelector('div.dates')
-    // liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
-
     for (let i=0; i<dates.length; i++){
         const dateElement = matchTemplate.content.cloneNode(true).children[0]
         const matchHeader = dateElement.querySelector("[data-match-header]")
@@ -37,9 +33,29 @@ footballStats.display = (dates, sortedMatches) => {
 }
 
 
+footballStats.display = (dates, sortedMatches) => {
+    const matchTemplate = document.querySelector("[data-match-template]")
+    const matchContainer = document.querySelector(".matches")
+    console.log(sortedMatches)
+
+    for (let i=0; i<dates.length; i++){
+        const dateElement = matchTemplate.content.cloneNode(true).children[0]
+        const matchHeader = dateElement.querySelector("[data-match-header]")
+        matchHeader.textContent = dates[i].substring(4,10)
+        matchContainer.append(dateElement)
+
+        const matchTable = dateElement.querySelector("[data-match-Table]")
+        sortedMatches[dates[i]].forEach(match => {
+            const matchDiv = document.createElement("div")
+            matchDiv.textContent = `${match.team1.name} || ${match.team2.name}`
+            matchDiv.classList.add("match")
+        })
+        
+    }
+}
+
 footballStats.convertDate = (utcDate) => {
     date = new Date(utcDate)
-
     return date.toDateString()
 }
 
@@ -53,7 +69,7 @@ footballStats.getDates = (matches) => {
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
-    footballStats.display(uniqueDates)
+    // footballStats.display(uniqueDates)
     return uniqueDates
 }
 
