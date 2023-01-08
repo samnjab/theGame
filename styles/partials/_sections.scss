@@ -42,16 +42,16 @@ header {
             
             .match-table{
                
-                // display: flex;
-                // justify-content: space-between;
-                // flex-wrap:wrap;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap:wrap;
                 .match{
-                    // flex-basis:40%;
+                    flex-basis:40%;
                     margin:0 1rem;
                     padding:0 0.5rem;
                     display:flex;
                     justify-content: space-between;
-                    border:2px solid grey;
+                    
                     .team1{
                         display:flex;
                         margin: 0 0.5rem;
