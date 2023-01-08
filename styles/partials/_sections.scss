@@ -47,14 +47,23 @@ header {
                 flex-wrap:wrap;
                 .match{
                     flex-basis:40%;
-                    margin:0 1rem;
+                    margin:1rem;
                     padding:0 0.5rem;
                     display:flex;
                     justify-content: space-between;
+                    align-content:center;
+                    flex-wrap:wrap;
+                    border:2px solid grey;
+                    .winner{
+                        // margin: 0 0.5rem;
+                        flex-basis:100%;
+                        text-align:center;
+                    }
                     
                     .team1{
                         display:flex;
                         margin: 0 0.5rem;
+                        flex-basis:40%;
                         .flag-box{
                             width:30px;
                             margin:0 10px;
@@ -70,6 +79,7 @@ header {
                     .team2{
                         display:flex;
                         margin: 0 0.5rem;
+                        flex-basis:40%;
                         .flag-box {
                             
                             width: 30px;

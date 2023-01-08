@@ -34,6 +34,11 @@ footballStats.display = (dates, sortedMatches) => {
             matchTeam2FlagImg.src = match.team2.flag
             const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
             matchTeam2Info.textContent = `${match.team2.name}: ${match.team2.score}`
+
+            // <<<<<< Winner >>>>>>>>>>>>>>>
+            const winnerDiv = matchDiv.querySelector('[data-winner]')
+            winnerDiv.textContent = `Winner : ${match.winner}`
+            // <<<<<<<< append >>>>>>>>>>>>>>
             matchTable.append(matchDiv)
         })
     }
