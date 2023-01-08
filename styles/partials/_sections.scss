@@ -42,11 +42,11 @@ header {
             
             .match-table{
                
-                display: flex;
-                justify-content: space-between;
-                flex-wrap:wrap;
+                // display: flex;
+                // justify-content: space-between;
+                // flex-wrap:wrap;
                 .match{
-                    flex-basis:40%;
+                    // flex-basis:40%;
                     margin:0 1rem;
                     padding:0 0.5rem;
                     display:flex;
@@ -55,10 +55,25 @@ header {
                     .team1{
                         display:flex;
                         margin: 0 0.5rem;
+                        .flag-box{
+                            width:50px;
+                            img{
+                                max-width:100%;
+                                height:auto;
+                            }
+                        }
                     }
                     .team2{
                         display:flex;
                         margin: 0 0.5rem;
+                        .flag-box {
+                            width: 50px;
+                        
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                            }
+                        }
                     }
                 }
             }
