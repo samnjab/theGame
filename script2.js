@@ -10,7 +10,6 @@ footballStats.display = (dates, sortedMatches) => {
     const matchTemplate = document.querySelector("[data-match-template]")
     const matchContainer = document.querySelector(".matches")
     console.log(sortedMatches)
-
     for (let i=0; i<dates.length; i++){
         const dateElement = matchTemplate.content.cloneNode(true).children[0]
         const matchHeader = dateElement.querySelector("[data-match-header]")
@@ -24,10 +23,6 @@ footballStats.display = (dates, sortedMatches) => {
             matchDiv.classList.add("match")
             matchTable.append(matchDiv)
         })
-
-        // const matchTable = sortedMatches
-        // console.log(dateElement)
-        // console.log(matchHeader)   
     }
 }
 
@@ -57,8 +52,6 @@ footballStats.getMatches = (matches) => {
     const resultsArray = []
   
     footballStats.matches.forEach(match => {
-        // header = {date:match.utcDate, group:match.group, matchday:match.matchday}
-        // footballStats.display(header)
         const scoreAway = match.score.fullTime.away
         const scoreHome = match.score.fullTime.home
 
@@ -88,7 +81,6 @@ footballStats.sortByDate = (dates, matches) => {
         sortedMatches[dates[i]] = dateArray
     }
     
-    console.log(sortedMatches)
     return sortedMatches
    
 }
@@ -154,10 +146,6 @@ footballStats.init = () => {
         console.log(footballStats.dates)
         // return promisedData.value
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
-
-        // console.log(footballStats.sortedMatches)
-
-        console.log(footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
     })
     // .catch((message) => {
