@@ -534,11 +534,13 @@ header .wrapper nav .nav-bar li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0 0.5rem;
 }
 .page .wrapper .date .match-table .match .team2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0 0.5rem;
 }
 
 .date {
