@@ -9,7 +9,6 @@ footballStats.jsonData = {};
 footballStats.display = (dates, sortedMatches) => {
     const matchTemplate = document.querySelector("[data-match-template]")
     const matchContainer = document.querySelector(".matches")
-    console.log(sortedMatches)
     for (let i=0; i<dates.length; i++){
         const dateElement = matchTemplate.content.cloneNode(true).children[0]
         const matchHeader = dateElement.querySelector("[data-match-header]")
@@ -73,6 +72,7 @@ footballStats.getMatches = (matches) => {
     footballStats.matches.forEach(match => {
         const scoreAway = match.score.fullTime.away
         const scoreHome = match.score.fullTime.home
+        console.log(match)
         results = {
              team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:scoreAway}, 
              team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:scoreHome}, 
