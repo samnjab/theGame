@@ -507,6 +507,61 @@ header .wrapper nav .nav-bar li {
       flex-basis: 25%;
 }
 
+.page .wrapper .date .match-table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.page .wrapper .date .match-table .match {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  margin: 0 1rem;
+  padding: 0 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.page .wrapper .date .match-table .match .team1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.5rem;
+}
+.page .wrapper .date .match-table .match .team1 .flag-box {
+  width: 30px;
+  margin: 0 10px;
+}
+.page .wrapper .date .match-table .match .team1 .flag-box img {
+  max-width: 100%;
+  width: 30px;
+  height: 20px;
+  border: 1px solid black;
+}
+.page .wrapper .date .match-table .match .team2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 0.5rem;
+}
+.page .wrapper .date .match-table .match .team2 .flag-box {
+  width: 30px;
+  margin: 0 10px;
+}
+.page .wrapper .date .match-table .match .team2 .flag-box img {
+  max-width: 100%;
+  width: 30px;
+  height: 20px;
+  border: 1px solid black;
+}
+
 .date {
   border: 2px solid black;
   padding: 0.67rem;

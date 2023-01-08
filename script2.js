@@ -9,11 +9,7 @@ footballStats.jsonData = {};
 footballStats.display = (dates, sortedMatches) => {
     const matchTemplate = document.querySelector("[data-match-template]")
     const matchContainer = document.querySelector(".matches")
-
     console.log(sortedMatches)
-    // footballStats.matchesTable = document.querySelector('div.dates')
-    // liElement.innerHTML = `<p> Date: ${content.date}, Group: ${content.group}, Matchday: ${content.matchday}</p>`
-
     for (let i=0; i<dates.length; i++){
         const dateElement = matchTemplate.content.cloneNode(true).children[0]
         const matchHeader = dateElement.querySelector("[data-match-header]")
@@ -22,24 +18,31 @@ footballStats.display = (dates, sortedMatches) => {
 
         const matchTable = dateElement.querySelector("[data-match-Table]")
         sortedMatches[dates[i]].forEach(match => {
-            const matchDiv = document.createElement("div")
-            matchDiv.textContent = `${match.team1.name} ${match.team1.score} || ${match.team2.name} ${match.team2.score}`
-            matchDiv.classList.add("match")
+            const matchBoxTemplate = document.querySelector('[data-match-box]')
+            const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
+
+             // <<<<<< Team 1 flag + information starts here >>>>>>>>>
+
+            const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
+            matchTeam1FlagImg.src = match.team1.flag 
+            const matchTeam1Info = matchDiv.querySelector('[data-team1-info]')
+            matchTeam1Info.textContent = `${match.team1.name}: ${match.team1.score}`
+
+            // <<<<<< Team 2 flag + information starts here >>>>>>>>>
+
+            const matchTeam2FlagImg = matchDiv.querySelector('[data-flag-team2]')
+            matchTeam2FlagImg.src = match.team2.flag
+            const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
+            matchTeam2Info.textContent = `${match.team2.name}: ${match.team2.score}`
             matchTable.append(matchDiv)
         })
-
-        // const matchTable = sortedMatches
-        // console.log(dateElement)
-        // console.log(matchHeader)
-       
     }
-    
 }
+
 
 
 footballStats.convertDate = (utcDate) => {
     date = new Date(utcDate)
-
     return date.toDateString()
 }
 
@@ -49,11 +52,10 @@ footballStats.getDates = (matches) => {
     matches.forEach(match => {
         date = new Date(match.utcDate)
         dates.push(date.toDateString())
-        footballStats.sortedByDateMatches.date = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:match[winner].name, date:date.toDateString()};
+        footballStats.sortedByDateMatches.date = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:winner, date:date.toDateString()};
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
-
     return uniqueDates
 }
 
@@ -64,23 +66,27 @@ footballStats.getMatches = (matches) => {
     const resultsArray = []
   
     footballStats.matches.forEach(match => {
-        // header = {date:match.utcDate, group:match.group, matchday:match.matchday}
-        // footballStats.display(header)
         const scoreAway = match.score.fullTime.away
         const scoreHome = match.score.fullTime.home
+        results = {
+             team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:scoreAway}, 
+             team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:scoreHome}, 
+            //  winner: match[winner].name,
+             date: footballStats.convertDate(match.utcDate)
+         }
+
 
         if(match.score.winner == 'HOME_TEAM'){
             winner = 'homeTeam'
+            results.winner = match[winner].name
         }
-        if (match.score.winner == 'AWAY_TEAM'){
+        else if (match.score.winner == 'AWAY_TEAM'){
             winner = 'awayTeam' 
+            results.winner = match[winner].name
         }
-       results = {
-        team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:scoreAway}, 
-        team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:scoreHome}, 
-        winner: match[winner].name,
-        date: footballStats.convertDate(match.utcDate)
-    }
+        else{
+            results.winner = "Draw"
+        }
     
         resultsArray.push(results) 
     });
@@ -95,7 +101,6 @@ footballStats.sortByDate = (dates, matches) => {
         sortedMatches[dates[i]] = dateArray
     }
     
-    console.log(sortedMatches)
     return sortedMatches
    
 }
@@ -157,20 +162,18 @@ footballStats.init = () => {
         // footballStats.jsonData = promisedData
         console.log(promisedData)
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
+        console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
         console.log(footballStats.dates)
         // return promisedData.value
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
-
-        // console.log(footballStats.sortedMatches)
-
-        console.log(footballStats.matchResultsArray)
-
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
+        console.log(sortedMatches)
     })
     // .catch((message) => {
     //     return message
     // })
+    
  
 }
 

@@ -36,5 +36,59 @@ header {
     
 }
 
+.page{
+    .wrapper{
+        .date{
+            
+            .match-table{
+               
+                display: flex;
+                justify-content: space-between;
+                flex-wrap:wrap;
+                .match{
+                    flex-basis:40%;
+                    margin:0 1rem;
+                    padding:0 0.5rem;
+                    display:flex;
+                    justify-content: space-between;
+                    
+                    .team1{
+                        display:flex;
+                        margin: 0 0.5rem;
+                        .flag-box{
+                            width:30px;
+                            margin:0 10px;
+                            img{
+                                max-width:100%;
+                                
+                                width: 30px;
+                                height:20px;
+                                border: 1px solid black;
+                            }
+                        }
+                    }
+                    .team2{
+                        display:flex;
+                        margin: 0 0.5rem;
+                        .flag-box {
+                            
+                            width: 30px;
+                            margin:0 10px;
+                        
+                            img {
+                                max-width:100%;
+                            
+                                width: 30px;
+                                height:20px;
+                                border: 1px solid black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
