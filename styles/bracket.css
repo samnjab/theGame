@@ -536,7 +536,8 @@ header .wrapper nav .nav-bar li {
   margin: 0 0.5rem;
 }
 .page .wrapper .date .match-table .match .team1 .flag-box {
-  width: 50px;
+  width: 30px;
+  margin: 0 10px;
 }
 .page .wrapper .date .match-table .match .team1 .flag-box img {
   max-width: 100%;
@@ -549,7 +550,8 @@ header .wrapper nav .nav-bar li {
   margin: 0 0.5rem;
 }
 .page .wrapper .date .match-table .match .team2 .flag-box {
-  width: 50px;
+  width: 30px;
+  margin: 0 10px;
 }
 .page .wrapper .date .match-table .match .team2 .flag-box img {
   max-width: 100%;
