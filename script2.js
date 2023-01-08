@@ -18,9 +18,22 @@ footballStats.display = (dates, sortedMatches) => {
 
         const matchTable = dateElement.querySelector("[data-match-Table]")
         sortedMatches[dates[i]].forEach(match => {
-            const matchDiv = document.createElement("div")
-            matchDiv.textContent = `${match.team1.name} ${match.team1.score} || ${match.team2.name} ${match.team2.score}`
-            matchDiv.classList.add("match")
+            const matchBoxTemplate = document.querySelector('[data-match-box]')
+            const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
+
+             // <<<<<< Team 1 flag + information starts here >>>>>>>>>
+
+            const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
+            matchTeam1FlagImg.attributes[1] = match.team1.flag 
+            const matchTeam1Info = matchDiv.querySelector('[data-team1-info]')
+            matchTeam1Info.textContent = `${match.team1.name}: ${match.team1.score}`
+
+            // <<<<<< Team 2 flag + information starts here >>>>>>>>>
+
+            const matchTeam2FlagImg = matchDiv.querySelector('[data-flag-team2]')
+            matchTeam2FlagImg.attributes[1] = match.team2.flag
+            const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
+            matchTeam2Info.textContent = `${match.team2.name}: ${match.team2.score}`
             matchTable.append(matchDiv)
         })
     }
