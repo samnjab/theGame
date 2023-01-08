@@ -36,5 +36,33 @@ header {
     
 }
 
+.page{
+    .wrapper{
+        .date{
+            
+            .match-table{
+               
+                display: flex;
+                justify-content: space-between;
+                flex-wrap:wrap;
+                .match{
+                    flex-basis:40%;
+                    margin:0 1rem;
+                    padding:0 0.5rem;
+                    display:flex;
+                    justify-content: space-between;
+                    border:2px solid grey;
+                    .team1{
+                        display:flex;
+                    }
+                    .team2{
+                        display:flex;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 

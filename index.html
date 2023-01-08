@@ -62,8 +62,8 @@
 
     <template data-match-template>
         <div class="date">
-            <h4 data-match-header></h4>
-            <div data-match-table></div>
+            <h4 data-match-header class="match-header"></h4>
+            <div data-match-table class="match-table"></div>
         </div>
     </template>
     <!-- dynamic js template cloning produces the following DOM nodes  -->
@@ -91,10 +91,14 @@
     
     <template data-match-box>
         <div class="match">
-            <div data-flag-box><img data-flag-team1 src="" alt=""></div>
-            <p data-team1-info></p>
-            <div data-flag-box><img data-flag-team2 src="" alt=""></div>
-            <p data-team2-info></p>
+            <div class="team1">
+                <div data-flag-box class="flag-box"><img data-flag-team1 src="" alt=""></div>
+                <p data-team1-info></p>
+            </div>
+            <div class="team2">
+                <div data-flag-box class="flag-box"><img data-flag-team2 src="" alt=""></div>
+                <p data-team2-info></p>
+            </div>
         </div>  
     </template>
 

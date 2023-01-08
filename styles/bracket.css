@@ -507,6 +507,40 @@ header .wrapper nav .nav-bar li {
       flex-basis: 25%;
 }
 
+.page .wrapper .date .match-table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.page .wrapper .date .match-table .match {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  margin: 0 1rem;
+  padding: 0 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 2px solid grey;
+}
+.page .wrapper .date .match-table .match .team1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.page .wrapper .date .match-table .match .team2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .date {
   border: 2px solid black;
   padding: 0.67rem;
