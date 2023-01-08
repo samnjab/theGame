@@ -7,10 +7,14 @@ footballStats.jsonData = {};
     // arguments for this function dates array which will be the unique type dates, locally sorted matches 
     // grab the template and go through the dates array with a for loop, display the content of the dates as each for our template, go through dated array for loop again and grab matches correspond to that date, and create a div and create a template 
 footballStats.display = (dates, sortedMatches) => {
-    const matchTemplate = document.querySelector("[data-match-template]")
-    const matchContainer = document.querySelector(".matches")
-    console.log(sortedMatches)
-    for (let i=0; i<dates.length; i++){
+    return new Promise((resolve, reject) => {
+    
+        const matchTemplate = document.querySelector("[data-match-template]")
+        const matchContainer = document.querySelector(".matches")
+
+        console.log(sortedMatches)
+
+        for (let i=0; i<dates.length; i++){
         const dateElement = matchTemplate.content.cloneNode(true).children[0]
         const matchHeader = dateElement.querySelector("[data-match-header]")
         matchHeader.textContent = dates[i].substring(4,10)
@@ -40,8 +44,19 @@ footballStats.display = (dates, sortedMatches) => {
             winnerDiv.textContent = `Winner : ${match.winner}`
             // <<<<<<<< append >>>>>>>>>>>>>>
             matchTable.append(matchDiv)
+
+            if (matchTeam1Info.textContent){
+               console.log('we got resolve')
+                resolve(sortedMatches)
+            }else{
+                reject('data could not be loaded')
+            }
+
+
         })
     }
+    }) 
+    
 }
 
 
@@ -173,17 +188,36 @@ footballStats.init = () => {
         // return promisedData.value
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
+        .then((sortedMatches) => {
+             const userInput = document.getElementById('search')
+
+            userInput.addEventListener("input", e => {
+                const matchDivs = document.querySelector('.match')
+                // console.log(matchDivs)
+
+                const value = e.target.value.toLowerCase()  
+            // console.log(value)
+            for (let i =0; i < footballStats.dates.length; i++) {
+                footballStats.sortedMatches[footballStats.dates[i]].forEach(match => {
+                    const isVisible = match.team1.name.toLowerCase().includes(value) || match.team2.name.toLowerCase().includes(value)
+                    matchDivs.element.classList.toggle("hide", !isVisible)
+                })
+            }
+
+        })
+
+        })
         console.log(sortedMatches)
-    })
+
+       
+
+     
     // .catch((message) => {
     //     return message
     // })
     
  
+})
 }
-
 footballStats.init();
-
-
-
 
