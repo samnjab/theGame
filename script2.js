@@ -178,7 +178,7 @@ footballStats.getData = (url) => {
 }
 
 footballStats.init = () => {
-     footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
+    footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
         // footballStats.jsonData = promisedData
         console.log(promisedData)
@@ -190,22 +190,21 @@ footballStats.init = () => {
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
         .then((sortedMatches) => {
-             const userInput = document.getElementById('search')
+            const userInput = document.getElementById('search')
 
             userInput.addEventListener("input", e => {
                 const matchDivs = document.querySelector('.match')
                 // console.log(matchDivs)
-
                 const value = e.target.value.toLowerCase()  
-            // console.log(value)
-            for (let i =0; i < footballStats.dates.length; i++) {
-                footballStats.sortedMatches[footballStats.dates[i]].forEach(match => {
+                console.log(value)
+                for (let i =0; i < footballStats.dates.length; i++) {
+                    footballStats.sortedMatches[footballStats.dates[i]].forEach(match => {
                     const isVisible = match.team1.name.toLowerCase().includes(value) || match.team2.name.toLowerCase().includes(value)
-                    matchDivs.element.classList.toggle("hide", !isVisible)
-                })
-            }
+                    // matchDivs.element.classList.toggle("hide", !isVisible)
+                    })  
+                }
 
-        })
+            })
 
         })
         console.log(sortedMatches)
