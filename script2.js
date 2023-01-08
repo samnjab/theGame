@@ -27,6 +27,7 @@ footballStats.display = (dates, sortedMatches) => {
 }
 
 
+
 footballStats.convertDate = (utcDate) => {
     date = new Date(utcDate)
     return date.toDateString()
