@@ -541,7 +541,9 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .date .match-table .match .team1 .flag-box img {
   max-width: 100%;
-  height: auto;
+  width: 30px;
+  height: 20px;
+  border: 1px solid black;
 }
 .page .wrapper .date .match-table .match .team2 {
   display: -webkit-box;
@@ -555,7 +557,9 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .date .match-table .match .team2 .flag-box img {
   max-width: 100%;
-  height: auto;
+  width: 30px;
+  height: 20px;
+  border: 1px solid black;
 }
 
 .date {

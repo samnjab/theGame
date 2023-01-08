@@ -60,7 +60,10 @@ header {
                             margin:0 10px;
                             img{
                                 max-width:100%;
-                                height:auto;
+                                
+                                width: 30px;
+                                height:20px;
+                                border: 1px solid black;
                             }
                         }
                     }
@@ -68,12 +71,16 @@ header {
                         display:flex;
                         margin: 0 0.5rem;
                         .flag-box {
+                            
                             width: 30px;
                             margin:0 10px;
                         
                             img {
-                                max-width: 100%;
-                                height: auto;
+                                max-width:100%;
+                            
+                                width: 30px;
+                                height:20px;
+                                border: 1px solid black;
                             }
                         }
                     }
