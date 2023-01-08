@@ -66,28 +66,7 @@
             <div data-match-table class="match-table"></div>
         </div>
     </template>
-    <!-- dynamic js template cloning produces the following DOM nodes  -->
-
-    <!-- <div class="matches">
-            <div class="date">
-                <h4 data-match-header></h4>
-                <div data-match-table>
-                    <div class="match">team1 score || team2 score</div>
-                </div>
-            </div>
-            <div class="date">
-                <h4 data-match-header></h4>
-                <div data-match-table>
-                    <div class="match">team1 score || team2 score</div>
-                </div>
-            </div>
-            <div class="date">
-                <h4 data-match-header></h4>
-                <div data-match-table>
-                    <div class="match">team1 score || team2 score</div>
-                </div>
-            </div>
-        </div> -->
+    
     
     <template data-match-box>
         <div class="match">
@@ -101,8 +80,27 @@
             </div>
         </div>  
     </template>
-
-
-    <script src = "script2.js"></script>
-</body>
-</html>
+    <!-- dynamic js template cloning produces the following DOM nodes  -->
+    <!-- <div class="matches">
+            <div class="date">
+                <h4 data-match-header class="match-header"></h4>
+                <div data-match-table class="match-table">
+                    <div class="match">
+                        <div class="team1">
+                            <div class="flag-box" data-flag-box><img data-flag-team1 src="" alt=""></div>
+                            <p data-team1-info>team1.name: team1.score</p>
+                        </div>
+                        <div class="team2">
+                            <div class="flag-box" data-flag-box><img data-flag-team2 src="" alt=""></div>
+                            <p data-team2-info>team2.name: team2.score</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        
+        <script src = "script2.js"></script>
+    </body>
+    </html>
+    
