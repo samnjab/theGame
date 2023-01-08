@@ -15,46 +15,49 @@ footballStats.display = (dates, sortedMatches) => {
         console.log(sortedMatches)
 
         for (let i=0; i<dates.length; i++){
-        const dateElement = matchTemplate.content.cloneNode(true).children[0]
-        const matchHeader = dateElement.querySelector("[data-match-header]")
-        matchHeader.textContent = dates[i].substring(4,10)
-        matchContainer.append(dateElement)
+            // const matchesWithElements = []
+            const dateElement = matchTemplate.content.cloneNode(true).children[0]
+            const matchHeader = dateElement.querySelector("[data-match-header]")
+            matchHeader.textContent = dates[i].substring(4,10)
+            matchContainer.append(dateElement)
+            matchesOfDateWithElements = []
+            const matchTable = dateElement.querySelector("[data-match-Table]")
+            matchesOfDateWithElements = sortedMatches[dates[i]].map(match => {
+                const matchBoxTemplate = document.querySelector('[data-match-box]')
+                const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
+                // <<<<<< Team 1 flag + information starts here >>>>>>>>>
+   
+               const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
+               matchTeam1FlagImg.src = match.team1.flag 
+               const matchTeam1Info = matchDiv.querySelector('[data-team1-info]')
+               matchTeam1Info.textContent = `${match.team1.name}: ${match.team1.score}`
+   
+               // <<<<<< Team 2 flag + information starts here >>>>>>>>>
+   
+               const matchTeam2FlagImg = matchDiv.querySelector('[data-flag-team2]')
+               matchTeam2FlagImg.src = match.team2.flag
+               const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
+               matchTeam2Info.textContent = `${match.team2.name}: ${match.team2.score}`
+   
+               // <<<<<< Winner >>>>>>>>>>>>>>>
+               const winnerDiv = matchDiv.querySelector('[data-winner]')
+               winnerDiv.textContent = `Winner : ${match.winner}`
+               // <<<<<<<< append >>>>>>>>>>>>>>
+               matchTable.append(matchDiv)
+               
 
-        const matchTable = dateElement.querySelector("[data-match-Table]")
-        sortedMatches[dates[i]].forEach(match => {
-            const matchBoxTemplate = document.querySelector('[data-match-box]')
-            const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
+               return {match:match, element:matchDiv}
+            })
+            // matchesWithElements.push(matchesOfDateWithElements)
+            console.log(matchesOfDateWithElements)
 
-             // <<<<<< Team 1 flag + information starts here >>>>>>>>>
-
-            const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
-            matchTeam1FlagImg.src = match.team1.flag 
-            const matchTeam1Info = matchDiv.querySelector('[data-team1-info]')
-            matchTeam1Info.textContent = `${match.team1.name}: ${match.team1.score}`
-
-            // <<<<<< Team 2 flag + information starts here >>>>>>>>>
-
-            const matchTeam2FlagImg = matchDiv.querySelector('[data-flag-team2]')
-            matchTeam2FlagImg.src = match.team2.flag
-            const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
-            matchTeam2Info.textContent = `${match.team2.name}: ${match.team2.score}`
-
-            // <<<<<< Winner >>>>>>>>>>>>>>>
-            const winnerDiv = matchDiv.querySelector('[data-winner]')
-            winnerDiv.textContent = `Winner : ${match.winner}`
-            // <<<<<<<< append >>>>>>>>>>>>>>
-            matchTable.append(matchDiv)
-
-            if (matchTeam1Info.textContent){
-               console.log('we got resolve')
-                resolve(sortedMatches)
-            }else{
-                reject('data could not be loaded')
-            }
-
-
-        })
-    }
+        }
+        if (matchTeam1Info.textContent){
+            console.log('we got resolve')
+            resolve(sortedMatches)
+        }else{
+            reject('data could not be loaded')
+        }
     }) 
     
 }
