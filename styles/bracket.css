@@ -548,9 +548,16 @@ header .wrapper nav .nav-bar li {
   color: #2C2C2C;
   border: solid 1px #f0f1f2;
 }
-.page .wrapper .date .match-table .match:focus {
+.page .wrapper .date .match-table .match:hover .more-info img-box {
   background-color: #1F2224;
+}
+.page .wrapper .date .match-table .match:focus {
+  background-color: #f0f1f2;
   color: #2C2C2C;
+  border: solid 1px #f0f1f2;
+}
+.page .wrapper .date .match-table .match:focus .more-info img-box {
+  background-color: #1F2224;
 }
 .page .wrapper .date .match-table .match.hide {
   display: none;
@@ -600,5 +607,4 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match .more-info .img-box img {
   max-width: 100%;
   height: auto;
-  border: 1px solid #33383A;
 }
