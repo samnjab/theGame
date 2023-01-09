@@ -40,8 +40,22 @@ footballStats.display = (dates, sortedMatches) => {
                matchTeam2Info.textContent = `${match.team2.name} ${match.team2.score.fullTime}`
    
                // <<<<<< Winner >>>>>>>>>>>>>>>
-               const winnerDiv = matchDiv.querySelector('[data-winner]')
-               winnerDiv.textContent = `Winner : ${match.winner}`
+            //    const winnerDiv = matchDiv.querySelector('[data-winner]')
+            //    winnerDiv.textContent = `Winner : ${match.winner}`
+               // <<<<<<<<<<< More Info addition >>>>>>>>
+               matchDiv.querySelector('[data-competition-name]').textContent = `${match.competition.name}`
+               matchDiv.querySelector('[data-competition-emblem]').src = `${match.competition.emblem}`
+               matchDiv.querySelector('[data-match-date]').textContent = `Date: ${match.date}`
+               matchDiv.querySelector('[data-group]').textContent = `Group: ${match.group}`
+               matchDiv.querySelector('[data-stage]').textContent = `Stage: ${match.stage}`
+               matchDiv.querySelector('[data-match-day]').textContent = `Match day:${match.matchDay}`
+               matchDiv.querySelector('[data-status]').textContent = `Status: ${match.status}`
+               matchDiv.querySelector('[data-winner]').textContent = `Winner: ${match.winner}`
+               
+
+
+
+        
                // <<<<<<<< append >>>>>>>>>>>>>>
                matchTable.append(matchDiv)
                
@@ -92,8 +106,9 @@ footballStats.getMatches = (matches) => {
              date: footballStats.convertDate(match.utcDate),
              group: match.group,
              stage: match.stage,
+             matchDay:match.matchday,
              competition: {name: match.competition.name, emblem:match.competition.emblem},
-             season:{seasonStart: match.season.seasonStart, seasonEnd: match.season.seasonEnd, currentMatchDay:match.season.currentMatchDay},
+             season:{seasonStart: match.season.startDate, seasonEnd: match.season.endDate, currentMatchDay:match.season.currentMatchday},
              status:match.status
          }
 
