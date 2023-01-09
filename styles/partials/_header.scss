@@ -2,6 +2,7 @@
 
 header {
     background-color: $primary-color;
+    padding-top:1.5rem;
     .wrapper {
         height: 100%;
         @include flex-center(column, space-between, center);
@@ -16,9 +17,11 @@ header {
                 }
                 .active {
                     border-bottom: $white 5px solid;
+                    
                 }
                 .linked {
                     border-bottom: rgb(255, 255, 255, 0) 5px solid;
+                    
                 }
             }
         }
