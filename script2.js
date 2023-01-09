@@ -21,6 +21,7 @@ footballStats.display = (dates, sortedMatches) => {
             matchContainer.append(dateElement)
             
             const matchTable = dateElement.querySelector("[data-match-Table]")
+            
             matchesWithElements[i] = sortedMatches[dates[i]].map(match => {
                 const matchBoxTemplate = document.querySelector('[data-match-box]')
                 const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
@@ -203,6 +204,7 @@ footballStats.init = () => {
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
         .then((matchesWithElements) => {
+            // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
             const userInput = document.getElementById('search')
 
             userInput.addEventListener('input', e => {
@@ -210,10 +212,23 @@ footballStats.init = () => {
                 for (let i =0; i < footballStats.dates.length; i++) {
                     matchesWithElements[i].forEach(matchWithElement => {
                         const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
+                        
                         matchWithElement.element.classList.toggle('hide', !isVisible)
                     })
                 }
             })
+             // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
+             const clickedMatches = document.querySelectorAll('.match')
+             clickedMatches.forEach(clickedMatch => {
+                 clickedMatch.addEventListener('click', (e) => {
+                     console.log(e.target)
+                    //  e.target.children[2].classList.toggle('hide')
+                 })
+
+             })
+
+
+
 
         })
 
