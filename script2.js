@@ -30,14 +30,14 @@ footballStats.display = (dates, sortedMatches) => {
                const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
                matchTeam1FlagImg.src = match.team1.flag 
                const matchTeam1Info = matchDiv.querySelector('[data-team1-info]')
-               matchTeam1Info.textContent = `${match.team1.name} ${match.team1.score}`
+               matchTeam1Info.textContent = `${match.team1.name} ${match.team1.score.fullTime}`
    
                // <<<<<< Team 2 flag + information starts here >>>>>>>>>
    
                const matchTeam2FlagImg = matchDiv.querySelector('[data-flag-team2]')
                matchTeam2FlagImg.src = match.team2.flag
                const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
-               matchTeam2Info.textContent = `${match.team2.name} ${match.team2.score}`
+               matchTeam2Info.textContent = `${match.team2.name} ${match.team2.score.fullTime}`
    
                // <<<<<< Winner >>>>>>>>>>>>>>>
                const winnerDiv = matchDiv.querySelector('[data-winner]')
@@ -86,13 +86,15 @@ footballStats.getMatches = (matches) => {
     const resultsArray = []
   
     footballStats.matches.forEach(match => {
-        const scoreAway = match.score.fullTime.away
-        const scoreHome = match.score.fullTime.home
         results = {
-             team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:scoreAway}, 
-             team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:scoreHome}, 
-            //  winner: match[winner].name,
-             date: footballStats.convertDate(match.utcDate)
+             team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:{fullTime: match.score.fullTime.away, halfTime:match.score.halfTime.away}}, 
+             team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:{fullTime:match.score.fullTime.home, halfTime:match.score.halfTime.home}}, 
+             date: footballStats.convertDate(match.utcDate),
+             group: match.group,
+             stage: match.stage,
+             competition: {name: match.competition.name, emblem:match.competition.emblem},
+             season:{seasonStart: match.season.seasonStart, seasonEnd: match.season.seasonEnd, currentMatchDay:match.season.currentMatchDay},
+             status:match.status
          }
 
 
@@ -107,10 +109,10 @@ footballStats.getMatches = (matches) => {
         else{
             results.winner = "Draw"
         }
+        
     
         resultsArray.push(results) 
     });
-
     return resultsArray
 }
 
@@ -179,7 +181,9 @@ footballStats.getData = (url) => {
 footballStats.init = () => {
      footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
+        console.log(promisedData)
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
+        console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
