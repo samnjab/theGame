@@ -73,18 +73,11 @@ header {
                     &.hide {
                         display: none;
                     }
-                    .winner{
-                        margin:0.5rem 0;
-                        flex-basis:100%;
-                        text-align:center;
-                        text-transform: uppercase;
-                    }
-                    
                     .team1{
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;
-                        .flag-box{
+                        .img-box{
                             width:30px;
                             margin:0 10px;
                             img{
@@ -100,20 +93,32 @@ header {
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;
-                        .flag-box {
-                            
+                        .img-box {
                             width: 30px;
                             margin:0 10px;
                         
                             img {
                                 max-width:100%;
-                            
                                 width: 30px;
                                 height:20px;
                                 border: 1px solid $border-color
                             }
                         }
                     }
+                    .more-info{
+                        margin: 1rem 0.5rem 1rem 0.5rem;
+                        .img-box{
+                            width: 50px;
+                            img{
+                                max-width:100%;
+                                height:auto;
+                                border: 1px solid $border-color;
+                            }
+                        }
+
+
+                    }
+                    
 
                 }
             }

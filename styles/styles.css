@@ -266,6 +266,10 @@ section {
   padding: 1rem 0;
 }
 
+.img-box img {
+  max-width: 100%;
+}
+
 h1 {
   font-size: calc(1.6666666667rem + 7vw);
   font-family: "Roboto";
@@ -551,13 +555,6 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match.hide {
   display: none;
 }
-.page .wrapper .date .match-table .match .winner {
-  margin: 0.5rem 0;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
-  text-align: center;
-  text-transform: uppercase;
-}
 .page .wrapper .date .match-table .match .team1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -566,11 +563,11 @@ header .wrapper nav .nav-bar li {
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
 }
-.page .wrapper .date .match-table .match .team1 .flag-box {
+.page .wrapper .date .match-table .match .team1 .img-box {
   width: 30px;
   margin: 0 10px;
 }
-.page .wrapper .date .match-table .match .team1 .flag-box img {
+.page .wrapper .date .match-table .match .team1 .img-box img {
   max-width: 100%;
   width: 30px;
   height: 20px;
@@ -584,13 +581,24 @@ header .wrapper nav .nav-bar li {
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
 }
-.page .wrapper .date .match-table .match .team2 .flag-box {
+.page .wrapper .date .match-table .match .team2 .img-box {
   width: 30px;
   margin: 0 10px;
 }
-.page .wrapper .date .match-table .match .team2 .flag-box img {
+.page .wrapper .date .match-table .match .team2 .img-box img {
   max-width: 100%;
   width: 30px;
   height: 20px;
+  border: 1px solid #33383A;
+}
+.page .wrapper .date .match-table .match .more-info {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+}
+.page .wrapper .date .match-table .match .more-info .img-box {
+  width: 50px;
+}
+.page .wrapper .date .match-table .match .more-info .img-box img {
+  max-width: 100%;
+  height: auto;
   border: 1px solid #33383A;
 }
