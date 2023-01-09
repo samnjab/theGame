@@ -297,7 +297,7 @@ h3 {
 }
 
 h4 {
-  font-size: calc(0.8rem + 1vw);
+  font-size: calc(0.6rem + 1vw);
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -355,14 +355,14 @@ p,
 .paragraph {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 20px;
+  font-size: calc(0.5rem + 1vw);
   line-height: 32px;
 }
 
 .nav-bar {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 1rem;
+  font-size: calc(0.5rem + 1vw);
   letter-spacing: 1px;
   text-align: center;
   line-height: 29px;
@@ -503,6 +503,9 @@ header .wrapper nav .nav-bar li {
 
 .page {
   background-color: #0A0C0C;
+}
+.page .wrapper .date h4 {
+  text-align: left;
 }
 .page .wrapper .date .match-table {
   background-color: #1F2224;

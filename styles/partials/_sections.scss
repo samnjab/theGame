@@ -40,6 +40,9 @@ header {
     background-color: $secondary-color;
     .wrapper{
         .date{
+            h4{
+                text-align: left;
+            }
             .match-table{
                 background-color: $tertiary-color;
                 border:1px solid $border-color;

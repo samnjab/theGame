@@ -17,7 +17,7 @@ h3 {
 
 h4 {
     // font-size: 32px;
-    @include responsive-size(1.6rem, 1/2, 1vw);
+    @include responsive-size(1.2rem, 1/2, 1vw);
     @include heading-styler();
 }
 
@@ -70,13 +70,15 @@ section {
 p,
 .paragraph {
     @include style-2();
-    font-size: 20px;
+    // font-size: 20px;
+    @include responsive-size(1rem, 1/2, 1vw);
     line-height: 32px;
 }
 
 .nav-bar {
     @include style-2();
-    font-size: 1rem;
+    // font-size: 1rem;
+    @include responsive-size(1rem, 1/2, 1vw);
     letter-spacing: 1px;
     text-align: center;
     line-height: 29px;
