@@ -232,7 +232,7 @@ html {
 }
 
 html {
-  color: black;
+  color: white;
   font-size: 125%;
 }
 
@@ -268,9 +268,8 @@ section {
 
 h1 {
   font-size: calc(1.6666666667rem + 7vw);
-  font-family: "Playfair Display";
+  font-family: "Roboto";
   font-weight: 700;
-  font-style: italic;
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
@@ -279,9 +278,8 @@ h1 {
 
 h2 {
   font-size: calc(1rem + 5vw);
-  font-family: "Playfair Display";
+  font-family: "Roboto";
   font-weight: 700;
-  font-style: italic;
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
@@ -290,9 +288,8 @@ h2 {
 
 h3 {
   font-size: calc(0.3333333333rem + 1vw);
-  font-family: "Playfair Display";
+  font-family: "Roboto";
   font-weight: 700;
-  font-style: italic;
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
@@ -301,9 +298,8 @@ h3 {
 
 h4 {
   font-size: calc(0.8rem + 1vw);
-  font-family: "Playfair Display";
+  font-family: "Roboto";
   font-weight: 700;
-  font-style: italic;
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
@@ -316,9 +312,8 @@ section {
 }
 
 .button {
-  font-family: "Playfair Display";
+  font-family: "Roboto";
   font-weight: 700;
-  font-style: italic;
   font-size: 20px;
   letter-spacing: 1px;
   line-height: 32px;
@@ -434,9 +429,8 @@ header .wrapper nav .nav-bar .linked {
   border-bottom: rgba(255, 255, 255, 0) 5px solid;
 }
 header .wrapper h1 {
-  font-family: "Playfair Display";
+  font-family: "Roboto";
   font-weight: 700;
-  font-style: italic;
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
@@ -507,7 +501,12 @@ header .wrapper nav .nav-bar li {
       flex-basis: 25%;
 }
 
+.page {
+  background-color: #0A0C0C;
+}
 .page .wrapper .date .match-table {
+  background-color: #1F2224;
+  border: 1px solid #33383A;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -520,8 +519,10 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match {
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
-  margin: 1rem;
-  padding: 0 0.5rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -532,15 +533,17 @@ header .wrapper nav .nav-bar li {
       align-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border: 2px solid grey;
+  border: 1px solid #33383A;
 }
 .page .wrapper .date .match-table .match.hide {
   display: none;
 }
 .page .wrapper .date .match-table .match .winner {
+  margin: 0.5rem 0;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   text-align: center;
+  text-transform: uppercase;
 }
 .page .wrapper .date .match-table .match .team1 {
   display: -webkit-box;
@@ -576,10 +579,5 @@ header .wrapper nav .nav-bar li {
   max-width: 100%;
   width: 30px;
   height: 20px;
-  border: 1px solid black;
-}
-
-.date {
-  border: 2px solid black;
-  padding: 0.67rem;
+  border: 1px solid #33383A;
 }
