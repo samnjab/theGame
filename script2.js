@@ -11,20 +11,20 @@ footballStats.display = (dates, sortedMatches) => {
     
         const matchTemplate = document.querySelector("[data-match-template]")
         const matchContainer = document.querySelector(".matches")
-
-        console.log(sortedMatches)
+        const matchesWithElements = {}
 
         for (let i=0; i<dates.length; i++){
-            // const matchesWithElements = []
+            
             const dateElement = matchTemplate.content.cloneNode(true).children[0]
             const matchHeader = dateElement.querySelector("[data-match-header]")
             matchHeader.textContent = dates[i].substring(4,10)
             matchContainer.append(dateElement)
-            matchesOfDateWithElements = []
+            
             const matchTable = dateElement.querySelector("[data-match-Table]")
-            matchesOfDateWithElements = sortedMatches[dates[i]].map(match => {
+            matchesWithElements[dates[i]] = sortedMatches[dates[i]].map(match => {
                 const matchBoxTemplate = document.querySelector('[data-match-box]')
                 const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
+
                 // <<<<<< Team 1 flag + information starts here >>>>>>>>>
    
                const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
@@ -48,13 +48,13 @@ footballStats.display = (dates, sortedMatches) => {
 
                return {match:match, element:matchDiv}
             })
-            // matchesWithElements.push(matchesOfDateWithElements)
-            console.log(matchesOfDateWithElements)
+
 
         }
-        if (matchTeam1Info.textContent){
+        console.log(matchesWithElements)
+        if (matchesWithElements){
             console.log('we got resolve')
-            resolve(sortedMatches)
+            resolve(matchesWithElements)
         }else{
             reject('data could not be loaded')
         }
@@ -187,27 +187,25 @@ footballStats.init = () => {
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
         console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
-        console.log(footballStats.dates)
-        // return promisedData.value
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
-        .then((sortedMatches) => {
-             const userInput = document.getElementById('search')
+        .then((matchesWithElements) => {
+            console.log(matchesWithElements)
+            const userInput = document.getElementById('search')
 
-            userInput.addEventListener("input", e => {
-                const matchDivs = document.querySelector('.match')
+            userInput.addEventListener('input', e => {
+                // const matchDivs = document.querySelector('.match')
                 // console.log(matchDivs)
-
                 const value = e.target.value.toLowerCase()  
-            // console.log(value)
-            for (let i =0; i < footballStats.dates.length; i++) {
-                footballStats.sortedMatches[footballStats.dates[i]].forEach(match => {
-                    const isVisible = match.team1.name.toLowerCase().includes(value) || match.team2.name.toLowerCase().includes(value)
-                    matchDivs.element.classList.toggle("hide", !isVisible)
-                })
-            }
-
-        })
+                for (let i =0; i < footballStats.dates.length; i++) {
+                    matchesWithElements[footballStats.dates[i]].forEach(matchWithElement => {
+                        console.log(matchWithElement)
+                        const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
+                        console.log(isVisible)
+                        matchWithElement.element.classList.toggle('hide', !isVisible)
+                    })
+                }
+            })
 
         })
         console.log(sortedMatches)
