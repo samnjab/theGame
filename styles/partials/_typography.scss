@@ -32,7 +32,7 @@ section {
     letter-spacing: 1px;
     line-height: 32px;
     text-transform: uppercase;
-    background-color: $primary-color;
+    // background-color: $primary-color;
     border: solid 2px $primary-color;
     padding: 0.5rem 1.5rem;
     margin: 1rem;
@@ -40,13 +40,13 @@ section {
     transition: 0.3s;
 
     &:hover {
-        background-color: $white;
+        background-color: $tertiary-color;
         color: $black;
         border: solid 2px $black;
     }
 
     &:focus {
-        background-color: $white;
+        background-color: $tertiary-color;
         color: $black;
     }
 

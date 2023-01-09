@@ -318,7 +318,6 @@ section {
   letter-spacing: 1px;
   line-height: 32px;
   text-transform: uppercase;
-  background-color: #0F4067;
   border: solid 2px #0F4067;
   padding: 0.5rem 1.5rem;
   margin: 1rem;
@@ -329,12 +328,12 @@ section {
   transition: 0.3s;
 }
 .button:hover {
-  background-color: #FAFAFA;
+  background-color: #1F2224;
   color: #2C2C2C;
   border: solid 2px #2C2C2C;
 }
 .button:focus {
-  background-color: #FAFAFA;
+  background-color: #1F2224;
   color: #2C2C2C;
 }
 .button a {
@@ -538,6 +537,16 @@ header .wrapper nav .nav-bar li {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   border: 1px solid #33383A;
+  color: white;
+}
+.page .wrapper .date .match-table .match:hover {
+  background-color: #f0f1f2;
+  color: #2C2C2C;
+  border: solid 1px #f0f1f2;
+}
+.page .wrapper .date .match-table .match:focus {
+  background-color: #1F2224;
+  color: #2C2C2C;
 }
 .page .wrapper .date .match-table .match.hide {
   display: none;

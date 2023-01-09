@@ -59,6 +59,17 @@ header {
                     align-content:center;
                     flex-wrap:wrap;
                     border:1px solid $border-color;
+                    color:$text-color;
+                    &:hover {
+                        background-color: $off-white;
+                        color: $black;
+                        border: solid 1px $off-white;
+                    }
+                    
+                    &:focus {
+                        background-color: $tertiary-color;
+                        color: $black;
+                    }
                     &.hide {
                         display: none;
                     }
