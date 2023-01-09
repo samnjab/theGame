@@ -6,7 +6,7 @@
 }
 
 html {
-    color: black;
+    color:$text-color;
     font-size: 125%;
     
 }
@@ -37,4 +37,10 @@ fieldset{
 }
 section{
     padding:1rem 0;
+}
+
+.img-box {
+    img {
+        max-width: 100%;
+    }
 }

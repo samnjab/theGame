@@ -11,50 +11,67 @@ footballStats.display = (dates, sortedMatches) => {
     
         const matchTemplate = document.querySelector("[data-match-template]")
         const matchContainer = document.querySelector(".matches")
-
-        console.log(sortedMatches)
+        const matchesWithElements = []
 
         for (let i=0; i<dates.length; i++){
-        const dateElement = matchTemplate.content.cloneNode(true).children[0]
-        const matchHeader = dateElement.querySelector("[data-match-header]")
-        matchHeader.textContent = dates[i].substring(4,10)
-        matchContainer.append(dateElement)
+            
+            const dateElement = matchTemplate.content.cloneNode(true).children[0]
+            const matchHeader = dateElement.querySelector("[data-match-header]")
+            matchHeader.textContent = dates[i].substring(4,10)
+            matchContainer.append(dateElement)
+            
+            const matchTable = dateElement.querySelector("[data-match-Table]")
+            
+            matchesWithElements[i] = sortedMatches[dates[i]].map(match => {
+                const matchBoxTemplate = document.querySelector('[data-match-box]')
+                const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
 
-        const matchTable = dateElement.querySelector("[data-match-Table]")
-        sortedMatches[dates[i]].forEach(match => {
-            const matchBoxTemplate = document.querySelector('[data-match-box]')
-            const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
-
-             // <<<<<< Team 1 flag + information starts here >>>>>>>>>
-
-            const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
-            matchTeam1FlagImg.src = match.team1.flag 
-            const matchTeam1Info = matchDiv.querySelector('[data-team1-info]')
-            matchTeam1Info.textContent = `${match.team1.name}: ${match.team1.score}`
-
-            // <<<<<< Team 2 flag + information starts here >>>>>>>>>
-
-            const matchTeam2FlagImg = matchDiv.querySelector('[data-flag-team2]')
-            matchTeam2FlagImg.src = match.team2.flag
-            const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
-            matchTeam2Info.textContent = `${match.team2.name}: ${match.team2.score}`
-
-            // <<<<<< Winner >>>>>>>>>>>>>>>
-            const winnerDiv = matchDiv.querySelector('[data-winner]')
-            winnerDiv.textContent = `Winner : ${match.winner}`
-            // <<<<<<<< append >>>>>>>>>>>>>>
-            matchTable.append(matchDiv)
-
-            if (matchTeam1Info.textContent){
-               console.log('we got resolve')
-                resolve(sortedMatches)
-            }else{
-                reject('data could not be loaded')
-            }
+                // <<<<<< Team 1 flag + information starts here >>>>>>>>>
+   
+               const matchTeam1FlagImg = matchDiv.querySelector('[data-flag-team1]')
+               matchTeam1FlagImg.src = match.team1.flag 
+               const matchTeam1Info = matchDiv.querySelector('[data-team1-info]')
+               matchTeam1Info.textContent = `${match.team1.name} ${match.team1.score.fullTime}`
+   
+               // <<<<<< Team 2 flag + information starts here >>>>>>>>>
+   
+               const matchTeam2FlagImg = matchDiv.querySelector('[data-flag-team2]')
+               matchTeam2FlagImg.src = match.team2.flag
+               const matchTeam2Info = matchDiv.querySelector('[data-team2-info]')
+               matchTeam2Info.textContent = `${match.team2.name} ${match.team2.score.fullTime}`
+   
+               // <<<<<< Winner >>>>>>>>>>>>>>>
+            //    const winnerDiv = matchDiv.querySelector('[data-winner]')
+            //    winnerDiv.textContent = `Winner : ${match.winner}`
+               // <<<<<<<<<<< More Info addition >>>>>>>>
+               matchDiv.querySelector('[data-competition-name]').textContent = `${match.competition.name}`
+               matchDiv.querySelector('[data-competition-emblem]').src = `${match.competition.emblem}`
+               matchDiv.querySelector('[data-match-date]').textContent = `Date: ${match.date}`
+               matchDiv.querySelector('[data-group]').textContent = `Group: ${match.group}`
+               matchDiv.querySelector('[data-stage]').textContent = `Stage: ${match.stage}`
+               matchDiv.querySelector('[data-match-day]').textContent = `Match day:${match.matchDay}`
+               matchDiv.querySelector('[data-status]').textContent = `Status: ${match.status}`
+               matchDiv.querySelector('[data-winner]').textContent = `Winner: ${match.winner}`
+               
 
 
-        })
-    }
+
+        
+               // <<<<<<<< append >>>>>>>>>>>>>>
+               matchTable.append(matchDiv)
+               
+
+               return {match:match, element:matchDiv}
+            })
+
+
+        }
+        if (matchesWithElements){
+            console.log('we got resolve')
+            resolve(matchesWithElements)
+        }else{
+            reject('data could not be loaded')
+        }
     }) 
     
 }
@@ -80,19 +97,20 @@ footballStats.getDates = (matches) => {
 }
 
 footballStats.getMatches = (matches) => {
-    
-    console.log(matches)
     footballStats.matches = matches
     const resultsArray = []
   
     footballStats.matches.forEach(match => {
-        const scoreAway = match.score.fullTime.away
-        const scoreHome = match.score.fullTime.home
         results = {
-             team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:scoreAway}, 
-             team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:scoreHome}, 
-            //  winner: match[winner].name,
-             date: footballStats.convertDate(match.utcDate)
+             team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:{fullTime: match.score.fullTime.away, halfTime:match.score.halfTime.away}}, 
+             team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:{fullTime:match.score.fullTime.home, halfTime:match.score.halfTime.home}}, 
+             date: footballStats.convertDate(match.utcDate),
+             group: match.group,
+             stage: match.stage,
+             matchDay:match.matchday,
+             competition: {name: match.competition.name, emblem:match.competition.emblem},
+             season:{seasonStart: match.season.startDate, seasonEnd: match.season.endDate, currentMatchDay:match.season.currentMatchday},
+             status:match.status
          }
 
 
@@ -107,10 +125,10 @@ footballStats.getMatches = (matches) => {
         else{
             results.winner = "Draw"
         }
+        
     
         resultsArray.push(results) 
     });
-
     return resultsArray
 }
 
@@ -179,35 +197,40 @@ footballStats.getData = (url) => {
 footballStats.init = () => {
      footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
-        // footballStats.jsonData = promisedData
         console.log(promisedData)
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
         console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
-        console.log(footballStats.dates)
-        // return promisedData.value
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
-        .then((sortedMatches) => {
-             const userInput = document.getElementById('search')
+        .then((matchesWithElements) => {
+            // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
+            const userInput = document.getElementById('search')
 
-            userInput.addEventListener("input", e => {
-                const matchDivs = document.querySelector('.match')
-                // console.log(matchDivs)
-
+            userInput.addEventListener('input', e => {
                 const value = e.target.value.toLowerCase()  
-            // console.log(value)
-            for (let i =0; i < footballStats.dates.length; i++) {
-                footballStats.sortedMatches[footballStats.dates[i]].forEach(match => {
-                    const isVisible = match.team1.name.toLowerCase().includes(value) || match.team2.name.toLowerCase().includes(value)
-                    matchDivs.element.classList.toggle("hide", !isVisible)
-                })
-            }
+                for (let i =0; i < footballStats.dates.length; i++) {
+                    matchesWithElements[i].forEach(matchWithElement => {
+                        const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
+                        
+                        matchWithElement.element.classList.toggle('hide', !isVisible)
+                    })
+                }
+            })
+             // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
+             const clickedMatches = document.querySelectorAll('.match')
+             clickedMatches.forEach(clickedMatch => {
+                 clickedMatch.addEventListener('click', (e) => {
+                     console.log(e.target)
+                    //  e.target.children[2].classList.toggle('hide')
+                 })
+
+             })
+
+
+
 
         })
-
-        })
-        console.log(sortedMatches)
 
        
 

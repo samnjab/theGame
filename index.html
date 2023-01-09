@@ -20,16 +20,16 @@
             <nav>
                 <ul class="nav-bar" >
                     <li>
-                        <a href="index.html">Matches</a>
+                        <a href="index.html" class="active">Matches</a>
                     </li>
                     <li>
-                        <a href="./pages/bracket.html">Bracket</a>
+                        <a href="./pages/bracket.html" class="linked">Bracket</a>
                     </li>
                     <li>
-                        <a href="./pages/standings.html">Standings</a>
+                        <a href="./pages/standings.html" class="linked">Standings</a>
                     </li>
                     <li>
-                        <a href="./pages/players.html">Players</a>
+                        <a href="./pages/players.html" class="linked">Players</a>
                     </li>
                 </ul>
             </nav>
@@ -68,18 +68,38 @@
     </template>
     
     
+    
     <template data-match-box>
-        <div class="match">
+        <a href="#" class="match">
             <div class="team1">
-                <div data-flag-box class="flag-box"><img data-flag-team1 src="" alt=""></div>
+                <div data-flag-box class="img-box"><img data-flag-team1 src="" alt=""></div>
                 <p data-team1-info></p>
             </div>
             <div class="team2">
-                <div data-flag-box class="flag-box"><img data-flag-team2 src="" alt=""></div>
+                <div data-flag-box class="img-box"><img data-flag-team2 src="" alt=""></div>
                 <p data-team2-info></p>
             </div>
-            <p data-winner class="winner"></p>
-        </div>  
+            <div data-more-info class="more-info hide">
+                <div data-competition> 
+                    <p data-competition-name></p>
+                    <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
+                </div>
+                <div data-match-info>
+                    <p data-match-date></p>
+                    <p data-group></p>
+                    <p data-stage></p>
+                    <p data-match-day></p>
+                    <p data-status></p>
+                    <p data-winner class="winner"></p>
+                </div>
+                <div data-season-info>
+                    <p data-season-start></p>
+                    <p data-season-end></p>
+                    <p data-season-match-day></p>
+                </div>
+
+            </div>
+        </a>  
     </template>
     <!-- dynamic js template cloning produces the following DOM nodes  -->
     <!-- <div class="matches">

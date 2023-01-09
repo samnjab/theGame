@@ -37,34 +37,60 @@ header {
 }
 
 .page{
+    background-color: $secondary-color;
     .wrapper{
         .date{
-            
+            // &.hide {
+            //     display: none;
+            // }
+            h4{
+                text-align: left;
+            }
             .match-table{
+                background-color: $tertiary-color;
+                border:1px solid $border-color;
                
                 display: flex;
                 justify-content: space-between;
                 flex-wrap:wrap;
                 .match{
                     flex-basis:40%;
-                    margin:1rem;
-                    padding:0 0.5rem;
+                    flex-grow:1;
+                    padding:1rem;
                     display:flex;
                     justify-content: space-between;
                     align-content:center;
                     flex-wrap:wrap;
-                    border:2px solid grey;
-                    .winner{
-                        // margin: 0 0.5rem;
-                        flex-basis:100%;
-                        text-align:center;
+                    border:1px solid $border-color;
+                    color:$text-color;
+                    &:hover {
+                        background-color: $off-white;
+                        color: $black;
+                        border: solid 1px $off-white;
+                        .more-info{
+                            img-box{
+                                background-color: $tertiary-color;
+                            }
+                        }
                     }
-                    
+                    &:focus {
+                        background-color: $off-white;
+                        color: $black;
+                        border: solid 1px $off-white;
+                        .more-info {
+                            img-box {
+                                background-color: $tertiary-color;
+                            }
+                        }
+                    }
+                    &.hide {
+                        display: none;
+                    }
                     .team1{
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;
-                        .flag-box{
+                        .img-box{
                             width:30px;
                             margin:0 10px;
                             img{
@@ -80,25 +106,40 @@ header {
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;
-                        .flag-box {
-                            
+                        .img-box {
                             width: 30px;
                             margin:0 10px;
                         
                             img {
                                 max-width:100%;
-                            
                                 width: 30px;
                                 height:20px;
-                                border: 1px solid black;
+                                border: 1px solid $border-color
                             }
                         }
                     }
+                    .more-info{
+                        margin: 1rem 0.5rem 1rem 0.5rem;
+                        .img-box{
+                            width: 50px;
+                            img{
+                                max-width:100%;
+                                height:auto;
+                    
+                            }
+                        }
+
+
+                    }
+                    
+
                 }
             }
         }
     }
 }
 
-
+// .hide{
+//     display:none;
+// }
 

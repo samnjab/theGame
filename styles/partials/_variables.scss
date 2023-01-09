@@ -1,5 +1,9 @@
-$primary-color: #09639d;
+$primary-color: #0F4067;
 $text-color:white;
+$secondary-color:#0A0C0C;
+$tertiary-color:#1F2224;
+$off-white:#f0f1f2;
+$border-color:#33383A;
 
 $min-dim:320px;
 $mobile:480px;
@@ -17,9 +21,9 @@ $font-2:'Roboto';
 $font-weights:("thin":100, "reg":400, "medium":500, "bold":700);
 
 @mixin style-1 {
-    font-family: $font-1;
+    font-family: $font-2;
     font-weight: map-get($font-weights, bold);
-    font-style: italic;
+    // font-style: italic;
 }
 
 @mixin style-2 {
@@ -42,6 +46,7 @@ $font-weights:("thin":100, "reg":400, "medium":500, "bold":700);
     max-width: $max-width;
     min-width: $min-width;
     margin: 20px 0;
+    
 }
 
 @mixin heading-styler() {

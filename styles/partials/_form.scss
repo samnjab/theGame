@@ -14,7 +14,8 @@ form {
 
             &::placeholder {
                 @include style-2();
-                font-size: 20px;
+                // font-size: 20px;
+                @include responsive-size(1rem, 1/2, 1vw);
                 line-height: 32px;
             }
         }
