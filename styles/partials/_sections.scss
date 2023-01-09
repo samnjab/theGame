@@ -54,6 +54,9 @@ header {
                     align-content:center;
                     flex-wrap:wrap;
                     border:2px solid grey;
+                    &.hide {
+                        display: none;
+                    }
                     .winner{
                         // margin: 0 0.5rem;
                         flex-basis:100%;
@@ -100,7 +103,4 @@ header {
     }
 }
 
-.hide{
-    display:none;
-}
 

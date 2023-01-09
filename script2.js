@@ -11,7 +11,7 @@ footballStats.display = (dates, sortedMatches) => {
     
         const matchTemplate = document.querySelector("[data-match-template]")
         const matchContainer = document.querySelector(".matches")
-        const matchesWithElements = {}
+        const matchesWithElements = []
 
         for (let i=0; i<dates.length; i++){
             
@@ -21,7 +21,7 @@ footballStats.display = (dates, sortedMatches) => {
             matchContainer.append(dateElement)
             
             const matchTable = dateElement.querySelector("[data-match-Table]")
-            matchesWithElements[dates[i]] = sortedMatches[dates[i]].map(match => {
+            matchesWithElements[i] = sortedMatches[dates[i]].map(match => {
                 const matchBoxTemplate = document.querySelector('[data-match-box]')
                 const matchDiv = matchBoxTemplate.content.cloneNode(true).children[0]
 
@@ -51,7 +51,6 @@ footballStats.display = (dates, sortedMatches) => {
 
 
         }
-        console.log(matchesWithElements)
         if (matchesWithElements){
             console.log('we got resolve')
             resolve(matchesWithElements)
@@ -83,8 +82,6 @@ footballStats.getDates = (matches) => {
 }
 
 footballStats.getMatches = (matches) => {
-    
-    console.log(matches)
     footballStats.matches = matches
     const resultsArray = []
   
@@ -182,33 +179,24 @@ footballStats.getData = (url) => {
 footballStats.init = () => {
      footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
-        // footballStats.jsonData = promisedData
-        console.log(promisedData)
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
-        console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
         .then((matchesWithElements) => {
-            console.log(matchesWithElements)
             const userInput = document.getElementById('search')
 
             userInput.addEventListener('input', e => {
-                // const matchDivs = document.querySelector('.match')
-                // console.log(matchDivs)
                 const value = e.target.value.toLowerCase()  
                 for (let i =0; i < footballStats.dates.length; i++) {
-                    matchesWithElements[footballStats.dates[i]].forEach(matchWithElement => {
-                        console.log(matchWithElement)
+                    matchesWithElements[i].forEach(matchWithElement => {
                         const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
-                        console.log(isVisible)
                         matchWithElement.element.classList.toggle('hide', !isVisible)
                     })
                 }
             })
 
         })
-        console.log(sortedMatches)
 
        
 
