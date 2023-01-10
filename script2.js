@@ -214,7 +214,13 @@ footballStats.eventListeners = (matchesWithElements) =>{
                 clickMatch.addEventListener('click', (e) => {
                     e.preventDefault()
                     clickMatches.forEach((match) => {
-                        match.classList.toggle('hide', match!=clickMatch)
+                        // match.classList.toggle('hide', match!=clickMatch)
+                        if (match != clickMatch){
+                            match.classList.toggle('hide')
+                            console.log(match.parentElement.parentElement.children[0])
+                            match.parentElement.parentElement.children[0].classList.toggle('hide')
+
+                        }
                     })
                     clickMatch.querySelector('.more-info').classList.toggle('hide')
                 })
