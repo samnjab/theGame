@@ -193,18 +193,8 @@ footballStats.getData = (url) => {
     
     })
 }
-
-footballStats.init = () => {
-     footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
-    .then((promisedData) =>{
-        console.log(promisedData)
-        footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
-        console.log(footballStats.matchResultsArray)
-        footballStats.dates = footballStats.getDates(promisedData.matches)
-        footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
-        footballStats.display(footballStats.dates, footballStats.sortedMatches)
-        .then((matchesWithElements) => {
-            // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
+footballStats.eventListeners = (matchesWithElements) =>{
+    // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
             const userInput = document.getElementById('search')
 
             userInput.addEventListener('input', e => {
@@ -235,21 +225,25 @@ footballStats.init = () => {
                 })
 
            })
-            //  const matchStats = document.querySelector('.match')
+    
+}
 
-
-
-
-
+footballStats.init = () => {
+     footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
+    .then((promisedData) =>{
+        console.log(promisedData)
+        footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
+        console.log(footballStats.matchResultsArray)
+        footballStats.dates = footballStats.getDates(promisedData.matches)
+        footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
+        footballStats.display(footballStats.dates, footballStats.sortedMatches)
+        .then((matchesWithElements) => {
+            footballStats.eventListeners(matchesWithElements)
         })
 
-       
-
-     
     // .catch((message) => {
     //     return message
-    // })
-    
+    // })  
  
 })
 }
