@@ -194,52 +194,56 @@ footballStats.getData = (url) => {
     })
 }
 footballStats.eventListeners = (matchesWithElements) =>{
+    // <<<<<<<<< define what happens to the other .date divs if you expand a certain .match:
+    const hideOtherMatches = (clickMatches, clickedMatch) => {
+        clickMatches.forEach((match) => {
+            // match.classList.toggle('hide', match!=clickMatch)
+            if (match != clickedMatch){
+                match.classList.toggle('hide')
+                // console.log(match.parentElement.parentElement.children[0])
+                // match.parentElement.parentElement.children[0].classList.toggle('hide')
+                
+            }
+        })
+
+    }
     // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
-            const userInput = document.getElementById('search')
-
-            userInput.addEventListener('input', e => {
-                e.preventDefault()
-                const value = e.target.value.toLowerCase()
-                const arrayWithIsVisible = []  
-                for (let i =0; i < footballStats.dates.length; i++) {
-                    matchesWithIsVisible = matchesWithElements[i].map(matchWithElement => {
-                        const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
-                        matchWithElement.element.classList.toggle('hide', !isVisible)
-                        // matchWithElement.element.parentElement.parentElement.classList.toggle('hide', !isVisible)   
-                        return {matchWithElement:matchWithElement, isVisible:isVisible}
-                    })
-                    arrayWithIsVisible.push(matchesWithIsVisible)
-                }
-                const dateDivs = document.querySelectorAll('.date')
-                arrayWithIsVisible.forEach((date, i) => {
-                    dateVisible = false
-                    date.forEach((match) => {
-                        if (match.isVisible){
-                            dateVisible = true
-                        }
-                    })
-                    dateDivs[i].classList.toggle('hide', !dateVisible)
-                })
+    const userInput = document.getElementById('search')
+    userInput.addEventListener('input', e => {
+        e.preventDefault()
+        const value = e.target.value.toLowerCase()
+        const arrayWithIsVisible = []  
+        for (let i =0; i < footballStats.dates.length; i++) {
+            matchesWithIsVisible = matchesWithElements[i].map(matchWithElement => {
+                const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
+                matchWithElement.element.classList.toggle('hide', !isVisible)
+                // matchWithElement.element.parentElement.parentElement.classList.toggle('hide', !isVisible)   
+                return {matchWithElement:matchWithElement, isVisible:isVisible}
             })
-            // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
-            const clickMatches = document.querySelectorAll('.match')
-            clickMatches.forEach(clickMatch => {
-                clickMatch.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    clickMatches.forEach((match) => {
-                        // match.classList.toggle('hide', match!=clickMatch)
-                        if (match != clickMatch){
-                            match.classList.toggle('hide')
-                            // console.log(match.parentElement.parentElement.children[0])
-                            // match.parentElement.parentElement.children[0].classList.toggle('hide')
+            arrayWithIsVisible.push(matchesWithIsVisible)
+        }
+        const dateDivs = document.querySelectorAll('.date')
+        arrayWithIsVisible.forEach((date, i) => {
+            dateVisible = false
+            date.forEach((match) => {
+                if (match.isVisible){
+                    dateVisible = true
+                }
+            })
+            dateDivs[i].classList.toggle('hide', !dateVisible)
+        })
+    })
+    // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
+    const clickMatches = document.querySelectorAll('.match')
+    clickMatches.forEach(clickedMatch => {
+        clickedMatch.addEventListener('click', (e) => {
+            e.preventDefault()
+            clickedMatch.querySelector('.more-info').classList.toggle('hide')
+            hideOtherMatches(clickMatches, clickedMatch)
+            // clickMatch.parentElement.parentElement.children[0].classList.toggle('hide')
+        })
 
-                        }
-                    })
-                    clickMatch.querySelector('.more-info').classList.toggle('hide')
-                    // clickMatch.parentElement.parentElement.children[0].classList.toggle('hide')
-                })
-
-           })
+   })
     
 }
 
