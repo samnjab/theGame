@@ -199,14 +199,27 @@ footballStats.eventListeners = (matchesWithElements) =>{
 
             userInput.addEventListener('input', e => {
                 e.preventDefault()
-                const value = e.target.value.toLowerCase()  
+                const value = e.target.value.toLowerCase()
+                const arrayWithIsVisible = []  
                 for (let i =0; i < footballStats.dates.length; i++) {
-                    matchesWithElements[i].forEach(matchWithElement => {
+                    matchesWithIsVisible = matchesWithElements[i].map(matchWithElement => {
                         const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
-                        
                         matchWithElement.element.classList.toggle('hide', !isVisible)
+                        // matchWithElement.element.parentElement.parentElement.classList.toggle('hide', !isVisible)   
+                        return {matchWithElement:matchWithElement, isVisible:isVisible}
                     })
+                    arrayWithIsVisible.push(matchesWithIsVisible)
                 }
+                const dateDivs = document.querySelectorAll('.date')
+                arrayWithIsVisible.forEach((date, i) => {
+                    dateVisible = false
+                    date.forEach((match) => {
+                        if (match.isVisible){
+                            dateVisible = true
+                        }
+                    })
+                    dateDivs[i].classList.toggle('hide', !dateVisible)
+                })
             })
             // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
             const clickMatches = document.querySelectorAll('.match')
@@ -217,12 +230,13 @@ footballStats.eventListeners = (matchesWithElements) =>{
                         // match.classList.toggle('hide', match!=clickMatch)
                         if (match != clickMatch){
                             match.classList.toggle('hide')
-                            console.log(match.parentElement.parentElement.children[0])
-                            match.parentElement.parentElement.children[0].classList.toggle('hide')
+                            // console.log(match.parentElement.parentElement.children[0])
+                            // match.parentElement.parentElement.children[0].classList.toggle('hide')
 
                         }
                     })
                     clickMatch.querySelector('.more-info').classList.toggle('hide')
+                    // clickMatch.parentElement.parentElement.children[0].classList.toggle('hide')
                 })
 
            })
