@@ -207,6 +207,21 @@ footballStats.eventListeners = (matchesWithElements) =>{
         })
 
     }
+    // <<<<<<<< define what hide .date containers that don't have any clickedMatches within them>>>>>>>
+    const hideOtherDates = (clickedMatch) => {
+        const dateDivs = document.querySelectorAll('.date')
+        dateDivs.forEach((dateDiv) => {
+            dateVisible = false
+            // console.log(dateDiv.children[1].childNodes)
+            dateDiv.children[1].childNodes.forEach((match) => {
+                if (match == clickedMatch){
+                    dateVisible = true
+                }
+            })
+            dateDiv.classList.toggle('hide', !dateVisible)
+        })
+
+    }
     // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
     const userInput = document.getElementById('search')
     userInput.addEventListener('input', e => {
@@ -240,7 +255,8 @@ footballStats.eventListeners = (matchesWithElements) =>{
             e.preventDefault()
             clickedMatch.querySelector('.more-info').classList.toggle('hide')
             hideOtherMatches(clickMatches, clickedMatch)
-            // clickMatch.parentElement.parentElement.children[0].classList.toggle('hide')
+            hideOtherDates(clickedMatch)
+            // clickedMatch.parentElement.parentElement.children[0].classList.toggle('hide')
         })
 
    })
