@@ -40,9 +40,9 @@ header {
     background-color: $secondary-color;
     .wrapper{
         .date{
-            // &.hide {
-            //     display: none;
-            // }
+            &.hide {
+                display: none;
+            }
             h4{
                 text-align: left;
             }
@@ -63,6 +63,9 @@ header {
                     flex-wrap:wrap;
                     border:1px solid $border-color;
                     color:$text-color;
+                    &.hide{
+                        display:none;
+                    }
                     &:hover {
                         background-color: $off-white;
                         color: $black;
@@ -139,7 +142,8 @@ header {
     }
 }
 
-// .hide{
-//     display:none;
-// }
+.hide{
+    display:none;
+}
+
 

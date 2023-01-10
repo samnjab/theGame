@@ -208,6 +208,7 @@ footballStats.init = () => {
             const userInput = document.getElementById('search')
 
             userInput.addEventListener('input', e => {
+                e.preventDefault()
                 const value = e.target.value.toLowerCase()  
                 for (let i =0; i < footballStats.dates.length; i++) {
                     matchesWithElements[i].forEach(matchWithElement => {
@@ -217,15 +218,25 @@ footballStats.init = () => {
                     })
                 }
             })
-             // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
-             const clickedMatches = document.querySelectorAll('.match')
-             clickedMatches.forEach(clickedMatch => {
-                 clickedMatch.addEventListener('click', (e) => {
-                     console.log(e.target)
-                    //  e.target.children[2].classList.toggle('hide')
-                 })
+            // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
+            const clickMatches = document.querySelectorAll('.match')
+            clickMatches.forEach(clickMatch => {
+                clickMatch.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    clickMatches.forEach((match) => {
+                        if (match != clickMatch){
+                            match.classList.toggle('hide')
+                            // console.log(match.parentNode.parentNode)
+                            // match.parentElement.parentElement.classList.toggle('hide')
 
-             })
+                        }
+                    })
+                    clickMatch.querySelector('.more-info').classList.toggle('hide')
+                })
+
+           })
+            //  const matchStats = document.querySelector('.match')
+
 
 
 

@@ -508,6 +508,9 @@ header .wrapper nav .nav-bar li {
 .page {
   background-color: #0A0C0C;
 }
+.page .wrapper .date.hide {
+  display: none;
+}
 .page .wrapper .date h4 {
   text-align: left;
 }
@@ -542,6 +545,9 @@ header .wrapper nav .nav-bar li {
       flex-wrap: wrap;
   border: 1px solid #33383A;
   color: white;
+}
+.page .wrapper .date .match-table .match.hide {
+  display: none;
 }
 .page .wrapper .date .match-table .match:hover {
   background-color: #f0f1f2;
@@ -607,4 +613,8 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match .more-info .img-box img {
   max-width: 100%;
   height: auto;
+}
+
+.hide {
+  display: none;
 }
