@@ -208,19 +208,26 @@ footballStats.eventListeners = (matchesWithElements) =>{
 
     }
     // <<<<<<<< define what hide .date containers that don't have any clickedMatches within them>>>>>>>
-    const hideOtherDates = (clickedMatch) => {
-        const dateDivs = document.querySelectorAll('.date')
-        dateDivs.forEach((dateDiv) => {
-            dateVisible = false
-            // console.log(dateDiv.children[1].childNodes)
-            dateDiv.children[1].childNodes.forEach((match) => {
-                if (match == clickedMatch){
-                    dateVisible = true
-                }
-            })
-            dateDiv.classList.toggle('hide', !dateVisible)
+    const hideOtherDates = (dateDivs, clickedMatch) => {
+        dateDivsVisible = dateDivs.map((dateDiv) => {
+            console.log(dateDiv.style.display)
+            if (dateDiv.style.display == 'none'){
+                dateVisible = false
+            }else{
+                dateVisible = true
+            }
+            return {dateDiv:dateDiv, dateVisible: dateVisible}
         })
-
+        console.log(dateDivsVisible)
+        // dateVisible = false
+        // // console.log(dateDiv.children[1].childNodes)
+        // dateDiv.children[1].childNodes.forEach((match) => {
+        //     if (match == clickedMatch){
+        //         dateVisible = true
+        //     }
+        // })
+        // // dateDiv.classList.toggle('hide', !dateVisible)
+        // return {dateDiv: dateDiv, dateVisible:dateVisible}
     }
     // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
     const userInput = document.getElementById('search')
@@ -255,8 +262,10 @@ footballStats.eventListeners = (matchesWithElements) =>{
             e.preventDefault()
             clickedMatch.querySelector('.more-info').classList.toggle('hide')
             hideOtherMatches(clickMatches, clickedMatch)
-            hideOtherDates(clickedMatch)
-            // clickedMatch.parentElement.parentElement.children[0].classList.toggle('hide')
+            const dateDivs = document.querySelectorAll('.date')
+            dateDivsArray = [...dateDivs]
+            console.log(dateDivsArray)
+            hideOtherDates(dateDivsArray, clickedMatch)
         })
 
    })
