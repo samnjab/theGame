@@ -194,6 +194,8 @@ footballStats.getData = (url) => {
     })
 }
 footballStats.eventListeners = (matchesWithElements) =>{
+    offBySearch = [...Array(document.querySelectorAll('.date').length).fill(false)]
+    console.log(offBySearch)
     const hideOtherMatches = (clickMatches, clickedMatch) => {
         clickMatches.forEach((match) => {
             // match.classList.toggle('hide', match!=clickMatch)
@@ -224,7 +226,7 @@ footballStats.eventListeners = (matchesWithElements) =>{
         return dateDivsVisible
 
     }
-    const hideOtherDates = (dateDivs, clickedMatch, offBySearch) => {
+    const hideOtherDates = (dateDivs, clickedMatch) => {
         dateDivs.forEach((dateDiv, i) => {
             matchDivs = [...dateDiv.children[1].children]
             matchFound = false
@@ -254,17 +256,15 @@ footballStats.eventListeners = (matchesWithElements) =>{
             arrayWithIsVisible.push(matchesWithIsVisible)
         }
         const dateDivs = document.querySelectorAll('.date')
-        offBySearch = []
         arrayWithIsVisible.forEach((date, i) => {
             dateVisible = false
-            dateOffBySearch = true
+            offBySearch[i] = true
             date.forEach((match) => {
                 if (match.isVisible){
                     dateVisible = true
-                    dateOffBySearch = false
+                    offBySearch[i] = false
                 }
             })
-            offBySearch.push(dateOffBySearch)
             dateDivs[i].classList.toggle('hide', !dateVisible)
         })
         
@@ -277,8 +277,8 @@ footballStats.eventListeners = (matchesWithElements) =>{
             clickedMatch.querySelector('.more-info').classList.toggle('hide')
             hideOtherMatches(clickMatches, clickedMatch)
             const dateDivs = document.querySelectorAll('.date')
-            console.log(dateDivs)
-            hideOtherDates(dateDivs, clickedMatch, offBySearch)
+            console.log(offBySearch)
+            hideOtherDates(dateDivs, clickedMatch)
         })
 
    })
