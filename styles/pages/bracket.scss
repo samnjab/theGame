@@ -10,6 +10,19 @@
 
 .page{
     .stages{
-        @include flex-center(row, space-between, flex-start)
+        @include flex-center(row, space-between, flex-start);
+        flex-wrap:wrap;
+        .round16{
+            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+        }
+        .quarter-finals {
+            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+        }
+        .semi-finals {
+            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+        }
+        .final {
+            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+        }
     }
 }
