@@ -17,7 +17,7 @@ const getStage = async (stage) => {
 }
 
 footballStats.init = () =>{
-    stages = ['GROUP_STAGE', 'QUARTER_FINALS', 'SEMI_FINALS', 'FINAL']
+    stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS', 'FINAL']
     stagesJsonDataPromise = stages.map((stage) => {
         return getStage(stage)
     })
