@@ -224,35 +224,18 @@ footballStats.eventListeners = (matchesWithElements) =>{
         return dateDivsVisible
 
     }
-    const hideOtherDates = (dateDivsVisible, dateDivs, clickedMatch) => {
-         
-        dateDivsVisible.forEach((dateDivVisible, i) => {
-            // console.log(dateDivVisible.dateVisible)
-            dateDivVisible.dateDiv.children[1].childNodes.forEach((match) => {
-                if (match == clickedMatch){
-                    // console.log(dateDivVisible.dateVisible)
-                    dateDivVisible.dateVisible = true
-                    // console.log(dateDivVisible.dateVisible)
-                }else{
-                    // console.log(dateDivVisible.dateVisible)
-
-                    if (dateDivVisible.dateVisible){
-                        // console.log(dateDivVisible.dateVisible)
-                        dateDivVisible.dateVisible = false
-                        // console.log(dateDivVisible.dateVisible)
-                    }else{
-                        dateDivVisible.dateVisible = true
-                    }
-                    
+    const hideOtherDates = (dateDivs, clickedMatch) => {
+        dateDivs.forEach(dateDiv => {
+            matchDivs = [...dateDiv.children[1].children]
+            matchFound = false
+            matchDivs.forEach((matchDiv) => {
+                if (matchDiv == clickedMatch){
+                    matchFound = true
                 }
             })
-            // console.log(dateDivs[i].classList)
-            // console.log(dateDivVisible.dateVisible)
-            // console.log(dateDivs[i])
-            // console.log(dateDivVisible.dateVisible)
-            dateDivs[i].classList.toggle('hide', !dateDivVisible.dateVisible)
-            // console.log(dateDivs[i])
-            // console.log(dateDivsVisible)
+            if (!matchFound){
+                dateDiv.classList.toggle('hide')
+            }
         })
     }
     // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
@@ -290,13 +273,7 @@ footballStats.eventListeners = (matchesWithElements) =>{
             hideOtherMatches(clickMatches, clickedMatch)
             const dateDivs = document.querySelectorAll('.date')
             console.log(dateDivs)
-            dateDivsVisible = getVisibilityStatus(dateDivs)
-            // console.log(dateDivsVisible)
-            
-            // dateDivsVisible.forEach(dateDivVisible => {
-            //     console.log(dateDivVisible.dateVisible)
-            // })
-            hideOtherDates(dateDivsVisible, dateDivs, clickedMatch)
+            hideOtherDates(dateDivs, clickedMatch)
 
         })
 
