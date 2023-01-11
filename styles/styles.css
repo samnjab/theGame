@@ -565,9 +565,6 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match:focus .more-info img-box {
   background-color: #1F2224;
 }
-.page .wrapper .date .match-table .match.hide {
-  display: none;
-}
 .page .wrapper .date .match-table .match .team1 {
   display: -webkit-box;
   display: -ms-flexbox;

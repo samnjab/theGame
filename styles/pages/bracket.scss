@@ -7,3 +7,9 @@
 @use '../partials/input';
 @use '../partials/sections';
 @use '../partials/dates';
+
+.page{
+    .stages{
+        @include flex-center(row, space-between, flex-start)
+    }
+}

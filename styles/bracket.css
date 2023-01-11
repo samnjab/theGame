@@ -565,9 +565,6 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match:focus .more-info img-box {
   background-color: #1F2224;
 }
-.page .wrapper .date .match-table .match.hide {
-  display: none;
-}
 .page .wrapper .date .match-table .match .team1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -619,4 +616,20 @@ header .wrapper nav .nav-bar li {
 
 .hide {
   display: none;
+}
+
+.page .stages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
