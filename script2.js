@@ -194,7 +194,6 @@ footballStats.getData = (url) => {
     })
 }
 footballStats.eventListeners = (matchesWithElements) =>{
-    // <<<<<<<<< define what happens to the other .date divs if you expand a certain .match:
     const hideOtherMatches = (clickMatches, clickedMatch) => {
         clickMatches.forEach((match) => {
             // match.classList.toggle('hide', match!=clickMatch)
@@ -207,27 +206,54 @@ footballStats.eventListeners = (matchesWithElements) =>{
         })
 
     }
-    // <<<<<<<< define what hide .date containers that don't have any clickedMatches within them>>>>>>>
-    const hideOtherDates = (dateDivs, clickedMatch) => {
-        dateDivsVisible = dateDivs.map((dateDiv) => {
-            console.log(dateDiv.style.display)
+    const getVisibilityStatus = (dateDivs) =>{
+        dateDivsArray = [...dateDivs]
+        // console.log(dateDivsArray)
+        // <<<<<<<<<< dateDivsVisibility is an array collection of {dateDiv:address of the div, dateVisible:current visibility of that dateDiv}
+        dateDivsVisible = dateDivsArray.map((dateDiv) => {
+            // console.log(dateDiv.style.display)
             if (dateDiv.style.display == 'none'){
                 dateVisible = false
+                console.log(dateVisible)
             }else{
                 dateVisible = true
             }
             return {dateDiv:dateDiv, dateVisible: dateVisible}
         })
-        console.log(dateDivsVisible)
-        // dateVisible = false
-        // // console.log(dateDiv.children[1].childNodes)
-        // dateDiv.children[1].childNodes.forEach((match) => {
-        //     if (match == clickedMatch){
-        //         dateVisible = true
-        //     }
-        // })
-        // // dateDiv.classList.toggle('hide', !dateVisible)
-        // return {dateDiv: dateDiv, dateVisible:dateVisible}
+        
+        return dateDivsVisible
+
+    }
+    const hideOtherDates = (dateDivsVisible, dateDivs, clickedMatch) => {
+         
+        dateDivsVisible.forEach((dateDivVisible, i) => {
+            // console.log(dateDivVisible.dateVisible)
+            dateDivVisible.dateDiv.children[1].childNodes.forEach((match) => {
+                if (match == clickedMatch){
+                    // console.log(dateDivVisible.dateVisible)
+                    dateDivVisible.dateVisible = true
+                    // console.log(dateDivVisible.dateVisible)
+                }else{
+                    // console.log(dateDivVisible.dateVisible)
+
+                    if (dateDivVisible.dateVisible){
+                        // console.log(dateDivVisible.dateVisible)
+                        dateDivVisible.dateVisible = false
+                        // console.log(dateDivVisible.dateVisible)
+                    }else{
+                        dateDivVisible.dateVisible = true
+                    }
+                    
+                }
+            })
+            // console.log(dateDivs[i].classList)
+            // console.log(dateDivVisible.dateVisible)
+            // console.log(dateDivs[i])
+            // console.log(dateDivVisible.dateVisible)
+            dateDivs[i].classList.toggle('hide', !dateDivVisible.dateVisible)
+            // console.log(dateDivs[i])
+            // console.log(dateDivsVisible)
+        })
     }
     // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
     const userInput = document.getElementById('search')
@@ -263,9 +289,15 @@ footballStats.eventListeners = (matchesWithElements) =>{
             clickedMatch.querySelector('.more-info').classList.toggle('hide')
             hideOtherMatches(clickMatches, clickedMatch)
             const dateDivs = document.querySelectorAll('.date')
-            dateDivsArray = [...dateDivs]
-            console.log(dateDivsArray)
-            hideOtherDates(dateDivsArray, clickedMatch)
+            console.log(dateDivs)
+            dateDivsVisible = getVisibilityStatus(dateDivs)
+            // console.log(dateDivsVisible)
+            
+            // dateDivsVisible.forEach(dateDivVisible => {
+            //     console.log(dateDivVisible.dateVisible)
+            // })
+            hideOtherDates(dateDivsVisible, dateDivs, clickedMatch)
+
         })
 
    })
