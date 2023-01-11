@@ -195,11 +195,14 @@ footballStats.getData = (url) => {
 }
 footballStats.eventListeners = (matchesWithElements) =>{
     offBySearch = [...Array(document.querySelectorAll('.date').length).fill(false)]
-    console.log(offBySearch)
+    offBySearchMatches =[...Array(document.querySelectorAll('.match').length).fill(false)]
+    // console.log(offBySearchMatches)
     const hideOtherMatches = (clickMatches, clickedMatch) => {
-        clickMatches.forEach((match) => {
+        clickMatches.forEach((match, i) => {
+            console.log(match)
             // match.classList.toggle('hide', match!=clickMatch)
-            if (match != clickedMatch){
+            if (match != clickedMatch && !offBySearchMatches[i]){
+                console.log(offBySearchMatches[i])
                 match.classList.toggle('hide')
                 // console.log(match.parentElement.parentElement.children[0])
                 // match.parentElement.parentElement.children[0].classList.toggle('hide')
@@ -250,6 +253,11 @@ footballStats.eventListeners = (matchesWithElements) =>{
             matchesWithIsVisible = matchesWithElements[i].map(matchWithElement => {
                 const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
                 matchWithElement.element.classList.toggle('hide', !isVisible)
+                if (!isVisible){
+                    offBySearchMatches[i] = true
+                }
+                
+                
                 // matchWithElement.element.parentElement.parentElement.classList.toggle('hide', !isVisible)   
                 return {matchWithElement:matchWithElement, isVisible:isVisible}
             })
@@ -277,7 +285,7 @@ footballStats.eventListeners = (matchesWithElements) =>{
             clickedMatch.querySelector('.more-info').classList.toggle('hide')
             hideOtherMatches(clickMatches, clickedMatch)
             const dateDivs = document.querySelectorAll('.date')
-            console.log(offBySearch)
+            // console.log(offBySearch)
             hideOtherDates(dateDivs, clickedMatch)
         })
 

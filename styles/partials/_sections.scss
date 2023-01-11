@@ -93,6 +93,7 @@ header {
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;
+                        min-width: 190px;
                         .img-box{
                             width:30px;
                             margin:0 10px;
@@ -106,6 +107,7 @@ header {
                         }
                     }
                     .team2{
+                        min-width: 190px;
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;

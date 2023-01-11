@@ -575,6 +575,7 @@ header .wrapper nav .nav-bar li {
   margin: 0 0.5rem;
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
+  min-width: 190px;
 }
 .page .wrapper .date .match-table .match .team1 .img-box {
   width: 30px;
@@ -587,6 +588,7 @@ header .wrapper nav .nav-bar li {
   border: 1px solid black;
 }
 .page .wrapper .date .match-table .match .team2 {
+  min-width: 190px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
