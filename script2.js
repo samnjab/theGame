@@ -224,8 +224,8 @@ footballStats.eventListeners = (matchesWithElements) =>{
         return dateDivsVisible
 
     }
-    const hideOtherDates = (dateDivs, clickedMatch) => {
-        dateDivs.forEach(dateDiv => {
+    const hideOtherDates = (dateDivs, clickedMatch, offBySearch) => {
+        dateDivs.forEach((dateDiv, i) => {
             matchDivs = [...dateDiv.children[1].children]
             matchFound = false
             matchDivs.forEach((matchDiv) => {
@@ -233,7 +233,7 @@ footballStats.eventListeners = (matchesWithElements) =>{
                     matchFound = true
                 }
             })
-            if (!matchFound){
+            if (!matchFound && !offBySearch[i]){
                 dateDiv.classList.toggle('hide')
             }
         })
@@ -254,15 +254,20 @@ footballStats.eventListeners = (matchesWithElements) =>{
             arrayWithIsVisible.push(matchesWithIsVisible)
         }
         const dateDivs = document.querySelectorAll('.date')
+        offBySearch = []
         arrayWithIsVisible.forEach((date, i) => {
             dateVisible = false
+            dateOffBySearch = true
             date.forEach((match) => {
                 if (match.isVisible){
                     dateVisible = true
+                    dateOffBySearch = false
                 }
             })
+            offBySearch.push(dateOffBySearch)
             dateDivs[i].classList.toggle('hide', !dateVisible)
         })
+        
     })
     // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
     const clickMatches = document.querySelectorAll('.match')
@@ -273,8 +278,7 @@ footballStats.eventListeners = (matchesWithElements) =>{
             hideOtherMatches(clickMatches, clickedMatch)
             const dateDivs = document.querySelectorAll('.date')
             console.log(dateDivs)
-            hideOtherDates(dateDivs, clickedMatch)
-
+            hideOtherDates(dateDivs, clickedMatch, offBySearch)
         })
 
    })
