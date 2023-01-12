@@ -55,7 +55,10 @@ fifaMatch.displayMatches = function(teamData) {
             const teamContainer = document.createElement('div');
             teamContainer.classList.add('teamBox');
  
-        // away Team div
+        // Team div
+            // const getSquad = document.createElement('a')
+            // getSquad.src = 
+
             const teamDiv = document.createElement('div');
             teamDiv.classList.add('team');
             teamContainer.appendChild(teamDiv); //append team1 div to matches div
@@ -71,10 +74,18 @@ fifaMatch.displayMatches = function(teamData) {
 
             const teamInfoBox = document.createElement('div');
             teamInfoBox.classList.add('teamInfo');
+            teamDiv.appendChild(teamInfoBox);
 
             const countryName = document.createElement('p');
-            countryName.innerText = `${matchObject.awayTeam.name} ${matchObject.score.fullTime.away}`;
-            awayDiv.appendChild(awayNameScore);
+            countryName.innerText = 
+                `Country : ${teamObject[i].name}
+                Team Founded : ${teamObject[i].founded}
+                Coach : ${teamObject[i].coach.name}`;
+            teamInfoBox.appendChild(countryName);
+
+            // const coachName = document.createElement('p');
+            // countryName.innerText = `Coach : ${teamObject[i].coach.name}`;
+            // teamInfoBox.appendChild(coachName);
 
 
         // appends everything to the team container efter every element is created and loaded
