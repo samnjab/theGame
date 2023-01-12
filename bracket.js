@@ -80,43 +80,6 @@ footballStats.getStageMatches = async (stage) => {
     
 }
 
-footballStats.extractStageMatches = async (stagesJsonDataPromise) => {
-    stagesMatches = []
-    
-    await stagesJsonDataPromise.forEach((stageJsonDataPromise) => {
-        
-        stageJsonDataPromise.matchesPromise.then(stageJsonData => {
-            // console.log(stageJsonData)
-            stagesMatches.push( {stage:stageJsonDataPromise.stage, matches: stageJsonData})
-            // console.log(stagesMatches)
-        })
-
-    })
-    // console.log(stagesMatches)
-    return stagesMatches
-    
-}
-footballStats.unpackPromiseArray = (promiseArray) => {
-    stageMatches =[]
-    return new Promise((resolve, reject) =>{
-        promiseArray.forEach((promiseObj) => {
-            promiseObj.matchesPromise.then((matches)=>{
-                console.log('here are the matches:', matches)
-                stageMatches.push({stage:promiseObj.stage, matches:matches})
-                console.log('pushed:', {stage:promiseObj.stage, matches:matches})
-            })
-        })
-    if (stageMatches != []){
-        console.log('we got resolve, here is stageMatches', stageMatches )
-        resolve(stageMatches)
-    }else{
-        reject('could not unpack')
-    }
-    })
-
-}
-
-
 footballStats.init = () =>{
     stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS', 'FINAL']
     nextStep = async () => {
@@ -142,9 +105,10 @@ footballStats.init = () =>{
         console.log('matches:', matches)
         sortedMatches = {}
         for (i in stages){
+            console.log('we are sorting by dates')
             sortedMatches[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
-            console.log('sorted matches:',sortedMatches)
         }
+        console.log('sorted matches:',sortedMatches)
 
 
     }
