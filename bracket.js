@@ -153,7 +153,7 @@ footballStats.getStageMatches = async (stage) => {
 }
 
 footballStats.init = () =>{
-    stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS', 'FINAL']
+    stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','BRONZE', 'FINAL']
     nextStep = async () => {
         stagesMatches = []
         matches = await footballStats.getStageMatches(stages[0])
@@ -184,7 +184,7 @@ footballStats.init = () =>{
             console.log('sorted matches for', stages[i] , footballStats.sortedMatchesforStages[stages[i]])
         }
 
-        stagesClassNames = ['group-stage', 'round16', 'quarter-finals', 'semi-finals','final']
+        stagesClassNames = ['group-stage', 'round16', 'quarter-finals', 'semi-finals','bronze','final']
         stagesClassNames.forEach((stageClassName,i) => {
             footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
         })

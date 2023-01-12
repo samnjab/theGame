@@ -24,6 +24,9 @@
         .semi-finals {
             @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
         }
+        .bronze {
+            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+        }
         .final {
             @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
         }
