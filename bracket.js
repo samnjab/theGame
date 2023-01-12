@@ -27,6 +27,7 @@ footballStats.sortByDate = (dates, matches) => {
     for(let i = 0; i < dates.length; i++) {
         dateArray = matches.filter(match => match.date == dates[i])
         sortedMatches[dates[i]] = dateArray
+        console.log('here sorted matches for', dates[i], sortedMatches[dates[i]])
     }
     return sortedMatches 
 }
@@ -105,8 +106,9 @@ footballStats.init = () =>{
         console.log('matches:', matches)
         sortedMatches = {}
         for (i in stages){
-            console.log('we are sorting by dates')
+            
             sortedMatches[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
+            console.log('sorted matches for', stages[i] , sortedMatches[stages[i]])
         }
         console.log('sorted matches:',sortedMatches)
 
