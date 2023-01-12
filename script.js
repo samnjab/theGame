@@ -1,40 +1,95 @@
-const plSchedule = {};
+const fifaMatch = {};
+fifaMatch.apiKey = '216fc317fce14a3e92c6759cc84f2ceb';
 
-plSchedule.apiKey = 'Auth-token';
-plSchedule.jsonData = {};
-
-plSchedule.getSchedule = () => {
-
+fifaMatch.getData = () => {
+    //endpoint url
+    const urls = [
+        'https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches',
+        'https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/teams'
+    ];
     
-    // url = 'https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/teams/86/matches'
-    // headers = {'X-Auth-Token': plSchedule.apiKey}
+    //header params
+    urls.search = new URLSearchParams({
+        season: '2022',
+        cache: 'default'
+    })
 
-    // fetch(url, headers=headers)
-    fetch('https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/standings', {
+const teamsAndPlayers = urls.map(url => {
+    return fetch(url, {
         method: 'GET',
         headers: {
-            'X-Auth-Token': '216fc317fce14a3e92c6759cc84f2ceb',
+            'X-Auth-Token': fifaMatch.apiKey,
         },
-        competitions: '2021',
-        dateFrom: '2022-01-01',
-        DateTo: '2022-10-31',
-        mode: 'cors',
-        cache: 'default',
     })
         .then((res) => {
             return res.json();
         })
-        .then((res) => {
-            plSchedule.jsonData = res;
+        .then((resData) => {
             // console.log(res);
+            return resData;
         })
+    } // End of getSchedule/Fetch
+
+    )
+
+    Promise.all(teamsAndPlayers)
+            .then((teamData => { //opens access through the promise wrapper
+              console.log(teamData);
+              fifaMatch.displayMatches(teamData);
+            //   this is how you can access the json results in pokemonPromiseObjects
+            }))
+
+}
+    
+
+fifaMatch.displayMatches = function(teamData) {
+
+    console.log(teamData[1].teams);
+    teamObject = teamData[1].teams;
+
+    console.log(teamObject[2].crest)
+
+    for (let i = 0; i <teamObject.length; i++) {
+
+        // Header-title for Match Dates
+            const teamContainer = document.createElement('div');
+            teamContainer.classList.add('teamBox');
+ 
+        // away Team div
+            const teamDiv = document.createElement('div');
+            teamDiv.classList.add('team');
+            teamContainer.appendChild(teamDiv); //append team1 div to matches div
+
+            const imageTeamDiv = document.createElement('div');
+            imageTeamDiv.classList.add('img-box')
+            teamDiv.appendChild(imageTeamDiv); //append image div into away team div
+
+            const teamFlag = document.createElement('img');
+            teamFlag.src = teamObject[i].crest;
+            teamFlag.alt = 'team flag';
+            imageTeamDiv.appendChild(teamFlag); //append team1 flag to team1 div
+
+            const teamInfoBox = document.createElement('div');
+            teamInfoBox.classList.add('teamInfo');
+
+            const countryName = document.createElement('p');
+            countryName.innerText = `${matchObject.awayTeam.name} ${matchObject.score.fullTime.away}`;
+            awayDiv.appendChild(awayNameScore);
+
+
+        // appends everything to the team container efter every element is created and loaded
+        document.querySelector('.container').appendChild(teamContainer); //Appends the team container to the page
+        
+    }
+    
 }
 
 
-plSchedule.init = () => {
-     plSchedule.getSchedule();
-    console.log(plSchedule.jsonData);
-};
+fifaMatch.init = () => {
+     fifaMatch.getData();
+   
+}; //end of init function
 
-plSchedule.init();
-console.log(plSchedule.jsonData);
+fifaMatch.init();
+
+
