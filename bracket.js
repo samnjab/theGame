@@ -29,6 +29,7 @@ footballStats.sortByDate = (dates, matches) => {
         sortedMatches[dates[i]] = dateArray
         console.log('here sorted matches for', dates[i], sortedMatches[dates[i]])
     }
+    console.log('here is sorted matches were returning as a whole:', sortedMatches)
     return sortedMatches 
 }
 
@@ -104,11 +105,14 @@ footballStats.init = () =>{
         })
         console.log('unique dates:', uniqueDatesOfStages)
         console.log('matches:', matches)
-        sortedMatches = {}
+
+        footballStats.sortedMatchesforStages = {}
         for (i in stages){
-            
-            sortedMatches[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
-            console.log('sorted matches for', stages[i] , sortedMatches[stages[i]])
+            console.log('stage is:', stages[i])
+            // console.log('sorted matches for stage', stages[i],footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]]))
+            footballStats.sortedMatchesforStages[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
+    
+            console.log('sorted matches for', stages[i] , footballStats.sortedMatchesforStages[stages[i]])
         }
         console.log('sorted matches:',sortedMatches)
 
