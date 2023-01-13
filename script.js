@@ -47,7 +47,7 @@ fifaMatch.displayMatches = function(teamData) {
     console.log(teamData[1].teams);
     teamObject = teamData[1].teams;
 
-    console.log(teamObject[2].crest)
+    // console.log(teamObject[2].crest)
 
     for (let i = 0; i <teamObject.length; i++) {
 
@@ -58,6 +58,8 @@ fifaMatch.displayMatches = function(teamData) {
         // Team div
             // const getSquad = document.createElement('a')
             // getSquad.src = 
+            // const teamName = `${teamObject[i].name}`;
+            // console.log(teamName);
 
             const teamDiv = document.createElement('div');
             teamDiv.classList.add('team');
@@ -74,11 +76,12 @@ fifaMatch.displayMatches = function(teamData) {
 
             const teamInfoBox = document.createElement('div');
             teamInfoBox.classList.add('teamInfo');
+            teamInfoBox.setAttribute("data-index",[i]);
             teamDiv.appendChild(teamInfoBox);
 
             const countryName = document.createElement('p');
             countryName.innerText = 
-                `Country : ${teamObject[i].name}
+                `${teamObject[i].name}
                 Team Founded : ${teamObject[i].founded}
                 Coach : ${teamObject[i].coach.name}`;
             teamInfoBox.appendChild(countryName);
@@ -92,7 +95,16 @@ fifaMatch.displayMatches = function(teamData) {
         document.querySelector('.container').appendChild(teamContainer); //Appends the team container to the page
         
     }
+    fifaMatch.athletes();
     
+}
+
+
+fifaMatch.athletes = () => {
+ 
+    const teamName = document.querySelector('.teamInfo');
+    const arrayIndex = teamName.getAttribute('data-index');
+    console.log(arrayIndex);
 }
 
 
