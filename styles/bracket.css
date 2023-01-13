@@ -661,8 +661,8 @@ header .wrapper nav .nav-bar li {
   right: 1rem;
 }
 .page .wrapper .carousel .slide {
-  left: 0;
-  top: 0;
+  position: absolute;
+  inset: 0;
   opacity: 0;
   -webkit-transition: 200ms opacity ease-in-out;
   transition: 200ms opacity ease-in-out;
