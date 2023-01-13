@@ -1,7 +1,7 @@
 // initialize namespace
 const footballStats = {};
 // initialize apikey
-footballStats.apikey = '216fc317fce14a3e92c6759cc84f2ceb';
+footballStats.apikey = '70a843e5cf86426b9a1a9528ec8a7da7';
 
 footballStats.display = (dates, sortedMatches, stage) => {
     return new Promise((resolve, reject) => {

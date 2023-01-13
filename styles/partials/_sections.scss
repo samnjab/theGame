@@ -66,22 +66,12 @@ header {
                     &.hide{
                         display:none;
                     }
-                    &:hover {
+                    &:hover, &:focus {
                         background-color: $off-white;
                         color: $black;
                         border: solid 1px $off-white;
                         .more-info{
                             img-box{
-                                background-color: $tertiary-color;
-                            }
-                        }
-                    }
-                    &:focus {
-                        background-color: $off-white;
-                        color: $black;
-                        border: solid 1px $off-white;
-                        .more-info {
-                            img-box {
                                 background-color: $tertiary-color;
                             }
                         }
@@ -111,7 +101,6 @@ header {
                         .img-box {
                             width: 30px;
                             margin:0 10px;
-                        
                             img {
                                 max-width:100%;
                                 width: 30px;

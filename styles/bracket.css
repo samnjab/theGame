@@ -549,20 +549,12 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match.hide {
   display: none;
 }
-.page .wrapper .date .match-table .match:hover {
+.page .wrapper .date .match-table .match:hover, .page .wrapper .date .match-table .match:focus {
   background-color: #f0f1f2;
   color: #2C2C2C;
   border: solid 1px #f0f1f2;
 }
-.page .wrapper .date .match-table .match:hover .more-info img-box {
-  background-color: #1F2224;
-}
-.page .wrapper .date .match-table .match:focus {
-  background-color: #f0f1f2;
-  color: #2C2C2C;
-  border: solid 1px #f0f1f2;
-}
-.page .wrapper .date .match-table .match:focus .more-info img-box {
+.page .wrapper .date .match-table .match:hover .more-info img-box, .page .wrapper .date .match-table .match:focus .more-info img-box {
   background-color: #1F2224;
 }
 .page .wrapper .date .match-table .match .team1 {
@@ -618,9 +610,8 @@ header .wrapper nav .nav-bar li {
   display: none;
 }
 
-.page .wrapper {
-  max-width: 1500px;
-  width: 100%;
+.page {
+  background-color: #0A0C0C;
 }
 .page .wrapper .carousel {
   display: -webkit-box;
@@ -638,7 +629,7 @@ header .wrapper nav .nav-bar li {
           align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100vw;
+  width: 100%;
   position: relative;
 }
 .page .wrapper .carousel .carousel-button {
@@ -656,11 +647,11 @@ header .wrapper nav .nav-bar li {
   padding: 0 0.5rem;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.page .wrapper .carousel .carousel-button :hover, .page .wrapper .carousel .carousel-button :focus {
+.page .wrapper .carousel .carousel-button:hover, .page .wrapper .carousel .carousel-button:focus {
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.page .wrapper .carousel .carousel-button :focus {
+.page .wrapper .carousel .carousel-button:focus {
   outline: 1px solid black;
 }
 .page .wrapper .carousel .carousel-button.prev {
@@ -670,8 +661,8 @@ header .wrapper nav .nav-bar li {
   right: 1rem;
 }
 .page .wrapper .carousel .slide {
-  position: absolute;
-  inset: 0;
+  left: 0;
+  top: 0;
   opacity: 0;
   -webkit-transition: 200ms opacity ease-in-out;
   transition: 200ms opacity ease-in-out;
@@ -686,8 +677,8 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .carousel .group-stage {
   margin: 0 10px;
-  -ms-flex-preferred-size: calc(25% - 20px);
-      flex-basis: calc(25% - 20px);
+  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
+      flex-basis: calc(33.3333333333% - 20px);
   min-width: 200px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -696,8 +687,8 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .carousel .round16 {
   margin: 0 10px;
-  -ms-flex-preferred-size: calc(25% - 20px);
-      flex-basis: calc(25% - 20px);
+  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
+      flex-basis: calc(33.3333333333% - 20px);
   min-width: 200px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -706,8 +697,8 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .carousel .quarter-finals {
   margin: 0 10px;
-  -ms-flex-preferred-size: calc(25% - 20px);
-      flex-basis: calc(25% - 20px);
+  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
+      flex-basis: calc(33.3333333333% - 20px);
   min-width: 200px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -716,8 +707,8 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .carousel .semi-finals {
   margin: 0 10px;
-  -ms-flex-preferred-size: calc(25% - 20px);
-      flex-basis: calc(25% - 20px);
+  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
+      flex-basis: calc(33.3333333333% - 20px);
   min-width: 200px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -726,8 +717,8 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .carousel .bronze {
   margin: 0 10px;
-  -ms-flex-preferred-size: calc(25% - 20px);
-      flex-basis: calc(25% - 20px);
+  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
+      flex-basis: calc(33.3333333333% - 20px);
   min-width: 200px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -736,8 +727,8 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .carousel .final {
   margin: 0 10px;
-  -ms-flex-preferred-size: calc(25% - 20px);
-      flex-basis: calc(25% - 20px);
+  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
+      flex-basis: calc(33.3333333333% - 20px);
   min-width: 200px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;

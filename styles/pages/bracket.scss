@@ -9,12 +9,13 @@
 @use '../partials/dates';
 
 .page{
+    background-color: $secondary-color;
     .wrapper{
-        @include bleed(1500px);
+        // @include bleed(1500px);
         .carousel{
             @include flex-center(row, space-between, flex-start);
             flex-wrap:wrap;
-            width: 100vw;
+            width: 100%;
             position: relative;
             .carousel-button {
                 position: absolute;
@@ -29,11 +30,11 @@
                 border-radius: .25rem;
                 padding: 0 .5rem;
                 background-color: rgba(0, 0, 0, .1);
-                :hover, :focus{
+                &:hover, &:focus{
                     color: white;
                     background-color: rgba(0, 0, 0, .2);
                 }
-                :focus{
+                &:focus{
                     outline: 1px solid black;
                 }
                 &.prev{
@@ -44,8 +45,10 @@
                 }
             }
             .slide{
-                position: absolute;
-                inset: 0;
+                // position: absolute;
+                // inset: 0;
+                left:0;
+                top:0;
                 opacity: 0;
                 transition: 200ms opacity ease-in-out;
                 transition-delay: 200ms;
@@ -56,22 +59,22 @@
                 }
             }
             .group-stage {
-                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+                @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
             }
             .round16{
-                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+                @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
             }
             .quarter-finals {
-                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+                @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
             }
             .semi-finals {
-                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+                @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
             }
             .bronze {
-                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+                @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
             }
             .final {
-                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+                @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
             }
         }
 
