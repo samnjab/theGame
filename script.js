@@ -100,13 +100,21 @@ fifaMatch.displayMatches = function(teamData) {
 }
 
 
+
+
 fifaMatch.athletes = () => {
  
-    const teamName = document.querySelector('.teamInfo');
-    const arrayIndex = teamName.getAttribute('data-index');
-    console.log(arrayIndex);
-}
+    const teamIndex = document.querySelectorAll('.teamInfo');
 
+    teamIndex.forEach(teamIndex => {
+        teamIndex.addEventListener('click', (e) => {
+        const arrayIndex = teamIndex.getAttribute('data-index');
+        console.log(arrayIndex);
+        console.log(e);
+        
+    })
+})
+}
 
 fifaMatch.init = () => {
      fifaMatch.getData();
