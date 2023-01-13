@@ -609,6 +609,8 @@ header .wrapper nav .nav-bar li {
   height: auto;
 }
 
+
+/* my css */
 .container {
   margin-top: 75px;
   /* border: 2px solid white; */
@@ -621,7 +623,6 @@ header .wrapper nav .nav-bar li {
   display: flex;
   width: 500px;
   height: 150px;
-  display: flex;
   /* border: 2px solid white; */
 }
 
@@ -645,4 +646,19 @@ img {
 .teamInfo {
   width: 350px;
   padding: 20px;
+}
+
+.athleteBox {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  height: 175px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 2%;
+}
+
+.player {
+ color: black;
 }

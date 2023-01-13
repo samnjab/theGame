@@ -34,22 +34,20 @@ const teamsAndPlayers = urls.map(url => {
 
     Promise.all(teamsAndPlayers)
             .then((teamData => { //opens access through the promise wrapper
-              fifaMatch.displayMatches(teamData);
+              fifaMatch.displayTeams(teamData);
             }))
 
 }
     
 
-fifaMatch.displayMatches = function(teamData) {
+fifaMatch.displayTeams = function(teamData) {
 
     const squadData = teamData[1];
     const teamObject = teamData[1].teams;
-    console.log(squadData);
-    // console.log(teamObject[2].crest)
+    
 
     for (let i = 0; i <teamObject.length; i++) {
 
-        // Header-title for Match Dates
             const teamContainer = document.createElement('div');
             teamContainer.classList.add('teamBox');
 
@@ -103,9 +101,41 @@ fifaMatch.displayMatches = function(teamData) {
 //append squad to athletes page
 
 fifaMatch.getSquad = (arrayIndex, squadData) => {
+    const container = document.querySelector('.container');
+    container.innerHTML = "";
+
     const squadIndex = arrayIndex;
-    console.log(arrayIndex);
-    console.log(squadData);
+    const squadObject = squadData;
+    
+    
+    const squadList = squadObject.teams[squadIndex].squad;
+    console.log(squadList);
+    
+
+    for (let i = 0; i < squadList.length; i++) {
+        
+        //container for athlete profile
+        const athleteContainer = document.createElement('div');
+        athleteContainer.classList.add('athleteBox');
+        container.appendChild(athleteContainer);
+
+        //display the athlete profile
+        const playerInfo = document.createElement('div');
+        playerInfo.classList.add('player');
+        athleteContainer.appendChild(playerInfo);
+
+        //display the name, position, birthdate
+        const profileText = document.createElement('p');
+        // playerText.classList.add('profile');
+        profileText.innerText =
+            `Player : ${squadList[i].name}
+            Nationality : ${squadList[i].nationality}
+            Position : ${squadList[i].position}
+            Date Of Birth : ${squadList[i].dateOfBirth}
+            `;
+        playerInfo.appendChild(profileText);
+
+    }
     
 }
 
