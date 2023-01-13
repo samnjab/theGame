@@ -41,7 +41,7 @@ const teamsAndPlayers = urls.map(url => {
     
 
 fifaMatch.displayTeams = function(teamData) {
-
+    console.log(teamData);
     const squadData = teamData[1];
     const teamObject = teamData[1].teams;
     
@@ -106,11 +106,9 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
 
     const squadIndex = arrayIndex;
     const squadObject = squadData;
-    
-    
+
     const squadList = squadObject.teams[squadIndex].squad;
     console.log(squadList);
-    
 
     for (let i = 0; i < squadList.length; i++) {
         
@@ -141,8 +139,7 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
 
 
 fifaMatch.getTeamIndex = (squadData) => {
-    const teamIndex = document.querySelectorAll('.teamInfo');
-    // const FlagIndex = document.querySelectorAll('.img-box');
+    const teamIndex = document.querySelectorAll('.teamInfo, .img-box');
 
         teamIndex.forEach(teamIndex => {
         teamIndex.addEventListener('click', (e) => {
