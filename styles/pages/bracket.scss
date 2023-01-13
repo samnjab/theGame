@@ -50,8 +50,7 @@
                 // inset: 0;
                 // left:0;
                 // top:0;
-                // opacity: 0;
-                // // display:none;
+                opacity: 1;
                 // transition: 200ms opacity ease-in-out;
                 // transition-delay: 200ms;
                 &[data-active] {
@@ -61,6 +60,9 @@
                 }
                 &.hide{
                     display:none;
+                }
+                &.side{
+                    opacity:0.5;
                 }
             }
             .group-stage {

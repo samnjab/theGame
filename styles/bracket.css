@@ -663,8 +663,14 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .carousel .carousel-button.next {
   right: 1rem;
 }
+.page .wrapper .carousel .slide {
+  opacity: 1;
+}
 .page .wrapper .carousel .slide.hide {
   display: none;
+}
+.page .wrapper .carousel .slide.side {
+  opacity: 0.5;
 }
 .page .wrapper .carousel .group-stage {
   margin: 0 10px;

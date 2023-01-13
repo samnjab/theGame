@@ -151,32 +151,97 @@ footballStats.getStageMatches = async (stage) => {
     return jsonData
     
 }
-footballStats.eventListeners = () => {
+footballStats.eventListeners = (activeSlide, sideSlides) => {
     const buttons = document.querySelectorAll('button')
     buttons.forEach(button => {
         button.addEventListener('click', e =>{
             const slides = document.querySelectorAll('.slide')
-            const activeSlide = document.querySelector('[data-active]')
-            console.log('active slide is', activeSlide)
-            console.log('this is the height of the active slide', activeSlide.offsetHeight)
-            const containerHeight = activeSlide.offsetHeight
-            
+            oldActiveIndex = [...slides].indexOf(activeSlide)
+            indexArray = [...sideSlides].map((sideSlide) =>{
+                return [...slides].indexOf(sideSlide)
+            })
+
+            indexArray.splice(1, 0, oldActiveIndex)
+            console.log('this is the index array',indexArray)
             if (button.dataset.carouselButton == 'next'){
                 shift = 1
             }else{
                 shift = -1
             }
-            oldIndex = [...slides].indexOf(activeSlide)
-            let newIndex = [...slides].indexOf(activeSlide) + shift
-            if (newIndex < 0){
-                newIndex = slides.length - 1 
-            }else if(newIndex >= slides.length){
-                newIndex = 0
+            newIndexArray = indexArray.map(index => {
+                if (index + shift > slides.length){
+                    return 0
+
+                }else if(index + shift < 0){
+                    return slides.length -1 
+                }else{
+                    return index + shift
+                }
+            })
+            console.log('this is the new index array', newIndexArray)
+            // indexArray.forEach(index=>{
+            //     if (index == (newIndexArray.length - 1)/2){
+            //         delete slides[index].dataset.active
+            //         console.log('deleted data-active off of:', slides[index]) 
+            //     }else{
+            //         slides[index].classList.remove('side')
+            //         console.log('removed side') 
+            //     }
+            // })
+            if (shift == 1){
+                slides[indexArray[0]].classList.remove('side')
+                slides[indexArray[0]].classList.add('hide')
+            }else if(shift == -1){
+                slides[indexArray[indexArray.length -1]].classList.remove('side')
+                slides[indexArray[indexArray.length -1]].classList.add('hide')
             }
-            slides[newIndex].classList.remove('hide')
-            slides[newIndex].dataset.active = true
-            delete activeSlide.dataset.active 
-            slides[oldIndex].classList.add('hide')
+            
+            newIndexArray.forEach(index => {
+                // if (index == (newIndexArray.length - 1)/2){
+                //     slides[index].dataset.active = true
+                // }else{
+                //     slides[index].classList.add('side')   
+                // }
+                console.log('class list is',[...slides[index].classList])
+                const classes = [...slides[index].classList]
+                console.log('hide?', classes.indexOf('hide',))
+                console.log('side?', classes.indexOf('side',))
+                console.log('active?', slides[index].dataset.active)
+                if (classes.indexOf('hide') != -1){
+                    slides[index].classList.remove('hide')
+                    slides[index].classList.add('side')
+                }else if(classes.indexOf('side') != -1){
+                    slides[index].classList.remove('side')
+                    slides[index].dataset.active = true
+                }else if(slides[index].dataset.active){
+                    delete slides[index].dataset.active
+                    slides[index].classList.add('side')
+                }
+
+                // classes.forEach(class => {
+                //     console.log(class)
+
+                // })
+
+
+            })
+            
+            activeSlide = document.querySelector('[data-active]')
+            console.log('active slide is', activeSlide)
+            sideSlides = document.querySelectorAll('.side')
+            console.log('these are the side slides', sideSlides)
+            // let newIndex = [...slides].indexOf(activeSlide) + shift
+            // if (newIndex < 0){
+            //     newIndex = slides.length - 1 
+            // }else if(newIndex >= slides.length){
+            //     newIndex = 0
+            // }
+            // prevSideIndex = newIndex - 1
+            // nextSideIndex = newIndex + 1
+            // slides[newIndex].classList.remove('side')
+            // slides[newIndex].dataset.active = true
+            // delete activeSlide.dataset.active 
+            // slides[oldIndex].classList.add('hide')
         })
     })
 }
@@ -185,38 +250,43 @@ footballStats.init = () =>{
     stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','BRONZE', 'FINAL']
     nextStep = async () => {
         stagesMatches = []
-        for (i=0;i<stages.length;i++){
-            console.log('this is before await')
-            matches = await footballStats.getStageMatches(stages[i])
-            stageMatches = {stage:stages[i], matches:matches}
-            console.log('this comes after await', stageMatches)
-            stagesMatches.push(stageMatches)
-        }
+        // for (i=0;i<stages.length;i++){
+        //     console.log('this is before await')
+        //     matches = await footballStats.getStageMatches(stages[i])
+        //     stageMatches = {stage:stages[i], matches:matches}
+        //     console.log('this comes after await', stageMatches)
+        //     stagesMatches.push(stageMatches)
+        // }
 
-        console.log('stagesMatch array after the loop',stagesMatches)
-        uniqueDatesOfStages = {}
-        matches = {}
-        stagesMatches.forEach(stageMatches => {
-            uniqueDatesOfStages[stageMatches.stage] = footballStats.getDates(stageMatches.matches.matches)
-            matches[stageMatches.stage] = footballStats.getMatches(stageMatches.matches.matches)
-        })
-        console.log('unique dates:', uniqueDatesOfStages)
-        console.log('matches:', matches)
+        // console.log('stagesMatch array after the loop',stagesMatches)
+        // uniqueDatesOfStages = {}
+        // matches = {}
+        // stagesMatches.forEach(stageMatches => {
+        //     uniqueDatesOfStages[stageMatches.stage] = footballStats.getDates(stageMatches.matches.matches)
+        //     matches[stageMatches.stage] = footballStats.getMatches(stageMatches.matches.matches)
+        // })
+        // console.log('unique dates:', uniqueDatesOfStages)
+        // console.log('matches:', matches)
 
-        footballStats.sortedMatchesforStages = {}
-        for (i in stages){
-            console.log('stage is:', stages[i])
-            // console.log('sorted matches for stage', stages[i],footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]]))
-            footballStats.sortedMatchesforStages[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
-            console.log('sorted matches for', stages[i] , footballStats.sortedMatchesforStages[stages[i]])
-        }
+        // footballStats.sortedMatchesforStages = {}
+        // for (i in stages){
+        //     console.log('stage is:', stages[i])
+        //     // console.log('sorted matches for stage', stages[i],footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]]))
+        //     footballStats.sortedMatchesforStages[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
+        //     console.log('sorted matches for', stages[i] , footballStats.sortedMatchesforStages[stages[i]])
+        // }
 
-        stagesClassNames = ['group-stage', 'round16', 'quarter-finals', 'semi-finals','bronze','final']
-        stagesClassNames.forEach((stageClassName,i) => {
-            footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
-        })
+        // stagesClassNames = ['group-stage', 'round16', 'quarter-finals', 'semi-finals','bronze','final']
+        // stagesClassNames.forEach((stageClassName,i) => {
+        //     footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
+        // })
+        const activeSlide = document.querySelector('[data-active]')
+        console.log('active slide is', activeSlide)
+        const sideSlides = document.querySelectorAll('.side')
+        console.log('these are the side slides', sideSlides)
 
-        footballStats.eventListeners()
+
+        footballStats.eventListeners(activeSlide, sideSlides)
 
     }
 
