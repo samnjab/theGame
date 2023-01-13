@@ -48,31 +48,32 @@
                 </form>
             </fieldset>
             <div class="stages">
-                <div data-group-stage class="group-stage">
-                    <h4 class="stage-header">Group Stage</h4>
-                
+                <div class="carousel" data-carousel>
+                    <button class="carousel-button prev" data-carousel-button="prev">&#171;</button>
+                    <button class="carousel-button next" data-carousel-button="next">&#187;</button>
+                    <div data-active class="group-stage slide">
+                        <h4 class="stage-header">Group Stage</h4>
+                    </div>
+                    <div class="round16 slide">
+                        <h4 class="stage-header">Round of 16</h4>
+    
+                    </div>
+                    <div class="quarter-finals slide">
+                        <h4 class="stage-header">Quarter Finals</h4>
+    
+                    </div>
+                    <div  class="semi-finals slide">
+                        <h4 class="stage-header">Semi Finals</h4>
+    
+                    </div>
+                    <div class="bronze">
+                        <h4 class="stage-header slide">Bronze</h4>
+                    
+                    </div>
+                    <div  class="final">
+                        <h4 class="stage-header slide">Final</h4>
+                    </div>
                 </div>
-                <div data-round16 class="round16">
-                    <h4 class="stage-header">Round of 16</h4>
-
-                </div>
-                <div data-quarter-finals class="quarter-finals">
-                    <h4 class="stage-header">Quarter Finals</h4>
-
-                </div>
-                <div data-semi-finals class="semi-finals">
-                    <h4 class="stage-header">Semi Finals</h4>
-
-                </div>
-                <div data-final class="bronze">
-                    <h4 class="stage-header">Bronze</h4>
-                
-                </div>
-                <div data-final class="final">
-                    <h4 class="stage-header">Final</h4>
-
-                </div>
-                
             </div>
         </div>
     </section>
@@ -116,7 +117,7 @@
             </div>
         </a>
     </template>
-    <script src="../bracket.js"></script>
+    <!-- <script src="../bracket.js"></script> -->
 </body>
 
 </html>

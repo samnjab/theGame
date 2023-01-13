@@ -9,26 +9,71 @@
 @use '../partials/dates';
 
 .page{
-    .stages{
-        @include flex-center(row, space-between, flex-start);
-        flex-wrap:wrap;
-        .group-stage {
-            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+    .wrapper{
+        @include bleed(1500px);
+        .carousel{
+            @include flex-center(row, space-between, flex-start);
+            flex-wrap:wrap;
+            width: 100vw;
+            position: relative;
+            .carousel-button {
+                position: absolute;
+                z-index: 2;
+                background: none;
+                border: none;
+                font-size: 4rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: rgba(255, 255, 255, .5);
+                cursor: pointer;
+                border-radius: .25rem;
+                padding: 0 .5rem;
+                background-color: rgba(0, 0, 0, .1);
+                :hover, :focus{
+                    color: white;
+                    background-color: rgba(0, 0, 0, .2);
+                }
+                :focus{
+                    outline: 1px solid black;
+                }
+                &.prev{
+                    left:1rem;
+                }
+                &.next{
+                    right:1rem;
+                }
+            }
+            .slide{
+                position: absolute;
+                inset: 0;
+                opacity: 0;
+                transition: 200ms opacity ease-in-out;
+                transition-delay: 200ms;
+                &[data-active] {
+                    opacity: 1;
+                    z-index: 1;
+                    transition-delay: 0ms;
+                }
+            }
+            .group-stage {
+                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+            }
+            .round16{
+                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+            }
+            .quarter-finals {
+                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+            }
+            .semi-finals {
+                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+            }
+            .bronze {
+                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+            }
+            .final {
+                @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
+            }
         }
-        .round16{
-            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
-        }
-        .quarter-finals {
-            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
-        }
-        .semi-finals {
-            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
-        }
-        .bronze {
-            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
-        }
-        .final {
-            @include wrap($margin:10px, $number-in-a-row:4, $min-width:200px, $max-width:800x);
-        }
+
     }
 }

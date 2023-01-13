@@ -618,7 +618,11 @@ header .wrapper nav .nav-bar li {
   display: none;
 }
 
-.page .stages {
+.page .wrapper {
+  max-width: 1500px;
+  width: 100%;
+}
+.page .wrapper .carousel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -634,8 +638,53 @@ header .wrapper nav .nav-bar li {
           align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: 100vw;
+  position: relative;
 }
-.page .stages .group-stage {
+.page .wrapper .carousel .carousel-button {
+  position: absolute;
+  z-index: 2;
+  background: none;
+  border: none;
+  font-size: 4rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.page .wrapper .carousel .carousel-button :hover, .page .wrapper .carousel .carousel-button :focus {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.page .wrapper .carousel .carousel-button :focus {
+  outline: 1px solid black;
+}
+.page .wrapper .carousel .carousel-button.prev {
+  left: 1rem;
+}
+.page .wrapper .carousel .carousel-button.next {
+  right: 1rem;
+}
+.page .wrapper .carousel .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  -webkit-transition: 200ms opacity ease-in-out;
+  transition: 200ms opacity ease-in-out;
+  -webkit-transition-delay: 200ms;
+          transition-delay: 200ms;
+}
+.page .wrapper .carousel .slide[data-active] {
+  opacity: 1;
+  z-index: 1;
+  -webkit-transition-delay: 0ms;
+          transition-delay: 0ms;
+}
+.page .wrapper .carousel .group-stage {
   margin: 0 10px;
   -ms-flex-preferred-size: calc(25% - 20px);
       flex-basis: calc(25% - 20px);
@@ -645,7 +694,7 @@ header .wrapper nav .nav-bar li {
           flex-grow: 1;
   max-width: 800x;
 }
-.page .stages .round16 {
+.page .wrapper .carousel .round16 {
   margin: 0 10px;
   -ms-flex-preferred-size: calc(25% - 20px);
       flex-basis: calc(25% - 20px);
@@ -655,7 +704,7 @@ header .wrapper nav .nav-bar li {
           flex-grow: 1;
   max-width: 800x;
 }
-.page .stages .quarter-finals {
+.page .wrapper .carousel .quarter-finals {
   margin: 0 10px;
   -ms-flex-preferred-size: calc(25% - 20px);
       flex-basis: calc(25% - 20px);
@@ -665,7 +714,7 @@ header .wrapper nav .nav-bar li {
           flex-grow: 1;
   max-width: 800x;
 }
-.page .stages .semi-finals {
+.page .wrapper .carousel .semi-finals {
   margin: 0 10px;
   -ms-flex-preferred-size: calc(25% - 20px);
       flex-basis: calc(25% - 20px);
@@ -675,7 +724,17 @@ header .wrapper nav .nav-bar li {
           flex-grow: 1;
   max-width: 800x;
 }
-.page .stages .final {
+.page .wrapper .carousel .bronze {
+  margin: 0 10px;
+  -ms-flex-preferred-size: calc(25% - 20px);
+      flex-basis: calc(25% - 20px);
+  min-width: 200px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 800x;
+}
+.page .wrapper .carousel .final {
   margin: 0 10px;
   -ms-flex-preferred-size: calc(25% - 20px);
       flex-basis: calc(25% - 20px);

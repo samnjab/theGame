@@ -88,7 +88,6 @@ footballStats.getDates = (matches) => {
     footballStats.sortedByDateMatches = {}
     matches.forEach(match => {
         dates.push(footballStats.convertDate(match.utcDate))
-        // footballStats.sortedByDateMatches.date = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:winner, date:date.toDateString()};
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
