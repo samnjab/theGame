@@ -156,22 +156,27 @@ footballStats.eventListeners = () => {
     buttons.forEach(button => {
         button.addEventListener('click', e =>{
             const slides = document.querySelectorAll('.slide')
-            
             const activeSlide = document.querySelector('[data-active]')
+            console.log('active slide is', activeSlide)
+            console.log('this is the height of the active slide', activeSlide.offsetHeight)
+            const containerHeight = activeSlide.offsetHeight
             
             if (button.dataset.carouselButton == 'next'){
                 shift = 1
             }else{
                 shift = -1
             }
+            oldIndex = [...slides].indexOf(activeSlide)
             let newIndex = [...slides].indexOf(activeSlide) + shift
             if (newIndex < 0){
                 newIndex = slides.length - 1 
             }else if(newIndex >= slides.length){
                 newIndex = 0
             }
+            slides[newIndex].classList.remove('hide')
             slides[newIndex].dataset.active = true
             delete activeSlide.dataset.active 
+            slides[oldIndex].classList.add('hide')
         })
     })
 }

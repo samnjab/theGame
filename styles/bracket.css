@@ -612,6 +612,9 @@ header .wrapper nav .nav-bar li {
 
 .page {
   background-color: #0A0C0C;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .page .wrapper .carousel {
   display: -webkit-box;
@@ -638,7 +641,7 @@ header .wrapper nav .nav-bar li {
   background: none;
   border: none;
   font-size: 4rem;
-  top: 50%;
+  top: 70%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   color: rgba(255, 255, 255, 0.5);
@@ -660,20 +663,8 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .carousel .carousel-button.next {
   right: 1rem;
 }
-.page .wrapper .carousel .slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  -webkit-transition: 200ms opacity ease-in-out;
-  transition: 200ms opacity ease-in-out;
-  -webkit-transition-delay: 200ms;
-          transition-delay: 200ms;
-}
-.page .wrapper .carousel .slide[data-active] {
-  opacity: 1;
-  z-index: 1;
-  -webkit-transition-delay: 0ms;
-          transition-delay: 0ms;
+.page .wrapper .carousel .slide.hide {
+  display: none;
 }
 .page .wrapper .carousel .group-stage {
   margin: 0 10px;
