@@ -34,9 +34,7 @@ const teamsAndPlayers = urls.map(url => {
 
     Promise.all(teamsAndPlayers)
             .then((teamData => { //opens access through the promise wrapper
-              console.log(teamData);
               fifaMatch.displayMatches(teamData);
-            //   this is how you can access the json results in pokemonPromiseObjects
             }))
 
 }
@@ -44,9 +42,9 @@ const teamsAndPlayers = urls.map(url => {
 
 fifaMatch.displayMatches = function(teamData) {
 
-    console.log(teamData[1].teams);
-    teamObject = teamData[1].teams;
-
+    const squadData = teamData[1];
+    const teamObject = teamData[1].teams;
+    console.log(squadData);
     // console.log(teamObject[2].crest)
 
     for (let i = 0; i <teamObject.length; i++) {
@@ -54,12 +52,6 @@ fifaMatch.displayMatches = function(teamData) {
         // Header-title for Match Dates
             const teamContainer = document.createElement('div');
             teamContainer.classList.add('teamBox');
- 
-        // Team div
-            // const getSquad = document.createElement('a')
-            // getSquad.src = 
-            // const teamName = `${teamObject[i].name}`;
-            // console.log(teamName);
 
             const teamDiv = document.createElement('div');
             teamDiv.classList.add('team');
@@ -67,6 +59,7 @@ fifaMatch.displayMatches = function(teamData) {
 
             const imageTeamDiv = document.createElement('div');
             imageTeamDiv.classList.add('img-box')
+            imageTeamDiv.setAttribute("data-index",[i]);
             teamDiv.appendChild(imageTeamDiv); //append image div into away team div
 
             const teamFlag = document.createElement('img');
@@ -95,25 +88,42 @@ fifaMatch.displayMatches = function(teamData) {
         document.querySelector('.container').appendChild(teamContainer); //Appends the team container to the page
         
     }
-    fifaMatch.athletes();
+    fifaMatch.getTeamIndex(squadData);
+    
+}
+
+//add search to Player Page
+//use the input box to seacrh squad from array
+//clear the page
+//append the player and info to the page
+
+//get the index number of team that is being clicked on
+//use the index number to get the array of the same teams 'squad' from the data
+//target the atheletes page
+//append squad to athletes page
+
+fifaMatch.getSquad = (arrayIndex, squadData) => {
+    const squadIndex = arrayIndex;
+    console.log(arrayIndex);
+    console.log(squadData);
     
 }
 
 
-
-
-fifaMatch.athletes = () => {
- 
+fifaMatch.getTeamIndex = (squadData) => {
     const teamIndex = document.querySelectorAll('.teamInfo');
+    // const FlagIndex = document.querySelectorAll('.img-box');
 
-    teamIndex.forEach(teamIndex => {
+        teamIndex.forEach(teamIndex => {
         teamIndex.addEventListener('click', (e) => {
         const arrayIndex = teamIndex.getAttribute('data-index');
-        console.log(arrayIndex);
-        console.log(e);
-        
+        // console.log(arrayIndex);
+
+        fifaMatch.getSquad(arrayIndex, squadData);
+        })
+    
     })
-})
+    
 }
 
 fifaMatch.init = () => {
