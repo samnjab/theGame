@@ -151,13 +151,35 @@ footballStats.getStageMatches = async (stage) => {
     return jsonData
     
 }
+footballStats.eventListeners = () => {
+    const buttons = document.querySelectorAll('button')
+    buttons.forEach(button => {
+        button.addEventListener('click', e =>{
+            const slides = document.querySelectorAll('.slide')
+            
+            const activeSlide = document.querySelector('[data-active]')
+            
+            if (button.dataset.carouselButton == 'next'){
+                shift = 1
+            }else{
+                shift = -1
+            }
+            let newIndex = [...slides].indexOf(activeSlide) + shift
+            if (newIndex < 0){
+                newIndex = slides.length - 1 
+            }else if(newIndex >= slides.length){
+                newIndex = 0
+            }
+            slides[newIndex].dataset.active = true
+            delete activeSlide.dataset.active 
+        })
+    })
+}
 
 footballStats.init = () =>{
     stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','BRONZE', 'FINAL']
     nextStep = async () => {
         stagesMatches = []
-        matches = await footballStats.getStageMatches(stages[0])
-        console.log('inside async:', matches)
         for (i=0;i<stages.length;i++){
             console.log('this is before await')
             matches = await footballStats.getStageMatches(stages[i])
@@ -188,6 +210,8 @@ footballStats.init = () =>{
         stagesClassNames.forEach((stageClassName,i) => {
             footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
         })
+
+        footballStats.eventListeners()
 
     }
 
