@@ -793,8 +793,6 @@ header .wrapper nav .nav-bar li {
           order: 2;
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
-  -webkit-transform: translateY(50px);
-          transform: translateY(50px);
 }
 .page .wrapper .stages .carousel .slide.hide {
   display: none;
@@ -803,8 +801,6 @@ header .wrapper nav .nav-bar li {
   opacity: 0.5;
   -ms-flex-preferred-size: 15%;
       flex-basis: 15%;
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
 }
 .page .wrapper .stages .carousel .group-stage {
   margin: 0 10px;

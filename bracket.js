@@ -242,7 +242,7 @@ footballStats.eventListeners = () => {
 }
 
 footballStats.init = () =>{
-    stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','BRONZE', 'FINAL']
+    stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','THIRD_PLACE', 'FINAL']
     nextStep = async () => {
         stagesMatches = []
         for (i=0;i<stages.length;i++){
