@@ -23,6 +23,7 @@
                 @include flex-center(row, space-between, flex-start);
                 flex-wrap:wrap;
                 width: 100%;
+                margin-top:3rem;
                 position: relative;
                 .carousel-button {
                     position: absolute;
@@ -30,7 +31,7 @@
                     background: none;
                     border: none;
                     font-size: 4rem;
-                    top: 70%;
+                    top: 0;
                     transform: translateY(-100px);
                     color: rgba(255, 255, 255, .5);
                     cursor: pointer;
@@ -72,7 +73,8 @@
                     // transition-delay: 200ms;
                     &[data-active] {
                         
-                        border:5px $primary-color solid;
+                        border:5px #4b9cdb solid;
+                        padding:1rem;
                         order:2;
                         flex-basis:40%;
                         
@@ -80,13 +82,14 @@
                         // opacity: 1;
                         // z-index: 1;
                         // transition-delay: 0ms;
+                        transform:translateY(50px);
                     }
                     
                     &.hide{
                         display:none;
                     }
                     &.side{
-                        opacity:0.5;
+                        opacity:0.3;
                         flex-basis:15%;
                         // transform:scale(0.5) translate(50px);
     

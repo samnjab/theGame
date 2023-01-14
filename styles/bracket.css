@@ -476,15 +476,19 @@ header .wrapper h1 {
   float: left;
   width: 100px;
   height: 100px;
-  margin: 0 10px 10px 0;
+  margin: 2rem;
   padding: 20px 20px 20px;
   border-radius: 5px;
   text-align: center;
   background-color: #0A0C0C;
 }
+.load-wrapp.hide {
+  display: none;
+}
 
 .load-wrapp p {
   padding: 0 0 20px;
+  text-align: center;
 }
 
 .load-wrapp:last-child {
@@ -741,6 +745,7 @@ header .wrapper nav .nav-bar li {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
+  margin-top: 3rem;
   position: relative;
 }
 .page .wrapper .stages .carousel .carousel-button {
@@ -749,7 +754,7 @@ header .wrapper nav .nav-bar li {
   background: none;
   border: none;
   font-size: 4rem;
-  top: 70%;
+  top: 0;
   -webkit-transform: translateY(-100px);
           transform: translateY(-100px);
   color: rgba(255, 255, 255, 0.5);
@@ -787,18 +792,21 @@ header .wrapper nav .nav-bar li {
   transition: 0.5s all ease-in-out;
 }
 .page .wrapper .stages .carousel .slide[data-active] {
-  border: 5px #0F4067 solid;
+  border: 5px #4b9cdb solid;
+  padding: 1rem;
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
 }
 .page .wrapper .stages .carousel .slide.hide {
   display: none;
 }
 .page .wrapper .stages .carousel .slide.side {
-  opacity: 0.5;
+  opacity: 0.3;
   -ms-flex-preferred-size: 15%;
       flex-basis: 15%;
 }

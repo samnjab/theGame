@@ -25,15 +25,19 @@
     float: left;
     width: 100px;
     height: 100px;
-    margin: 0 10px 10px 0;
+    margin: 2rem;
     padding: 20px 20px 20px;
     border-radius: 5px;
     text-align: center;
     background-color:$secondary-color;
+    &.hide{
+        display:none;
+    }
 }
 
 .load-wrapp p {
     padding: 0 0 20px;
+    text-align: center;
 }
 
 .load-wrapp:last-child {

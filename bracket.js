@@ -273,6 +273,7 @@ footballStats.init = () =>{
 
         stagesClassNames = ['group-stage', 'round16', 'quarter-finals', 'semi-finals','bronze','final']
         stagesClassNames.forEach((stageClassName,i) => {
+            document.querySelector('.load-wrapp').classList.add('hide')
             footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
         })
         const activeSlide = document.querySelector('[data-active]')
