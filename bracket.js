@@ -174,30 +174,31 @@ footballStats.eventListeners = () => {
             }else{
                 shift = -1
             }
-            newIndexArray = clickIndexArray[clickIndexArray.length - 1].map(index => {
-                if (index + shift >= slides.length){
-                    return 0
-
-                }else if(index + shift < 0){
-                    return slides.length - 1 
-                }else{
-                    return index + shift
-                }
-            })
-            console.log('this is the new index array', newIndexArray)
-            clickIndexArray.push(newIndexArray)
-            
+           
             if (shift == 1){
-                slides[indexArray[0]].classList.remove('side')
-                console.log('removed side from',slides[indexArray[0]])
-                slides[indexArray[0]].classList.add('hide')
-                console.log('added hide to',slides[indexArray[0]])
+                slides[clickIndexArray[clickIndexArray.length - 1][0]].classList.remove('side')
+                console.log('removed side from',slides[clickIndexArray[clickIndexArray.length - 1][0]])
+                slides[clickIndexArray[clickIndexArray.length - 1][0]].classList.add('hide')
+                console.log('added hide to',slides[clickIndexArray[clickIndexArray.length - 1][0]])
             }else if(shift == -1){
-                slides[indexArray[indexArray.length - 1]].classList.remove('side')
-                console.log('removed side from',  slides[indexArray[indexArray.length - 1]])
-                slides[indexArray[indexArray.length - 1]].classList.add('hide')
-                console.log('added hide to', slides[indexArray[indexArray.length - 1]])
+                slides[clickIndexArray[clickIndexArray.length - 1][clickIndexArray[clickIndexArray.length - 1].length - 1]].classList.remove('side')
+                console.log('removed side from',  slides[clickIndexArray[clickIndexArray.length - 1][clickIndexArray[clickIndexArray.length - 1].length - 1]])
+                slides[clickIndexArray[clickIndexArray.length - 1][clickIndexArray[clickIndexArray.length - 1].length - 1]].classList.add('hide')
+                console.log('added hide to', slides[clickIndexArray[clickIndexArray.length - 1][clickIndexArray[clickIndexArray.length - 1].length - 1]])
             }
+
+            newIndexArray = clickIndexArray[clickIndexArray.length - 1].map(index => {
+               if (index + shift >= slides.length){
+                   return 0
+
+               }else if(index + shift < 0){
+                   return slides.length - 1 
+               }else{
+                   return index + shift
+               }
+           })
+           console.log('this is the new index array', newIndexArray)
+           clickIndexArray.push(newIndexArray)
             
             newIndexArray.forEach(index => {
                 console.log('class list to begin with is',[...slides[index].classList])
