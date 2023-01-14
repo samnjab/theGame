@@ -153,27 +153,28 @@ footballStats.getStageMatches = async (stage) => {
 }
 footballStats.eventListeners = () => {
     const buttons = document.querySelectorAll('button')
+    const slides = document.querySelectorAll('.slide')
+    const activeSlide = document.querySelector('[data-active]')
+    console.log('active slide was', activeSlide)
+    const sideSlides = document.querySelectorAll('.side')
+    console.log('here are the side slides before anything', sideSlides)
+    const clickIndexArray = []
+    oldActiveIndex = [...slides].indexOf(activeSlide)
+    indexArray = [...sideSlides].map((sideSlide) =>{
+        return [...slides].indexOf(sideSlide)
+    })
+    indexArray.splice(1, 0, oldActiveIndex)
+    console.log('this is the current index array',indexArray)
+    clickIndexArray.push(indexArray)
     buttons.forEach(button => {
         button.addEventListener('click', e =>{
-            const activeSlide = document.querySelector('[data-active]')
-            console.log('active slide was', activeSlide)
-            const sideSlides = document.querySelectorAll('.side')
-            console.log('the side slides were', sideSlides)
-            const slides = document.querySelectorAll('.slide')
-            console.log('here are the slides before anything', sideSlides)
-            oldActiveIndex = [...slides].indexOf(activeSlide)
-            indexArray = [...sideSlides].map((sideSlide) =>{
-                return [...slides].indexOf(sideSlide)
-            })
-
-            indexArray.splice(1, 0, oldActiveIndex)
-            console.log('this is the current index array',indexArray)
+            console.log('this is the current index array:', clickIndexArray[clickIndexArray.length - 1])
             if (button.dataset.carouselButton == 'next'){
                 shift = 1
             }else{
                 shift = -1
             }
-            newIndexArray = indexArray.map(index => {
+            newIndexArray = clickIndexArray[clickIndexArray.length - 1].map(index => {
                 if (index + shift >= slides.length){
                     return 0
 
@@ -184,32 +185,44 @@ footballStats.eventListeners = () => {
                 }
             })
             console.log('this is the new index array', newIndexArray)
+            clickIndexArray.push(newIndexArray)
             
             if (shift == 1){
                 slides[indexArray[0]].classList.remove('side')
+                console.log('removed side from',slides[indexArray[0]])
                 slides[indexArray[0]].classList.add('hide')
+                console.log('added hide to',slides[indexArray[0]])
             }else if(shift == -1){
                 slides[indexArray[indexArray.length - 1]].classList.remove('side')
+                console.log('removed side from',  slides[indexArray[indexArray.length - 1]])
                 slides[indexArray[indexArray.length - 1]].classList.add('hide')
+                console.log('added hide to', slides[indexArray[indexArray.length - 1]])
             }
             
             newIndexArray.forEach(index => {
-                console.log('class list is',[...slides[index].classList])
+                console.log('class list to begin with is',[...slides[index].classList])
+                console.log('active state of:', slides[index],'to begin with:', slides[index].dataset.active)
                 const classes = [...slides[index].classList]
                 // console.log('hide?', classes.indexOf('hide',))
                 // console.log('side?', classes.indexOf('side',))
                 // console.log('active?', slides[index].dataset.active)
                 if (classes.indexOf('hide') != -1){
                     slides[index].classList.remove('hide')
+                    console.log('removed hide from', slides[index])
                     slides[index].classList.add('side')
+                    console.log('added side to', slides[index])
                     
                 }else if(classes.indexOf('side') != -1){
                     slides[index].classList.remove('side')
+                    console.log('removed side from', slides[index])
                     slides[index].dataset.active = true
+                    console.log('added active to', slides[index])
                     
                 }else if(slides[index].dataset.active){
                     delete slides[index].dataset.active
+                    console.log('removed active from', slides[index])
                     slides[index].classList.add('side')
+                    console.log('added side to', slides[index])
     
                 }
 
