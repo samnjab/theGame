@@ -750,8 +750,8 @@ header .wrapper nav .nav-bar li {
   border: none;
   font-size: 4rem;
   top: 70%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   border-radius: 0.25rem;
@@ -772,31 +772,39 @@ header .wrapper nav .nav-bar li {
   right: 1rem;
 }
 .page .wrapper .stages .carousel > .side {
-  background-color: pink;
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
 }
 .page .wrapper .stages .carousel > .side ~ .side {
-  background-color: blue;
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
           order: 3;
 }
 .page .wrapper .stages .carousel .slide {
   opacity: 1;
+  -webkit-transition: 0.5s all ease-in-out;
+  transition: 0.5s all ease-in-out;
 }
 .page .wrapper .stages .carousel .slide[data-active] {
-  background-color: lime;
+  border: 5px #0F4067 solid;
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
 }
 .page .wrapper .stages .carousel .slide.hide {
   display: none;
 }
 .page .wrapper .stages .carousel .slide.side {
   opacity: 0.5;
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
 }
 .page .wrapper .stages .carousel .group-stage {
   margin: 0 10px;

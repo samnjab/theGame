@@ -31,7 +31,7 @@
                     border: none;
                     font-size: 4rem;
                     top: 70%;
-                    transform: translateY(-50%);
+                    transform: translateY(-100px);
                     color: rgba(255, 255, 255, .5);
                     cursor: pointer;
                     border-radius: .25rem;
@@ -52,11 +52,13 @@
                     }
                 }
                 > .side {
-                    background-color: pink;
+                    
                     order:1;
+                    
                     ~ .side{
-                        background-color:blue;
+                        
                         order:3;
+                        
                     }
                 }
 
@@ -66,11 +68,15 @@
                     // left:0;
                     // top:0;
                     opacity: 1;
-                    // transition: 200ms opacity ease-in-out;
+                    transition: 0.5s all ease-in-out;
                     // transition-delay: 200ms;
                     &[data-active] {
-                        background-color: lime;
+                        
+                        border:5px $primary-color solid;
                         order:2;
+                        flex-basis:40%;
+                        transform:translateY(50px);
+                        
                         // opacity: 1;
                         // z-index: 1;
                         // transition-delay: 0ms;
@@ -81,15 +87,12 @@
                     }
                     &.side{
                         opacity:0.5;
+                        flex-basis:15%;
+                        transform:scale(0.5);
     
                     }
                 
-                    // &.side:first-of-type{
-                    //     background-color: lime;
-                    // }
-                    // &.side:nth-of-type(3){
-                    //     background-color: pink;
-                    // }
+                    
                 }
                 
                 .group-stage {

@@ -245,40 +245,40 @@ footballStats.init = () =>{
     stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','BRONZE', 'FINAL']
     nextStep = async () => {
         stagesMatches = []
-        // for (i=0;i<stages.length;i++){
-        //     console.log('this is before await')
-        //     matches = await footballStats.getStageMatches(stages[i])
-        //     stageMatches = {stage:stages[i], matches:matches}
-        //     console.log('this comes after await', stageMatches)
-        //     stagesMatches.push(stageMatches)
-        // }
+        for (i=0;i<stages.length;i++){
+            console.log('this is before await')
+            matches = await footballStats.getStageMatches(stages[i])
+            stageMatches = {stage:stages[i], matches:matches}
+            console.log('this comes after await', stageMatches)
+            stagesMatches.push(stageMatches)
+        }
 
-        // console.log('stagesMatch array after the loop',stagesMatches)
-        // uniqueDatesOfStages = {}
-        // matches = {}
-        // stagesMatches.forEach(stageMatches => {
-        //     uniqueDatesOfStages[stageMatches.stage] = footballStats.getDates(stageMatches.matches.matches)
-        //     matches[stageMatches.stage] = footballStats.getMatches(stageMatches.matches.matches)
-        // })
-        // console.log('unique dates:', uniqueDatesOfStages)
-        // console.log('matches:', matches)
+        console.log('stagesMatch array after the loop',stagesMatches)
+        uniqueDatesOfStages = {}
+        matches = {}
+        stagesMatches.forEach(stageMatches => {
+            uniqueDatesOfStages[stageMatches.stage] = footballStats.getDates(stageMatches.matches.matches)
+            matches[stageMatches.stage] = footballStats.getMatches(stageMatches.matches.matches)
+        })
+        console.log('unique dates:', uniqueDatesOfStages)
+        console.log('matches:', matches)
 
-        // footballStats.sortedMatchesforStages = {}
-        // for (i in stages){
-        //     console.log('stage is:', stages[i])
-        //     // console.log('sorted matches for stage', stages[i],footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]]))
-        //     footballStats.sortedMatchesforStages[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
-        //     console.log('sorted matches for', stages[i] , footballStats.sortedMatchesforStages[stages[i]])
-        // }
+        footballStats.sortedMatchesforStages = {}
+        for (i in stages){
+            console.log('stage is:', stages[i])
+            // console.log('sorted matches for stage', stages[i],footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]]))
+            footballStats.sortedMatchesforStages[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
+            console.log('sorted matches for', stages[i] , footballStats.sortedMatchesforStages[stages[i]])
+        }
 
-        // stagesClassNames = ['group-stage', 'round16', 'quarter-finals', 'semi-finals','bronze','final']
-        // stagesClassNames.forEach((stageClassName,i) => {
-        //     footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
-        // })
-        // const activeSlide = document.querySelector('[data-active]')
-        // console.log('active slide is', activeSlide)
-        // const sideSlides = document.querySelectorAll('.side')
-        // console.log('these are the side slides', sideSlides)
+        stagesClassNames = ['group-stage', 'round16', 'quarter-finals', 'semi-finals','bronze','final']
+        stagesClassNames.forEach((stageClassName,i) => {
+            footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
+        })
+        const activeSlide = document.querySelector('[data-active]')
+        console.log('active slide is', activeSlide)
+        const sideSlides = document.querySelectorAll('.side')
+        console.log('these are the side slides', sideSlides)
 
 
         footballStats.eventListeners()
