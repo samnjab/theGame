@@ -169,6 +169,7 @@ footballStats.eventListeners = () => {
     buttons.forEach(button => {
         
         button.addEventListener('click', e =>{
+            console.log('this is the current array inside event', clickIndexArray[clickIndexArray.length - 1])
             if (button.dataset.carouselButton == 'next'){
                 shift = 1
             }else{
@@ -227,12 +228,12 @@ footballStats.eventListeners = () => {
 
             })
             if (newIndexArray[1]== 5){
-                
+                console.log("we're swapping")
                 document.querySelector('.carousel').insertBefore(document.querySelector('.bronze'), document.querySelector('.group-stage'))
                 
             }
             if (newIndexArray[1] == 0){
-                
+                console.log("we're swapping")
                 document.querySelector('.carousel').insertBefore(document.querySelector('.final'), document.querySelector('.round16'))
 
             }
