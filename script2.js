@@ -299,6 +299,7 @@ footballStats.init = () => {
         console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
+        document.querySelector('.load-wrapp').classList.add('hide')
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
         .then((matchesWithElements) => {
             footballStats.eventListeners(matchesWithElements)

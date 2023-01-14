@@ -473,7 +473,6 @@ header .wrapper h1 {
 }
 
 .load-wrapp {
-  float: left;
   width: 100px;
   height: 100px;
   margin: 2rem;
@@ -702,4 +701,28 @@ header .wrapper nav .nav-bar li {
 
 .hide {
   display: none;
+}
+
+.page .wrapper .matches {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.page .wrapper .matches .load-wrapp {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.page .wrapper .matches .date {
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
 }
