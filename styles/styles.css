@@ -450,6 +450,99 @@ header .wrapper h1 {
   margin: 0 auto;
 }
 
+.spinner {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  margin: 0 auto;
+}
+
+.bubble-1,
+.bubble-2 {
+  position: absolute;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: #4b9cdb;
+}
+
+.bubble-2 {
+  top: auto;
+  bottom: 0;
+}
+
+.load-wrapp {
+  width: 100px;
+  height: 100px;
+  margin: 2rem;
+  padding: 20px 20px 20px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #0A0C0C;
+}
+.load-wrapp.hide {
+  display: none;
+}
+
+.load-wrapp p {
+  padding: 0 0 20px;
+  text-align: center;
+}
+
+.load-wrapp:last-child {
+  margin-right: 0;
+}
+
+.load-9 .spinner {
+  -webkit-animation: loadingI 2s linear infinite;
+          animation: loadingI 2s linear infinite;
+}
+
+.load-9 .bubble-1,
+.load-9 .bubble-2 {
+  -webkit-animation: bounce 2s ease-in-out infinite;
+          animation: bounce 2s ease-in-out infinite;
+}
+
+.load-9 .bubble-2 {
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+
+@-webkit-keyframes loadingI {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes loadingI {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes bounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
 input {
   padding: 0.5rem;
   border-radius: 20px;
@@ -549,24 +642,13 @@ header .wrapper nav .nav-bar li {
 .page .wrapper .date .match-table .match.hide {
   display: none;
 }
-.page .wrapper .date .match-table .match:hover {
+.page .wrapper .date .match-table .match:hover, .page .wrapper .date .match-table .match:focus {
   background-color: #f0f1f2;
   color: #2C2C2C;
   border: solid 1px #f0f1f2;
 }
-.page .wrapper .date .match-table .match:hover .more-info img-box {
+.page .wrapper .date .match-table .match:hover .more-info img-box, .page .wrapper .date .match-table .match:focus .more-info img-box {
   background-color: #1F2224;
-}
-.page .wrapper .date .match-table .match:focus {
-  background-color: #f0f1f2;
-  color: #2C2C2C;
-  border: solid 1px #f0f1f2;
-}
-.page .wrapper .date .match-table .match:focus .more-info img-box {
-  background-color: #1F2224;
-}
-.page .wrapper .date .match-table .match.hide {
-  display: none;
 }
 .page .wrapper .date .match-table .match .team1 {
   display: -webkit-box;
@@ -619,4 +701,28 @@ header .wrapper nav .nav-bar li {
 
 .hide {
   display: none;
+}
+
+.page .wrapper .matches {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.page .wrapper .matches .load-wrapp {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.page .wrapper .matches .date {
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
 }

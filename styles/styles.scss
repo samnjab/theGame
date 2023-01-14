@@ -4,6 +4,25 @@
 @use './partials/typography';
 @use './partials/header';
 @use './partials/wrapper';
+@use './partials/loader';
 @use './partials/input';
 @use './partials/sections';
-@use './partials/dates'
+@use './partials/dates';
+
+
+
+.page{
+    .wrapper{
+        .matches{
+            @include flex-center(column, space-between,flex-start);
+            .load-wrapp{
+                align-self:center;
+                
+                
+            }
+            .date{
+                align-self: stretch;
+            }
+        }
+    }
+}
