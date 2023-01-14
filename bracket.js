@@ -167,8 +167,8 @@ footballStats.eventListeners = () => {
     console.log('this is the current index array',indexArray)
     clickIndexArray.push(indexArray)
     buttons.forEach(button => {
+        
         button.addEventListener('click', e =>{
-            console.log('this is the current index array:', clickIndexArray[clickIndexArray.length - 1])
             if (button.dataset.carouselButton == 'next'){
                 shift = 1
             }else{
@@ -204,9 +204,7 @@ footballStats.eventListeners = () => {
                 console.log('class list to begin with is',[...slides[index].classList])
                 console.log('active state of:', slides[index],'to begin with:', slides[index].dataset.active)
                 const classes = [...slides[index].classList]
-                // console.log('hide?', classes.indexOf('hide',))
-                // console.log('side?', classes.indexOf('side',))
-                // console.log('active?', slides[index].dataset.active)
+                
                 if (classes.indexOf('hide') != -1){
                     slides[index].classList.remove('hide')
                     console.log('removed hide from', slides[index])
@@ -228,23 +226,17 @@ footballStats.eventListeners = () => {
                 }
 
             })
+            if (newIndexArray[1]== 5){
+                
+                document.querySelector('.carousel').insertBefore(document.querySelector('.bronze'), document.querySelector('.group-stage'))
+                
+            }
+            if (newIndexArray[1] == 0){
+                
+                document.querySelector('.carousel').insertBefore(document.querySelector('.final'), document.querySelector('.round16'))
+
+            }
             
-            // activeSlide = document.querySelector('[data-active]')
-            // console.log('active slide is', activeSlide)
-            // sideSlides = document.querySelectorAll('.side')
-            // console.log('these are the side slides', sideSlides)
-            // let newIndex = [...slides].indexOf(activeSlide) + shift
-            // if (newIndex < 0){
-            //     newIndex = slides.length - 1 
-            // }else if(newIndex >= slides.length){
-            //     newIndex = 0
-            // }
-            // prevSideIndex = newIndex - 1
-            // nextSideIndex = newIndex + 1
-            // slides[newIndex].classList.remove('side')
-            // slides[newIndex].dataset.active = true
-            // delete activeSlide.dataset.active 
-            // slides[oldIndex].classList.add('hide')
         })
     })
 }
@@ -283,10 +275,10 @@ footballStats.init = () =>{
         // stagesClassNames.forEach((stageClassName,i) => {
         //     footballStats.display(uniqueDatesOfStages[stages[i]], footballStats.sortedMatchesforStages[stages[i]], stageClassName)
         // })
-        const activeSlide = document.querySelector('[data-active]')
-        console.log('active slide is', activeSlide)
-        const sideSlides = document.querySelectorAll('.side')
-        console.log('these are the side slides', sideSlides)
+        // const activeSlide = document.querySelector('[data-active]')
+        // console.log('active slide is', activeSlide)
+        // const sideSlides = document.querySelectorAll('.side')
+        // console.log('these are the side slides', sideSlides)
 
 
         footballStats.eventListeners()
