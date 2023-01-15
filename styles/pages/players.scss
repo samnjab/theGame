@@ -12,8 +12,9 @@
 @use '../partials/flag-box';
 @use '../partials/mediaQuery';
 
-
-.container {
+.main-container,
+.all-container,
+.scorer-container {
     margin-top: 75px;
     /* border: 2px solid white; */
     display: flex;

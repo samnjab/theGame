@@ -871,7 +871,9 @@ header .wrapper nav {
     margin: 0px 25px;
   }
 }
-.container {
+.main-container,
+.all-container,
+.scorer-container {
   margin-top: 75px;
   /* border: 2px solid white; */
   display: -webkit-box;
@@ -883,7 +885,9 @@ header .wrapper nav {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-.container p {
+.main-container p,
+.all-container p,
+.scorer-container p {
   width: 100%;
 }
 
