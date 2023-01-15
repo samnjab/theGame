@@ -11,8 +11,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400;1,500&display=swap');
     </style>
-    <link rel="stylesheet" href="../styles/players.css">
-    <title>FIFA World Cup</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <title>FIFA Teams</title>
 </head>
 
 <body>
@@ -40,25 +40,45 @@
     </header>
     <section class="page">
         <div class="wrapper">
-            <h2>Player/Teams</h2>
-            <fieldset class="Search">
+                
+            <!-- <fieldset class="Search">
                 <form action="submit">
                     <label for="team" class="sr-only">search team</label>
-                    <input type="search" id="team" placeholder="search team" team-search>
-                    <label for="player" class="sr-only">search player</label>
+                    <input type="search" id="team" placeholder="search team" team-search> -->
+                    <!-- <label for="player" class="sr-only">search player</label>
                     <input type="search" id="player" placeholder="search player" player-search>
                 </form>
-            </fieldset>
-            <div class="matches">
-                <div class="dates">
-
-
+            </fieldset> --> 
+                <div class="tabContainer">
+                    <ul class="tabContainer">
+                        <li data-tab-target="#team-players" class="active tab">Teams</li>
+                        <li data-tab-target="#top-scorers" class="tab">Top Scorers</li>
+                    </ul>
                 </div>
-            </div>
+                <div class="tab-content">
+                    <div id="team-players" data-tab-content class="active">
+                        
+                        <div class="container">
+                            <p>Click a team to see players</p>
+                            <div class="load-wrapp">
+                                <p>Loading...</p>
+                                <div class="load-9">
+                                    <div class="spinner">
+                                        <div class="bubble-1"></div>
+                                        <div class="bubble-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="top-scorers" class="top-tab" data-tab-content>
+                        <h3>World Cup Top Scorers</h3>
+                    </div>
+                </div>
         </div>
 
     </section>
-    <script src="../script2.js"></script>
+    <script src="../script.js"></script>
 </body>
 
 </html>
