@@ -45,14 +45,17 @@ const teamsAndPlayers = urls.map(url => {
 
 fifaMatch.getAllPlayers = function(teamData) {
     const teamArray = teamData[1].teams;
-    // console.log(teamArray);
-
     let allPlayers = [];
     
     for(let i = 0; i < teamArray.length; i++) {
         allPlayers.push(teamArray[i].squad);
     }
-    console.log(allPlayers);
+
+    //List of 835 players from WC 2022!
+    mergedList = allPlayers.flat(1);
+    console.log(mergedList);
+
+    fifaMatch.displayAllPlayers(mergedList);
 
 } 
 
@@ -94,7 +97,7 @@ fifaMatch.displayTeams = function(teamData) {
 
 
         // appends everything to the team container efter every element is created and loaded
-        document.querySelector('.container').appendChild(teamContainer); //Appends the team container to the page
+        document.querySelector('.main-container').appendChild(teamContainer); //Appends the team container to the page
         
     }
     fifaMatch.getTeamIndex(squadData);
@@ -102,7 +105,7 @@ fifaMatch.displayTeams = function(teamData) {
 }
 
 fifaMatch.getSquad = (arrayIndex, squadData) => {
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.main-container');
     container.innerHTML = "";
 
     const buttonBox = document.createElement('div');
@@ -157,18 +160,92 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
 
 }
 
+fifaMatch.displayAllPlayers = (mergedList) => {
+    const container = document.querySelector('.scorer-container');
+    container.innerHTML = "";
+
+    const allPlayers = mergedList;
+    const allTab = document.getElementById('wc-players');
+    const allContainer = document.createElement('div');
+    allTab.appendChild(allContainer);
+
+    // let allPlayersIndex = 0; //initialize chunk index
+
+    const allNumPlayers = 2; //only get 5
+    const allNumArray = []
+    for (let i = 0; i < mergedList.length; i += allNumPlayers) {
+       const allNumSlice = mergedList.slice(i, i + allNumPlayers);
+       allNumArray.push(allNumSlice);
+    }
+
+    // showMovies(allNumArray[0]); 
+    console.log(allNumArray);
+    // scoreArray.forEach(stats => {
+        
+    //      //container for athlete profile
+    //     const athleteContainer = document.createElement('div');
+    //     athleteContainer.classList.add('statsBox');
+    //     topContainer.appendChild(athleteContainer);
+
+    //     const imageTeamDiv = document.createElement('div');
+    //     imageTeamDiv.classList.add('img-box');
+    //     athleteContainer.appendChild(imageTeamDiv); 
+
+    //     const teamCrest = stats.team.crest;
+    //     const teamFlag = document.createElement('img');
+    //     teamFlag.src = teamCrest;
+    //     teamFlag.alt = 'team flag';
+    //     imageTeamDiv.appendChild(teamFlag); 
+
+    //      //display the athlete profile
+    //     const playerInfo = document.createElement('div');
+    //     playerInfo.classList.add('player');
+    //     athleteContainer.appendChild(playerInfo);
+
+    //     //display the name, position, birthdate
+    //     const date = new Date(stats.player.dateOfBirth);
+    //     const bornOn = date.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+    //     const profileText = document.createElement('p');
+        
+    //     profileText.innerText = 
+    //         `Country : ${stats.team.name}
+    //          Player : ${stats.player.name}
+    //          Position : ${stats.player.position}
+    //          Date Of Birth : ${bornOn}
+    //         `;
+    //     playerInfo.appendChild(profileText);
+
+    //     const goalDiv = document.createElement('div')
+    //     goalDiv.classList.add('statsCell');
+    //     athleteContainer.appendChild(goalDiv);
+    //     goalDiv.innerText = `Goals: ${stats.goals}`;
+
+    //     const assistsDiv = document.createElement('div')
+    //     assistsDiv.classList.add('statsCell');
+    //     athleteContainer.appendChild(assistsDiv);
+    //     assistsDiv.innerText = `Assists: ${(stats.assists === null ? '0' : stats.assists)}`;
+
+    //     const penaltyDiv = document.createElement('div')
+    //     penaltyDiv.classList.add('statsCell');
+    //     athleteContainer.appendChild(penaltyDiv);
+    //     penaltyDiv.innerText = `Penalties: ${(stats.penalties === null ? '0' : stats.penalties)}`;
+
+    // })
+
+}
+
 fifaMatch.displayTopScorers = (teamData) => {
+    const container = document.querySelector('.scorer-container');
+    container.innerHTML = "";
+
     const topArray = teamData[2];
     const scoreArray = topArray.scorers;
-    console.log(scoreArray);
-
-    const topTab = document.querySelector('.top-tab');
+    const topTab = document.getElementById('top-scorers');
     const topContainer = document.createElement('div');
     topTab.appendChild(topContainer);
 
     scoreArray.forEach(stats => {
-        console.log(stats.player.name);
-
+        
          //container for athlete profile
         const athleteContainer = document.createElement('div');
         athleteContainer.classList.add('statsBox');
@@ -217,14 +294,7 @@ fifaMatch.displayTopScorers = (teamData) => {
         athleteContainer.appendChild(penaltyDiv);
         penaltyDiv.innerText = `Penalties: ${(stats.penalties === null ? '0' : stats.penalties)}`;
 
-
-        // const athleteContainer = document.createElement('div');
-        // athleteContainer.classList.add('athleteBox');
-        // topContainer.appendChild(athleteContainer);
-
     })
-
-
 
 }
 
