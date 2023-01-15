@@ -719,6 +719,9 @@ header .wrapper nav .nav-bar li {
 .circle.red {
   background-color: #f04a3e;
 }
+.circle.grey {
+  background-color: #676a6e;
+}
 .circle .filler {
   width: 100%;
   height: 100%;
@@ -795,4 +798,35 @@ header .wrapper nav .nav-bar li {
 }
 .page .wrapper .standings {
   width: 100%;
+}
+
+.team .team-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.team .team-main .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
