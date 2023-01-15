@@ -56,6 +56,7 @@ header {
                 .match{
                     flex-basis:40%;
                     flex-grow:1;
+                    
                     padding:1rem;
                     display:flex;
                     justify-content: space-between;
@@ -66,7 +67,7 @@ header {
                     &.hide{
                         display:none;
                     }
-                    &:hover {
+                    &:hover, &:focus {
                         background-color: $off-white;
                         color: $black;
                         border: solid 1px $off-white;
@@ -75,19 +76,6 @@ header {
                                 background-color: $tertiary-color;
                             }
                         }
-                    }
-                    &:focus {
-                        background-color: $off-white;
-                        color: $black;
-                        border: solid 1px $off-white;
-                        .more-info {
-                            img-box {
-                                background-color: $tertiary-color;
-                            }
-                        }
-                    }
-                    &.hide {
-                        display: none;
                     }
                     .team1{
                         display:flex;
@@ -114,7 +102,6 @@ header {
                         .img-box {
                             width: 30px;
                             margin:0 10px;
-                        
                             img {
                                 max-width:100%;
                                 width: 30px;

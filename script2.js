@@ -1,7 +1,7 @@
 // initialize namespace
 const footballStats = {};
 // initialize apikey
-footballStats.apikey = '216fc317fce14a3e92c6759cc84f2ceb';
+footballStats.apikey = '70a843e5cf86426b9a1a9528ec8a7da7';
 footballStats.jsonData = {};
 
     // arguments for this function dates array which will be the unique type dates, locally sorted matches 
@@ -87,9 +87,7 @@ footballStats.getDates = (matches) => {
     const dates = []
     footballStats.sortedByDateMatches = {}
     matches.forEach(match => {
-        date = new Date(match.utcDate)
-        dates.push(date.toDateString())
-        footballStats.sortedByDateMatches.date = {team1:match.awayTeam.name, team2:match.homeTeam.name, winner:winner, date:date.toDateString()};
+        dates.push(footballStats.convertDate(match.utcDate))
     })
     const uniqueDates = [...new Set(dates)]
     footballStats.uniqueDates = uniqueDates
@@ -301,6 +299,7 @@ footballStats.init = () => {
         console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
+        document.querySelector('.load-wrapp').classList.add('hide')
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
         .then((matchesWithElements) => {
             footballStats.eventListeners(matchesWithElements)
