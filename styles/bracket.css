@@ -475,6 +475,106 @@ header .wrapper h1 {
   border-bottom: rgba(255, 255, 255, 0) 5px solid;
 }
 
+fieldset {
+  margin: 1rem 0;
+}
+fieldset form {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+fieldset form input {
+  font-family: "Roboto";
+  font-weight: 400;
+  margin: 10px 5px 10px 5px;
+  padding: 0.5rem;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 300px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 300px;
+}
+fieldset form input::-webkit-input-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input::-moz-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input:-ms-input-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input::-ms-input-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input::placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form textarea {
+  font-family: "Roboto";
+  font-weight: 400;
+  border: #FAFAFA 2px solid;
+  padding: 1rem;
+  margin: 5px;
+  margin: 0 5px;
+  -ms-flex-preferred-size: calc(100% - 10px);
+      flex-basis: calc(100% - 10px);
+  min-width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 790px;
+  margin: 10px 5px 10px 5px;
+}
+fieldset form textarea::-webkit-input-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea::-moz-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea:-ms-input-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea::-ms-input-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea::placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+
 .spinner {
   position: relative;
   width: 45px;
@@ -594,33 +694,6 @@ header .wrapper h1 {
     content: ".....";
   }
 }
-input {
-  padding: 0.5rem;
-  border-radius: 20px;
-  font-size: 16px;
-  width: 300px;
-}
-input::-webkit-input-placeholder {
-  font-size: 16px;
-  text-align: center;
-}
-input::-moz-placeholder {
-  font-size: 16px;
-  text-align: center;
-}
-input:-ms-input-placeholder {
-  font-size: 16px;
-  text-align: center;
-}
-input::-ms-input-placeholder {
-  font-size: 16px;
-  text-align: center;
-}
-input::placeholder {
-  font-size: 16px;
-  text-align: center;
-}
-
 header .wrapper fieldset {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
@@ -657,6 +730,7 @@ header .wrapper nav {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  max-width: 1000px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -666,6 +740,12 @@ header .wrapper nav {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  margin: 0 0px;
+  -ms-flex-preferred-size: calc(50% - 0px);
+      flex-basis: calc(50% - 0px);
+  min-width: 350px;
+  flex-grow: 1;
+  max-width: 50%;
   padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -684,6 +764,11 @@ header .wrapper nav {
       flex-wrap: wrap;
   border: 1px solid #33383A;
   color: white;
+}
+@media (max-width: 780px) {
+  .date .match-table .match {
+    max-width: 100%;
+  }
 }
 .date .match-table .match.hide {
   display: none;
@@ -707,7 +792,7 @@ header .wrapper nav {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  max-width: 800px;
+  max-width: 50%;
 }
 .date .match-table .match .team2 {
   display: -webkit-box;
@@ -720,7 +805,7 @@ header .wrapper nav {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  max-width: 800px;
+  max-width: 50%;
 }
 .date .match-table .match .more-info {
   margin: 1rem 0.5rem 1rem 0.5rem;

@@ -5,13 +5,26 @@
 @use './partials/wrapper';
 @use './partials/header';
 @use './partials/nav-bar';
+@use './partials/form';
 @use './partials/loader';
-@use './partials/input';
 @use './partials/sections';
 @use './partials/dates';
 @use './partials/flag-box';
 
 
+.page {
+    .wrapper {
+        @include flex-center(column, space-between, center);
+
+        fieldset {
+            align-self: flex-start;
+        }
+
+        .matches {
+            width: 100%;
+        }
+    }
+}
 
 .matches {
     @include flex-center(column, space-between, flex-start);

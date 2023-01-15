@@ -12,10 +12,15 @@
         background-color: $tertiary-color;
         border: 1px solid $border-color;
         @include flex-center(row, space-between, flex-start);
+        max-width:1000px;
         flex-wrap: wrap;
         .match {
             flex-basis: 40%;
             flex-grow: 1;
+            @include wrap($margin:0px, $number-in-a-row:2, $min-width:350px, $max-width:50%);
+            @media (max-width:780px){
+                max-width: 100%;
+            }
             padding: 1rem;
             @include flex-center(row, space-between, center);
             flex-wrap: wrap;
@@ -43,7 +48,8 @@
                 // margin: 0 0.5rem;
                 // flex-basis: 40%;
                 // min-width: 190px;
-                @include wrap($margin:0.5rem, $number-in-a-row:2, $min-width:190px, $max-width:800px);
+                @include wrap($margin:0.5rem, $number-in-a-row:2, $min-width:190px, $max-width:50%);
+               
                 
             }
 
@@ -52,7 +58,8 @@
                 // margin: 0 0.5rem;
                 // min-width: 190px;
                 // flex-basis: 40%;
-                @include wrap($margin:0.5rem, $number-in-a-row:2, $min-width:190px, $max-width:800px);
+                @include wrap($margin:0.5rem, $number-in-a-row:2, $min-width:190px, $max-width:50%);
+                
 
             }
 
