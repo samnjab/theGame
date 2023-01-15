@@ -41,21 +41,73 @@
     <section class="page">
         <div class="wrapper">
             <h2>Standings</h2>
+            <nav>
+                <ul class="nav-bar nested">
+                    <li><a href="#" class="active">Group Stage</a></li>
+                    <li><a href="#" class="linked">Knockouts</a></li>
+                </ul>
+            </nav>
             <fieldset class="Search">
                 <form action="submit">
                     <label for="search" class="sr-only">search standings</label>
                     <input type="search" id="search" placeholder="search standings" standing-search>
                 </form>
             </fieldset>
-            <div class="matches">
-                <div class="dates">
+            <div class="standings">
 
-
-                </div>
+            
             </div>
         </div>
 
     </section>
-<script src="../script2.js"></script>
+
+    <template data-group-template>
+        <div class="group">
+            <h4 data-group-header class="group-header"></h4>
+            <div data-group-table class="group-table"></div>
+        </div>
+    </template>
+
+    <template data-team-template>
+        <div class="team">
+            <div class="team-main">
+                <div class="name">
+                    <div data-flag-box class="img-box"><img data-team-flag src="" alt=""></div>
+                    <p data-team-name></p>
+                </div>
+                <div data-team-scores class="scores">
+
+                </div>
+            </div>
+
+            <!-- <div data-more-info class="more-info hide">
+                <div data-competition>
+                    <p data-competition-name></p>
+                    <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
+                </div>
+                <div data-match-info>
+                    <p data-match-date></p>
+                    <p data-group></p>
+                    <p data-stage></p>
+                    <p data-match-day></p>
+                    <p data-status></p>
+                    <p data-winner class="winner"></p>
+                </div>
+                <div data-season-info>
+                    <p data-season-start></p>
+                    <p data-season-end></p>
+                    <p data-season-match-day></p>
+                </div>
+    
+            </div> -->
+        </div>
+    </template>
+
+    <template data-circle-template>
+        <div class="circle"><p data-mark class="filler"></p></div>
+    </template>
+
+
+<script src="../standings.js"></script>
 </body>
 </html>

@@ -9,27 +9,17 @@ header {
         padding: 20px 0px;
         nav {
             .nav-bar {
-                @include flex-center(row, space-between, center);
                 flex-wrap: wrap;
-                width: 100%;
                 li {
                     @include wrap($margin:7px, $number-in-a-row:4, $min-width:fit-content, $max-width:fit-content);
                 }
-                .active {
-                    border-bottom: $white 5px solid;
-                    
-                }
-                .linked {
-                    border-bottom: rgb(255, 255, 255, 0) 5px solid;
-                    
-                }
+               
             }
         }
         h1 {
             @include heading-styler;
             @include responsive-size(4rem, 1/3, 4vw);
-            z-index: 20;
-            margin-bottom: 250px;
+            margin-bottom: 100px;
         }
     }
 }

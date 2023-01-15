@@ -33,16 +33,26 @@
     &.hide{
         display:none;
     }
+    p{
+        padding: 0 0 20px;
+        text-align: center;
+
+        &::after{
+            content:" ";
+            color:$text-color;
+            animation: dot1 2s ease-in-out infinite;
+        
+        }
+    }
+    &:last-child{
+        margin-right:0;
+    }
 }
 
-.load-wrapp p {
-    padding: 0 0 20px;
-    text-align: center;
-}
 
-.load-wrapp:last-child {
-    margin-right: 0;
-}
+// .load-wrapp:last-child {
+//     margin-right: 0;
+// }
 
 .load-9 .spinner {
     animation: loadingI 2s linear infinite;
@@ -72,5 +82,17 @@
 
     50% {
         transform: scale(1);
+    }
+}
+
+@keyframes dot1{
+    0%, 100%{
+        content:'...';
+    }
+    25%, 75%{
+        content:'....';
+    }
+    50%{
+        content:'.....';
     }
 }

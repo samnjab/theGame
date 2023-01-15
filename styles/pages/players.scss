@@ -2,9 +2,211 @@
 @use '../partials/variables'as *;
 @use '../partials/resets';
 @use '../partials/typography';
-@use '../partials/header';
 @use '../partials/wrapper';
+@use '../partials/header';
+@use '../partials/nav-bar';
+@use '../partials/form';
 @use '../partials/loader';
-@use '../partials/input';
 @use '../partials/sections';
 @use '../partials/dates';
+@use '../partials/flag-box';
+@use '../partials/mediaQuery';
+
+
+.container {
+    margin-top: 75px;
+    /* border: 2px solid white; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    p {
+        width: 100%;
+    }
+
+}
+
+.refreshBox {
+    width: 100%;
+
+    button {
+        height: 25px;
+        width: 200px;
+    }
+}
+
+
+.teamBox {
+    display: flex;
+    width: 500px;
+    height: 150px;
+
+    &:hover,
+    &:focus {
+        background-color: $off-white;
+        color: $black;
+        border: solid 1px $off-white;
+
+        .more-info {
+            img-box {
+                background-color: $tertiary-color;
+            }
+        }
+    }
+}
+
+.team {
+    display: flex;
+}
+
+.img-box {
+    /* border: 2px solid white; */
+    width: 100px;
+    height: 80px;
+    margin: 20px;
+}
+
+img {
+    width: 100%;
+    border: 1px solid black;
+    /* height: 40px; */
+}
+
+.teamInfo {
+    width: 350px;
+    padding: 20px;
+}
+
+div.hide {
+    display: none;
+}
+
+.athleteBox {
+    display: flex;
+    justify-content: center;
+    width: 450px;
+    height: 175px;
+    margin: 20px auto;
+    padding: 20px;
+    // background-color: white;
+    border-radius: 2%;
+
+    .img-box {
+        /* border: 2px solid white; */
+        width: 100px;
+        height: 80px;
+        margin: 5px;
+
+        img {
+            width: 100%;
+            border: 1px solid lightgrey;
+            /* height: 40px; */
+        }
+    }
+
+    .player {
+        display: flex;
+        color: black;
+
+        p {
+            color: white;
+            padding-left: 20px;
+        }
+    }
+}
+
+.statsBox {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 175px;
+    margin: 20px auto;
+    padding: 20px;
+    // background-color: white;
+    border-radius: 2%;
+
+    .img-box {
+        /* border: 2px solid white; */
+        width: 150px;
+        margin: 5px;
+
+        img {
+            width: 100%;
+            border: 1px solid lightgrey;
+            /* height: 40px; */
+        }
+    }
+
+    .statsCell {
+        margin: 0px 10px;
+        padding: 0;
+        width: 65px;
+        text-align: center;
+    }
+
+    // .player {
+    //     display: flex;
+    //     color: black;
+
+    p {
+        color: white;
+        // padding-left: 20px;
+        margin: 0px 25px;
+    }
+
+}
+
+[data-tab-content] {
+    display: none;
+}
+
+.active[data-tab-content] {
+    display: block;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+div.tabContainer {
+    display: flex;
+    width: 100%;
+
+}
+
+ul.tabContainer {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.tabs {
+    display: flex;
+
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px;
+    width: 50%;
+}
+
+.tab.active {
+    background-color: #403c32;
+}
+
+.tab:hover {
+    background-color: #544f42;
+}
+
+.tab-content {
+    margin-left: 20px;
+    margin-right: 20px;
+}
