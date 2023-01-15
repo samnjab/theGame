@@ -8,21 +8,23 @@
 @use './partials/input';
 @use './partials/sections';
 @use './partials/dates';
+@use './partials/players';
+@use './partials/_mediaQuery'
 
 
 
-.page{
-    .wrapper{
-        .matches{
-            @include flex-center(column, space-between,flex-start);
-            .load-wrapp{
-                align-self:center;
+// .page{
+//     .wrapper{
+//         .matches{
+//             @include flex-center(column, space-between,flex-start);
+//             .load-wrapp{
+//                 align-self:center;
                 
                 
-            }
-            .date{
-                align-self: stretch;
-            }
-        }
-    }
-}
+//             }
+//             .date{
+//                 align-self: stretch;
+//             }
+//         }
+//     }
+// }
