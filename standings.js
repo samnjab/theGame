@@ -59,6 +59,32 @@ footballStats.convertDate = (utcDate) => {
     return date.toDateString()
 }
 
+footballStats.constructGroups = (num) => {
+    groups = []
+    for (i=0;i<=num;i++){
+        let chr = String.fromCharCode(65 + i)
+        groups.push(`GROUP_${chr}`) 
+    }
+    return groups
+}
+
+footballStats.sortByGroup = (matches, group) => {
+    filteredMatches = matches.filter(match => {
+        return match.group === group
+    })
+    return filteredMatches
+
+}
+footballStats.extractTeams = (matches) =>{
+    teams = []
+    matches.forEach(match =>{
+        teams.push(match.team1.name)
+        teams.push(match.team2.name)
+    })
+    return [...new Set(teams)]
+
+}
+
 
 
 
@@ -92,6 +118,20 @@ footballStats.init = () =>{
         //     footballStats.sortedMatchesforStages[stages[i]] = footballStats.sortByDate(uniqueDatesOfStages[stages[i]], matches[stages[i]])
         //     console.log('sorted matches for', stages[i] , footballStats.sortedMatchesforStages[stages[i]])
         // }
+
+        groups = footballStats.constructGroups(7)
+        console.log(groups)
+        footballStats.filteredMatches = {}
+        groups.forEach(group => {
+            footballStats.filteredMatches[group] = footballStats.sortByGroup(matches.GROUP_STAGE, group)
+        })
+        console.log(footballStats.filteredMatches)
+        footballStats.teams ={}
+        for (group in footballStats.filteredMatches){
+            footballStats.teams[group] = footballStats.extractTeams(footballStats.filteredMatches[group])
+        }
+        console.log('teams object is', footballStats.teams)
+
 
     }
 

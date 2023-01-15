@@ -702,3 +702,17 @@ header .wrapper nav .nav-bar li {
 .hide {
   display: none;
 }
+
+.circle {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 2px;
+  color: #f0f1f2;
+  cursor: pointer;
+}
+.circle .filler {
+  width: 100%;
+  height: 100%;
+}

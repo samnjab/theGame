@@ -8,3 +8,18 @@
 @use '../partials/input';
 @use '../partials/sections';
 @use '../partials/dates';
+
+
+.circle{
+    width:16px;
+    height:16px;
+    display:inline-block;
+    border-radius: 50%;
+    margin:0 2px;
+    color:$off-white;
+    cursor:pointer;
+    .filler{
+        width:100%;
+        height:100%;
+    }
+}
