@@ -122,12 +122,13 @@ footballStats.display = (groups)=>{
         const groupTemplate = document.querySelector('[data-group-template]')
         const groupDiv = groupTemplate.content.cloneNode(true)
         groupDiv.querySelector('[data-group-header]').textContent = group
+        console.log('group name is', [...group])
         const groupTable = groupDiv.querySelector('[data-group-table]')
         footballStats.teams[group].forEach(team => {
             teamWithDiv = footballStats.assignCircle(team, footballStats.filteredMatches[group]).teamDiv
             groupTable.append(teamWithDiv)
         })
-        document.querySelector('.standings').append(groupTable)
+        document.querySelector('.standings').append(groupDiv)
     })
 }
 
