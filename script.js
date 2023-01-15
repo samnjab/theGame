@@ -108,11 +108,15 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
     const container = document.querySelector('.container');
     container.innerHTML = "";
 
+    const buttonBox = document.createElement('div');
+    buttonBox.classList.add('refreshBox');
+    container.appendChild(buttonBox);
+
     const refresh = document.createElement('input');
     refresh.setAttribute("type", "button")
     refresh.setAttribute("value", "<- Back to teams")
     refresh.setAttribute("onClick", "window.location.reload()")
-    container.appendChild(refresh);
+    buttonBox.appendChild(refresh);
 
     const squadIndex = arrayIndex;
     const squadObject = squadData;
@@ -167,7 +171,6 @@ fifaMatch.getTeamIndex = (squadData) => {
             // console.log(arrayIndex);
 
         fifaMatch.getSquad(arrayIndex, squadData);
-        search(arrayIndex, squadData);
         })
     
     })

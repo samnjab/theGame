@@ -622,6 +622,14 @@ header .wrapper nav .nav-bar li {
   width: 100%;
 }
 
+.refreshBox {
+  width: 100%;
+}
+.refreshBox button {
+  height: 25px;
+  width: 200px;
+}
+
 .teamBox {
   display: -webkit-box;
   display: -ms-flexbox;
