@@ -18,9 +18,14 @@
     // @include flex-center(row, center, center);
     border-radius: 50%;
     margin:0 2px;
-    color:$off-white;
     border:1px $off-white solid;
     cursor:pointer;
+    &.green{
+        background-color:#3aa112;
+    }
+    &.red{
+        background-color: #f04a3e;
+    }
     .filler{
         width:100%;
         height:100%;
@@ -30,6 +35,7 @@
         vertical-align: center;
         position:absolute;
         top:-7px;
+        color:$text-color;
     }
     
 }

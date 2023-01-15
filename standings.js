@@ -105,11 +105,11 @@ footballStats.assignCircle = (team, matches) => {
         if (match.team1.name == team.name || match.team2.name == team.name){
             const circleDiv = circleTemplate.content.cloneNode(true)
             if (match.winner == team.name){
-                circleDiv.textContent = checkMark
+                circleDiv.querySelector('.filler').textContent = checkMark
             }else if(match.winner == 'Draw'){
-                circleDiv.textContent = dashMark
+                circleDiv.querySelector('.filler').textContent = dashMark
             }else{
-                circleDiv.textContent = crossMark
+                circleDiv.querySelector('.filler').textContent = crossMark
             }
             teamDiv.querySelector('[data-team-scores]').append(circleDiv)
         }

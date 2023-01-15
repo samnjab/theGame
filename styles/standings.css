@@ -710,9 +710,14 @@ header .wrapper nav .nav-bar li {
   position: relative;
   border-radius: 50%;
   margin: 0 2px;
-  color: #f0f1f2;
   border: 1px #f0f1f2 solid;
   cursor: pointer;
+}
+.circle.green {
+  background-color: #3aa112;
+}
+.circle.red {
+  background-color: #f04a3e;
 }
 .circle .filler {
   width: 100%;
@@ -723,6 +728,7 @@ header .wrapper nav .nav-bar li {
   vertical-align: center;
   position: absolute;
   top: -7px;
+  color: white;
 }
 
 .img-box {
