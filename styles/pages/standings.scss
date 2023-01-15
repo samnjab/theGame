@@ -17,15 +17,19 @@
 .page{
     .wrapper{
         @include flex-center(column, space-between, center);
-        fieldset{
-            align-self: flex-start;
-        }
+        // fieldset{
+        //     align-self: flex-start;
+        // }
         nav{
             width:60%;
             margin:2rem;
         }
         .standings{
             width:100%;
+            .group{
+                width:75%;
+                margin:auto;
+            }
         }
     }
 }

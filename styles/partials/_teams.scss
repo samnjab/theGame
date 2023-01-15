@@ -2,7 +2,6 @@
 .team {
     .team-main {
         @include flex-center(row, space-between, center);
-
         .name {
             @include flex-center(row, space-between, center);
         }

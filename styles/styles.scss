@@ -16,10 +16,6 @@
     .wrapper {
         @include flex-center(column, space-between, center);
 
-        fieldset {
-            align-self: flex-start;
-        }
-
         .matches {
             width: 100%;
         }
@@ -27,7 +23,18 @@
 }
 
 .matches {
-    @include flex-center(column, space-between, flex-start);
+    margin:auto;
+    
+    .date{
+        .match-header{
+            margin: 20px auto;
+        }
+        margin:auto;
+        .match-table{
+            margin:auto;
+        }
+    }
+
 
     .load-wrapp {
         align-self: center;

@@ -714,6 +714,9 @@ header .wrapper nav {
 .date h4 {
   text-align: left;
 }
+.date .match-header {
+  max-width: 1000px;
+}
 .date .match-table {
   background-color: #1F2224;
   border: 1px solid #33383A;
@@ -857,28 +860,21 @@ header .wrapper nav {
       -ms-flex-align: center;
           align-items: center;
 }
-.page .wrapper fieldset {
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-}
 .page .wrapper .matches {
   width: 100%;
 }
 
 .matches {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  margin: auto;
+}
+.matches .date {
+  margin: auto;
+}
+.matches .date .match-header {
+  margin: 20px auto;
+}
+.matches .date .match-table {
+  margin: auto;
 }
 .matches .load-wrapp {
   -ms-flex-item-align: center;

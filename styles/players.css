@@ -572,6 +572,9 @@ header .wrapper nav {
 .date h4 {
   text-align: left;
 }
+.date .match-header {
+  max-width: 1000px;
+}
 .date .match-table {
   background-color: #1F2224;
   border: 1px solid #33383A;

@@ -672,6 +672,9 @@ header .wrapper nav {
 .date h4 {
   text-align: left;
 }
+.date .match-header {
+  max-width: 1000px;
+}
 .date .match-table {
   background-color: #1F2224;
   border: 1px solid #33383A;
@@ -919,14 +922,14 @@ header .wrapper nav {
       -ms-flex-align: center;
           align-items: center;
 }
-.page .wrapper fieldset {
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-}
 .page .wrapper nav {
   width: 60%;
   margin: 2rem;
 }
 .page .wrapper .standings {
   width: 100%;
+}
+.page .wrapper .standings .group {
+  width: 75%;
+  margin: auto;
 }

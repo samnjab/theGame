@@ -7,7 +7,9 @@
     h4 {
         text-align: left;
     }
-
+    .match-header{
+        max-width: 1000px;
+    }
     .match-table {
         background-color: $tertiary-color;
         border: 1px solid $border-color;
