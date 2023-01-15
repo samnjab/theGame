@@ -508,6 +508,9 @@ header .wrapper nav .nav-bar li {
 .page {
   background-color: #0A0C0C;
 }
+.page .wrapper .date.hide {
+  display: none;
+}
 .page .wrapper .date h4 {
   text-align: left;
 }
@@ -543,6 +546,9 @@ header .wrapper nav .nav-bar li {
   border: 1px solid #33383A;
   color: white;
 }
+.page .wrapper .date .match-table .match.hide {
+  display: none;
+}
 .page .wrapper .date .match-table .match:hover {
   background-color: #f0f1f2;
   color: #2C2C2C;
@@ -569,6 +575,7 @@ header .wrapper nav .nav-bar li {
   margin: 0 0.5rem;
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
+  min-width: 190px;
 }
 .page .wrapper .date .match-table .match .team1 .img-box {
   width: 30px;
@@ -581,6 +588,7 @@ header .wrapper nav .nav-bar li {
   border: 1px solid black;
 }
 .page .wrapper .date .match-table .match .team2 {
+  min-width: 190px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -609,6 +617,7 @@ header .wrapper nav .nav-bar li {
   height: auto;
 }
 
+<<<<<<< HEAD
 .container {
   margin-top: 75px;
   /* border: 2px solid white; */
@@ -760,4 +769,8 @@ ul.tabContainer {
 .tab-content {
   margin-left: 20px;
   margin-right: 20px;
+=======
+.hide {
+  display: none;
+>>>>>>> dev
 }

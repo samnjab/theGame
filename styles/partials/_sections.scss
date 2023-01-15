@@ -40,9 +40,9 @@ header {
     background-color: $secondary-color;
     .wrapper{
         .date{
-            // &.hide {
-            //     display: none;
-            // }
+            &.hide {
+                display: none;
+            }
             h4{
                 text-align: left;
             }
@@ -63,6 +63,9 @@ header {
                     flex-wrap:wrap;
                     border:1px solid $border-color;
                     color:$text-color;
+                    &.hide{
+                        display:none;
+                    }
                     &:hover {
                         background-color: $off-white;
                         color: $black;
@@ -90,6 +93,7 @@ header {
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;
+                        min-width: 190px;
                         .img-box{
                             width:30px;
                             margin:0 10px;
@@ -103,6 +107,7 @@ header {
                         }
                     }
                     .team2{
+                        min-width: 190px;
                         display:flex;
                         margin: 0 0.5rem;
                         flex-basis:40%;
@@ -139,7 +144,8 @@ header {
     }
 }
 
-// .hide{
-//     display:none;
-// }
+.hide{
+    display:none;
+}
+
 

@@ -193,6 +193,105 @@ footballStats.getData = (url) => {
     
     })
 }
+footballStats.eventListeners = (matchesWithElements) =>{
+    offBySearch = [...Array(document.querySelectorAll('.date').length).fill(false)]
+    offBySearchMatches =[...Array(document.querySelectorAll('.match').length).fill(false)]
+    // console.log(offBySearchMatches)
+    const hideOtherMatches = (clickMatches, clickedMatch) => {
+        clickMatches.forEach((match, i) => {
+            console.log(match)
+            // match.classList.toggle('hide', match!=clickMatch)
+            if (match != clickedMatch && !offBySearchMatches[i]){
+                console.log(offBySearchMatches[i])
+                match.classList.toggle('hide')
+                // console.log(match.parentElement.parentElement.children[0])
+                // match.parentElement.parentElement.children[0].classList.toggle('hide')
+                
+            }
+        })
+
+    }
+    const getVisibilityStatus = (dateDivs) =>{
+        dateDivsArray = [...dateDivs]
+        // console.log(dateDivsArray)
+        // <<<<<<<<<< dateDivsVisibility is an array collection of {dateDiv:address of the div, dateVisible:current visibility of that dateDiv}
+        dateDivsVisible = dateDivsArray.map((dateDiv) => {
+            // console.log(dateDiv.style.display)
+            if (dateDiv.style.display == 'none'){
+                dateVisible = false
+                console.log(dateVisible)
+            }else{
+                dateVisible = true
+            }
+            return {dateDiv:dateDiv, dateVisible: dateVisible}
+        })
+        
+        return dateDivsVisible
+
+    }
+    const hideOtherDates = (dateDivs, clickedMatch) => {
+        dateDivs.forEach((dateDiv, i) => {
+            matchDivs = [...dateDiv.children[1].children]
+            matchFound = false
+            matchDivs.forEach((matchDiv) => {
+                if (matchDiv == clickedMatch){
+                    matchFound = true
+                }
+            })
+            if (!matchFound && !offBySearch[i]){
+                dateDiv.classList.toggle('hide')
+            }
+        })
+    }
+    // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
+    const userInput = document.getElementById('search')
+    userInput.addEventListener('input', e => {
+        e.preventDefault()
+        const value = e.target.value.toLowerCase()
+        const arrayWithIsVisible = []  
+        for (let i =0; i < footballStats.dates.length; i++) {
+            matchesWithIsVisible = matchesWithElements[i].map(matchWithElement => {
+                const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
+                matchWithElement.element.classList.toggle('hide', !isVisible)
+                if (!isVisible){
+                    offBySearchMatches[i] = true
+                }
+                
+                
+                // matchWithElement.element.parentElement.parentElement.classList.toggle('hide', !isVisible)   
+                return {matchWithElement:matchWithElement, isVisible:isVisible}
+            })
+            arrayWithIsVisible.push(matchesWithIsVisible)
+        }
+        const dateDivs = document.querySelectorAll('.date')
+        arrayWithIsVisible.forEach((date, i) => {
+            dateVisible = false
+            offBySearch[i] = true
+            date.forEach((match) => {
+                if (match.isVisible){
+                    dateVisible = true
+                    offBySearch[i] = false
+                }
+            })
+            dateDivs[i].classList.toggle('hide', !dateVisible)
+        })
+        
+    })
+    // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
+    const clickMatches = document.querySelectorAll('.match')
+    clickMatches.forEach(clickedMatch => {
+        clickedMatch.addEventListener('click', (e) => {
+            e.preventDefault()
+            clickedMatch.querySelector('.more-info').classList.toggle('hide')
+            hideOtherMatches(clickMatches, clickedMatch)
+            const dateDivs = document.querySelectorAll('.date')
+            // console.log(offBySearch)
+            hideOtherDates(dateDivs, clickedMatch)
+        })
+
+   })
+    
+}
 
 footballStats.init = () => {
      footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
@@ -204,43 +303,12 @@ footballStats.init = () => {
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
         .then((matchesWithElements) => {
-            console.log(matchesWithElements)
-            // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
-            const userInput = document.getElementById('search')
-            userInput.addEventListener('input', e => {
-
-                const value = e.target.value.toLowerCase()  
-
-                for (let i =0; i < footballStats.dates.length; i++) {
-                    matchesWithElements[i].forEach(matchWithElement => {
-                        const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)
-                        
-                        matchWithElement.element.classList.toggle('hide', !isVisible)
-                    })
-                }
-            })
-             // <<<<<<<<< clickable match event listener >>>>>>>>>>>>>>
-             const clickedMatches = document.querySelectorAll('.match')
-             clickedMatches.forEach(clickedMatch => {
-                 clickedMatch.addEventListener('click', (e) => {
-                     console.log(e.target)
-                    //  e.target.children[2].classList.toggle('hide')
-                 })
-
-             })
-
-
-
-
+            footballStats.eventListeners(matchesWithElements)
         })
 
-       
-
-     
     // .catch((message) => {
     //     return message
-    // })
-    
+    // })  
  
 })
 }
