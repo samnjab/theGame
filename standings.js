@@ -82,6 +82,31 @@ footballStats.extractTeams = (matches) =>{
         teams.push(match.team2.name)
     })
     return [...new Set(teams)]
+}
+
+footballStats.assignCircle = (team, matches) => {
+    const teamTemplate = document.querySelector('[data-team-template]')
+    const teamDiv = teamTemplate.textContent.cloneNode(true)
+    teamDiv.querySelector('[data-team-name]').textContent = team
+    const circleTemplate = document.querySelector('[data-circle-template')
+    const checkMark = '&#10003;'
+    const crossMark = '&#215;'
+    const dashMark = '&#8722;'
+    matches.forEach(match => {
+        if (match.team1.name == team || match.team2.name == team){
+            const circleDiv = circleTemplate.textContent.cloneNode(true)
+            if (match.winner == team){
+                circleDiv.textContent = checkMark
+            }else if(match.winner == 'Draw'){
+                circleDiv.textContent = dashMark
+            }else{
+                circleDiv.textContent = crossMark
+            }
+            teamDiv.children[0].children[1].append(circleDiv)
+
+        }
+    })
+
 
 }
 
