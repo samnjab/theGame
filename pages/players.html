@@ -40,7 +40,7 @@
     </header>
     <section class="page">
         <div class="wrapper">
-            <h2>Search Players</h2>
+                
             <fieldset class="Search">
                 <form action="submit">
                     <!-- <label for="team" class="sr-only">search team</label>
@@ -49,9 +49,24 @@
                     <input type="search" id="player" placeholder="search player" player-search>
                 </form>
             </fieldset>
-            <div class="container">
-                <div class="dates"> </div>
-            </div>
+                <div class="tabContainer">
+                    <ul class="tabContainer">
+                        <li data-tab-target="#team-players" class="active tab">Teams</li>
+                        <li data-tab-target="#top-scorers" class="tab">Top Scorers</li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div id="team-players" data-tab-content class="active">
+                        <p>Click a team to see players</p>
+                        <div class="container">
+                            <div class="date">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="top-scorers" data-tab-content>
+                        <h3>World Cup Top Scorers</h3>
+                    </div>
+                </div>
         </div>
 
     </section>

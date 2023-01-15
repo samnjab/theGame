@@ -204,11 +204,13 @@ footballStats.init = () => {
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         footballStats.display(footballStats.dates, footballStats.sortedMatches)
         .then((matchesWithElements) => {
+            console.log(matchesWithElements)
             // <<<<<<<<< search bar event listener >>>>>>>>>>>>>>
             const userInput = document.getElementById('search')
-
             userInput.addEventListener('input', e => {
+
                 const value = e.target.value.toLowerCase()  
+
                 for (let i =0; i < footballStats.dates.length; i++) {
                     matchesWithElements[i].forEach(matchWithElement => {
                         const isVisible = matchWithElement.match.team1.name.toLowerCase().includes(value) || matchWithElement.match.team2.name.toLowerCase().includes(value)

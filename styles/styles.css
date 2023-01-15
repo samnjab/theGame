@@ -643,13 +643,17 @@ header .wrapper nav .nav-bar li {
 
 img {
   width: 100%;
-  border: 1px solid whitesmoke;
+  border: 1px solid black;
   /* height: 40px; */
 }
 
 .teamInfo {
   width: 350px;
   padding: 20px;
+}
+
+div.hide {
+  display: none;
 }
 
 .athleteBox {
@@ -659,14 +663,90 @@ img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 400px;
+  width: 450px;
   height: 175px;
   margin: 20px auto;
   padding: 20px;
-  background-color: white;
   border-radius: 2%;
 }
-
-.player {
+.athleteBox .img-box {
+  /* border: 2px solid white; */
+  width: 100px;
+  height: 80px;
+  margin: 5px;
+}
+.athleteBox .img-box img {
+  width: 100%;
+  border: 1px solid lightgrey;
+  /* height: 40px; */
+}
+.athleteBox .player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   color: black;
+}
+.athleteBox .player p {
+  color: white;
+  padding-left: 20px;
+}
+
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+div.tabContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+ul.tabContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  width: 50%;
+}
+
+.tab.active {
+  background-color: #403c32;
+}
+
+.tab:hover {
+  background-color: #544f42;
+}
+
+.tab-content {
+  margin-left: 20px;
+  margin-right: 20px;
 }

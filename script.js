@@ -36,10 +36,27 @@ const teamsAndPlayers = urls.map(url => {
     Promise.all(teamsAndPlayers)
             .then((teamData => { //opens access through the promise wrapper
               fifaMatch.displayTeams(teamData);
+              fifaMatch.getAllPlayers(teamData);
             }))
 
 }
+
+fifaMatch.getAllPlayers = function(teamData) {
+    console.log(teamData);
+    const teamArray = teamData[1].teams;
+    console.log(teamArray);
+
+    let allPlayers = [];
     
+    for(let i = 0; i < teamArray.length; i++) {
+        allPlayers.push(teamArray[i].squad);
+    }
+    
+    console.log(allPlayers);
+    // console.log(allPlayers[2].name) //undefined
+
+} 
+
 
 fifaMatch.displayTeams = function(teamData) {
     console.log(teamData);
@@ -78,10 +95,6 @@ fifaMatch.displayTeams = function(teamData) {
                 Coach : ${teamObject[i].coach.name}`;
             teamInfoBox.appendChild(countryName);
 
-            // const coachName = document.createElement('p');
-            // countryName.innerText = `Coach : ${teamObject[i].coach.name}`;
-            // teamInfoBox.appendChild(coachName);
-
 
         // appends everything to the team container efter every element is created and loaded
         document.querySelector('.container').appendChild(teamContainer); //Appends the team container to the page
@@ -91,16 +104,6 @@ fifaMatch.displayTeams = function(teamData) {
     
 }
 
-//add search to Player Page
-//use the input box to seacrh squad from array
-//clear the page
-//append the player and info to the page
-
-//get the index number of team that is being clicked on
-//use the index number to get the array of the same teams 'squad' from the data
-//target the atheletes page
-//append squad to athletes page
-
 fifaMatch.getSquad = (arrayIndex, squadData) => {
     const container = document.querySelector('.container');
     container.innerHTML = "";
@@ -109,7 +112,6 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
     const squadObject = squadData;
 
     const squadList = squadObject.teams[squadIndex].squad;
-    console.log(squadList);
 
     for (let i = 0; i < squadList.length; i++) {
         
@@ -118,26 +120,76 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
         athleteContainer.classList.add('athleteBox');
         container.appendChild(athleteContainer);
 
+        const imageTeamDiv = document.createElement('div');
+        imageTeamDiv.classList.add('img-box');
+        athleteContainer.appendChild(imageTeamDiv); 
+
+        const teamCrest = squadObject.teams[squadIndex].crest;
+        const teamFlag = document.createElement('img');
+        teamFlag.src = teamCrest;
+        teamFlag.alt = 'team flag';
+        imageTeamDiv.appendChild(teamFlag); 
+
         //display the athlete profile
         const playerInfo = document.createElement('div');
         playerInfo.classList.add('player');
         athleteContainer.appendChild(playerInfo);
-
+        
         //display the name, position, birthdate
+        const date = new Date(squadList[i].dateOfBirth);
+        const bornOn = date.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
         const profileText = document.createElement('p');
         // playerText.classList.add('profile');
-        profileText.innerText =
+        profileText.innerText = 
             `Player : ${squadList[i].name}
-            Nationality : ${squadList[i].nationality}
-            Position : ${squadList[i].position}
-            Date Of Birth : ${squadList[i].dateOfBirth}
+             Position : ${squadList[i].position}
+             Date Of Birth : ${bornOn}
             `;
         playerInfo.appendChild(profileText);
-
     }
-    
+
+    search(squadList);
 }
 
+
+//Search function
+const search = (arrayIndex, squadList) => {
+
+    squadIndex = arrayIndex;
+    squadList.forEach(player => {
+        return player.name;
+    });
+    const container= document.querySelector('.container');
+    
+    container.innerHTML = "";
+
+    const displayPlayer = (squadList) => {
+        return `
+        <div class="athleteBox">
+            <div class="img-box">
+                <img src="${squadObject.teams[squadIndex].crest}" alt="team flag">
+            </div>
+            <div class="player">
+                <p>${squadList[i].name}</p>
+                <p>${squadList[i].teams.squad.name}</p>
+                <p>${squadList[i].teams.squad.name}</p>
+            </div>
+        </div>`
+
+    }
+    container.appendChild(displayPlayer);
+
+
+
+    const inputBox = document.getElementById('player'); //get by id, not class
+
+    inputBox.addEventListener('input', e => {
+        const value = e.target.value.toLowerCase()
+        
+    })
+
+    
+}
 
 fifaMatch.getTeamIndex = (squadData) => {
     const teamIndex = document.querySelectorAll('.teamInfo, .img-box');
@@ -145,14 +197,32 @@ fifaMatch.getTeamIndex = (squadData) => {
         teamIndex.forEach(teamIndex => {
         teamIndex.addEventListener('click', (e) => {
         const arrayIndex = teamIndex.getAttribute('data-index');
-        // console.log(arrayIndex);
+            // console.log(arrayIndex);
 
         fifaMatch.getSquad(arrayIndex, squadData);
+        search(arrayIndex, squadData);
         })
     
     })
     
 }
+
+const tabs = document.querySelectorAll('[data-tab-target]')
+const tabContents = document.querySelectorAll('[data-tab-content]')
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = document.querySelector(tab.dataset.tabTarget)
+    tabContents.forEach(tabContent => {
+      tabContent.classList.remove('active')
+    })
+    tabs.forEach(tab => {
+      tab.classList.remove('active')
+    })
+    tab.classList.add('active')
+    target.classList.add('active')
+  })
+})
 
 fifaMatch.init = () => {
      fifaMatch.getData();
