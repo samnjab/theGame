@@ -8,11 +8,11 @@
     
     .carousel-button {
         position: absolute;
-        z-index: 2;
+        z-index: 3;
         background: none;
         border: none;
         font-size: 4rem;
-        top: 100px;
+        top: 200px;
         transform: translateY(-100px);
         color: rgba(255, 255, 255, .5);
         cursor: pointer;
@@ -65,12 +65,17 @@
             padding: 1rem;
             order: 2;
             flex-basis: 40%;
+            flex-shrink:1;
+            flex-grow: 2;
+            min-width:350px;
+            max-width:800px;
     
     
             // opacity: 1;
             // z-index: 1;
             // transition-delay: 0ms;
             transform: translateY(50px);
+            z-index:2;
         }
     
         &.hide {
@@ -81,6 +86,14 @@
             opacity: 0.3;
             flex-basis: 15%;
             // transform:scale(0.5) translate(50px);
+            flex-shrink: 2;
+            flex-grow:0;
+            min-width:200px;
+            max-width:800px;
+            z-index: 1;
+            @media (max-width:750px){
+                display:none;
+            }
     
         }
     

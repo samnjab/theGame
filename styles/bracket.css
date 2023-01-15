@@ -779,11 +779,11 @@ header .wrapper nav {
 }
 .carousel .carousel-button {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   background: none;
   border: none;
   font-size: 4rem;
-  top: 100px;
+  top: 200px;
   -webkit-transform: translateY(-100px);
           transform: translateY(-100px);
   color: rgba(255, 255, 255, 0.5);
@@ -828,8 +828,16 @@ header .wrapper nav {
           order: 2;
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  min-width: 350px;
+  max-width: 800px;
   -webkit-transform: translateY(50px);
           transform: translateY(50px);
+  z-index: 2;
 }
 .carousel .slide.hide {
   display: none;
@@ -838,6 +846,19 @@ header .wrapper nav {
   opacity: 0.3;
   -ms-flex-preferred-size: 15%;
       flex-basis: 15%;
+  -ms-flex-negative: 2;
+      flex-shrink: 2;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  min-width: 200px;
+  max-width: 800px;
+  z-index: 1;
+}
+@media (max-width: 750px) {
+  .carousel .slide.side {
+    display: none;
+  }
 }
 
 .stages {
