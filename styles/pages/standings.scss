@@ -23,3 +23,61 @@
         height:100%;
     }
 }
+
+.img-box{
+    width:30px;
+    .img{
+        max-width:100%;
+    }
+}
+
+
+.nav-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+
+    li {
+        flex-basis: 25%;
+        
+    }
+
+}
+
+.page{
+    .wrapper{
+        @include flex-center(column, space-between, center);
+        fieldset{
+            align-self: flex-start;
+        }
+        nav{
+            width:60%;
+            margin:2rem;
+            .nested{
+                li{
+                    flex-basis: 45%;
+                    a{
+                        color:$text-color;
+                        &.active {
+                            border-bottom: $off-white 5px solid;
+                        
+                        }
+                        
+                        &.linked {
+                            border-bottom: rgb(255, 255, 255, 0) 5px solid;
+                        
+                        }
+                    }
+                }
+            }
+
+        }
+        .standings{
+            width:100%;
+
+
+        }
+    }
+}

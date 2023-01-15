@@ -41,17 +41,21 @@
     <section class="page">
         <div class="wrapper">
             <h2>Standings</h2>
+            <nav>
+                <ul class="nav-bar nested">
+                    <li><a href="#" class="active">Group Stage</a></li>
+                    <li><a href="#" class="linked">Knockouts</a></li>
+                </ul>
+            </nav>
             <fieldset class="Search">
                 <form action="submit">
                     <label for="search" class="sr-only">search standings</label>
                     <input type="search" id="search" placeholder="search standings" standing-search>
                 </form>
             </fieldset>
-            <div class="matches">
-                <div class="dates">
+            <div class="standings">
 
-
-                </div>
+            
             </div>
         </div>
 
@@ -64,11 +68,11 @@
         </div>
     </template>
 
-    <template data-team-box>
-        <a href="#" class="group">
+    <template data-team-template>
+        <div class="group">
             <div class="team-main">
                 <div class="name">
-                    <div data-flag-box class="img-box"><img data-flag-team1 src="" alt=""></div>
+                    <div data-flag-box class="img-box"><img data-team-flag src="" alt=""></div>
                     <p data-team-name></p>
                 </div>
                 <div data-team-scores class="scores">
@@ -96,7 +100,7 @@
                 </div>
     
             </div> -->
-        </a>
+        </div>
     </template>
 
     <template data-circle-template>

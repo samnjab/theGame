@@ -81,33 +81,53 @@ footballStats.extractTeams = (matches) =>{
         teams.push(match.team1.name)
         teams.push(match.team2.name)
     })
-    return [...new Set(teams)]
+    uniqueTeams = [...new Set(teams)]
+    teamsPlusFlags = uniqueTeams.map(team => {
+        thisTeamsMatches = matches.filter(match=>{
+            return (match.team1.name == team)
+        })
+        return {name:team, flag: thisTeamsMatches[0].team1.flag}
+    })
+    return teamsPlusFlags
 }
 
 footballStats.assignCircle = (team, matches) => {
     const teamTemplate = document.querySelector('[data-team-template]')
-    const teamDiv = teamTemplate.textContent.cloneNode(true)
-    teamDiv.querySelector('[data-team-name]').textContent = team
+    const teamDiv = teamTemplate.content.cloneNode(true)
+    teamDiv.querySelector('[data-team-name]').textContent = team.name
+    teamDiv.querySelector('[data-team-flag]').src = team.flag
     const circleTemplate = document.querySelector('[data-circle-template')
     const checkMark = '&#10003;'
     const crossMark = '&#215;'
     const dashMark = '&#8722;'
     matches.forEach(match => {
-        if (match.team1.name == team || match.team2.name == team){
-            const circleDiv = circleTemplate.textContent.cloneNode(true)
-            if (match.winner == team){
+        if (match.team1.name == team.name || match.team2.name == team.name){
+            const circleDiv = circleTemplate.content.cloneNode(true)
+            if (match.winner == team.name){
                 circleDiv.textContent = checkMark
             }else if(match.winner == 'Draw'){
                 circleDiv.textContent = dashMark
             }else{
                 circleDiv.textContent = crossMark
             }
-            teamDiv.children[0].children[1].append(circleDiv)
-
+            teamDiv.querySelector('[data-team-scores]').append(circleDiv)
         }
     })
+    return {team:team, teamDiv:teamDiv}
 
-
+}
+footballStats.display = (groups)=>{
+    groups.forEach(group => {
+        const groupTemplate = document.querySelector('[data-group-template]')
+        const groupDiv = groupTemplate.content.cloneNode(true)
+        groupDiv.querySelector('[data-group-header]').textContent = group
+        const groupTable = groupDiv.querySelector('[data-group-table]')
+        footballStats.teams[group].forEach(team => {
+            teamWithDiv = footballStats.assignCircle(team, footballStats.filteredMatches[group]).teamDiv
+            groupTable.append(teamWithDiv)
+        })
+        document.querySelector('.standings').append(groupTable)
+    })
 }
 
 
@@ -156,8 +176,9 @@ footballStats.init = () =>{
             footballStats.teams[group] = footballStats.extractTeams(footballStats.filteredMatches[group])
         }
         console.log('teams object is', footballStats.teams)
-
-
+        footballStats.display(groups)
+        
+        
     }
 
     nextStep(stages)
