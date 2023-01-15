@@ -27,6 +27,7 @@ const teamsAndPlayers = urls.map(url => {
         })
         .then((resData) => {
             // console.log(res);
+            document.querySelector('.load-wrapp').classList.add('hide')
             return resData;
         })
     } // End of getSchedule/Fetch
