@@ -618,6 +618,9 @@ header .wrapper nav .nav-bar li {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+.container p {
+  width: 100%;
+}
 
 .teamBox {
   display: -webkit-box;

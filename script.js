@@ -108,6 +108,12 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
     const container = document.querySelector('.container');
     container.innerHTML = "";
 
+    const refresh = document.createElement('input');
+    refresh.setAttribute("type", "button")
+    refresh.setAttribute("value", "<- Back to teams")
+    refresh.setAttribute("onClick", "window.location.reload()")
+    container.appendChild(refresh);
+
     const squadIndex = arrayIndex;
     const squadObject = squadData;
 
@@ -151,45 +157,6 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
     search(squadList);
 }
 
-
-//Search function
-const search = (arrayIndex, squadList) => {
-
-    squadIndex = arrayIndex;
-    squadList.forEach(player => {
-        return player.name;
-    });
-    const container= document.querySelector('.container');
-    
-    container.innerHTML = "";
-
-    const displayPlayer = (squadList) => {
-        return `
-        <div class="athleteBox">
-            <div class="img-box">
-                <img src="${squadObject.teams[squadIndex].crest}" alt="team flag">
-            </div>
-            <div class="player">
-                <p>${squadList[i].name}</p>
-                <p>${squadList[i].teams.squad.name}</p>
-                <p>${squadList[i].teams.squad.name}</p>
-            </div>
-        </div>`
-
-    }
-    container.appendChild(displayPlayer);
-
-
-
-    const inputBox = document.getElementById('player'); //get by id, not class
-
-    inputBox.addEventListener('input', e => {
-        const value = e.target.value.toLowerCase()
-        
-    })
-
-    
-}
 
 fifaMatch.getTeamIndex = (squadData) => {
     const teamIndex = document.querySelectorAll('.teamInfo, .img-box');

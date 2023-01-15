@@ -5,8 +5,13 @@
     /* border: 2px solid white; */
     display: flex;
     flex-wrap: wrap;
+    p {
+        width: 100%;
+    }
 
 }
+
+
 
 .teamBox {
     display: flex;
