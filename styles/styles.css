@@ -899,3 +899,34 @@ ul.tabContainer {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+@media (max-width: 390px) {
+  .statsBox {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 1px solid grey;
+  }
+  .statsBox .img-box {
+    width: 135px;
+    margin: 0px;
+  }
+  .statsBox .img-box img {
+    width: 100%;
+    border: 1px solid lightgrey;
+    /* height: 40px; */
+  }
+  .statsBox .statsCell {
+    margin: 0px 10px;
+    padding: 0;
+    width: 65px;
+    text-align: center;
+  }
+  .statsBox p {
+    color: white;
+    padding-left: 20px;
+    margin: 0px 25px;
+  }
+}
