@@ -1,0 +1,78 @@
+@use '../partials/variables' as *;
+.date {
+    &.hide {
+        display: none;
+    }
+
+    h4 {
+        text-align: left;
+    }
+
+    .match-table {
+        background-color: $tertiary-color;
+        border: 1px solid $border-color;
+        @include flex-center(row, space-between, flex-start);
+        flex-wrap: wrap;
+        .match {
+            flex-basis: 40%;
+            flex-grow: 1;
+            padding: 1rem;
+            @include flex-center(row, space-between, center);
+            flex-wrap: wrap;
+            border: 1px solid $border-color;
+            color: $text-color;
+            &.hide {
+                display: none;
+            }
+
+            &:hover,
+            &:focus {
+                background-color: $off-white;
+                color: $black;
+                border: solid 1px $off-white;
+
+                .more-info {
+                    img-box {
+                        background-color: $tertiary-color;
+                    }
+                }
+            }
+
+            .team1 {
+                display: flex;
+                // margin: 0 0.5rem;
+                // flex-basis: 40%;
+                // min-width: 190px;
+                @include wrap($margin:0.5rem, $number-in-a-row:2, $min-width:190px, $max-width:800px);
+                
+            }
+
+            .team2 {
+                display: flex;
+                // margin: 0 0.5rem;
+                // min-width: 190px;
+                // flex-basis: 40%;
+                @include wrap($margin:0.5rem, $number-in-a-row:2, $min-width:190px, $max-width:800px);
+
+            }
+
+            .more-info {
+                margin: 1rem 0.5rem 1rem 0.5rem;
+
+                .img-box {
+                    width: 50px;
+
+                    img {
+                        max-width: 100%;
+                        height: auto;
+
+                    }
+                }
+
+
+            }
+
+
+        }
+    }
+}

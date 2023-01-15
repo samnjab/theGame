@@ -1,0 +1,50 @@
+@use '../partials/variables' as *;
+.team {
+    .team-main {
+        @include flex-center(row, space-between, center);
+
+        .name {
+            @include flex-center(row, space-between, center);
+        }
+    }
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    // @include flex-center(row, center, center);
+    border-radius: 50%;
+    margin: 0 2px;
+    border: 1px $off-white solid;
+    cursor: pointer;
+
+    &.green {
+        background-color: #3aa112;
+    }
+
+    &.red {
+        background-color: #f04a3e;
+    }
+
+    &.grey {
+        background-color: #676a6e;
+    }
+
+    .filler {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        text-align: center;
+        vertical-align: center;
+        position: absolute;
+        top: -7px;
+        color: $text-color;
+    }
+
+}
+
+
+
