@@ -25,7 +25,18 @@
     display: flex;
     width: 500px;
     height: 150px;
-    /* border: 2px solid white; */
+    &:hover,
+        &:focus {
+            background-color: $off-white;
+            color: $black;
+            border: solid 1px $off-white;
+    
+            .more-info {
+                img-box {
+                    background-color: $tertiary-color;
+                }
+            }
+        }
 }
 
 .team {
@@ -83,6 +94,46 @@ div.hide {
                 padding-left: 20px;
             }
     }
+}
+
+.statsBox {
+        display: flex;
+        justify-content:center;
+        width: auto;
+        height: 175px;
+        margin: 20px auto;
+        padding: 20px;
+        // background-color: white;
+        border-radius: 2%;
+    
+        .img-box {
+            /* border: 2px solid white; */
+            width: 150px;
+            margin: 5px;
+    
+            img {
+                width: 100%;
+                border: 1px solid lightgrey;
+                /* height: 40px; */
+            }
+        }
+        
+        .statsCell {
+            margin: 0px 10px;
+            padding: 0;
+            width: 65px;
+            text-align: center;
+        }
+        // .player {
+        //     display: flex;
+        //     color: black;
+    
+            p {
+                color: white;
+                // padding-left: 20px;
+                margin: 0px 25px;
+            }
+        
 }
 
 [data-tab-content] {

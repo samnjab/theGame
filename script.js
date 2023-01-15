@@ -38,33 +38,29 @@ const teamsAndPlayers = urls.map(url => {
             .then((teamData => { //opens access through the promise wrapper
               fifaMatch.displayTeams(teamData);
               fifaMatch.getAllPlayers(teamData);
+              fifaMatch.displayTopScorers(teamData);
             }))
 
 }
 
 fifaMatch.getAllPlayers = function(teamData) {
-    console.log(teamData);
     const teamArray = teamData[1].teams;
-    console.log(teamArray);
+    // console.log(teamArray);
 
     let allPlayers = [];
     
     for(let i = 0; i < teamArray.length; i++) {
         allPlayers.push(teamArray[i].squad);
     }
-    
     console.log(allPlayers);
-    // console.log(allPlayers[2].name) //undefined
 
 } 
 
 
 fifaMatch.displayTeams = function(teamData) {
-    console.log(teamData);
     const squadData = teamData[1];
     const teamObject = teamData[1].teams;
     
-
     for (let i = 0; i <teamObject.length; i++) {
 
             const teamContainer = document.createElement('div');
@@ -159,9 +155,78 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
         playerInfo.appendChild(profileText);
     }
 
-    search(squadList);
 }
 
+fifaMatch.displayTopScorers = (teamData) => {
+    const topArray = teamData[2];
+    const scoreArray = topArray.scorers;
+    console.log(scoreArray);
+
+    const topTab = document.querySelector('.top-tab');
+    const topContainer = document.createElement('div');
+    topTab.appendChild(topContainer);
+
+    scoreArray.forEach(stats => {
+        console.log(stats.player.name);
+
+         //container for athlete profile
+        const athleteContainer = document.createElement('div');
+        athleteContainer.classList.add('statsBox');
+        topContainer.appendChild(athleteContainer);
+
+        const imageTeamDiv = document.createElement('div');
+        imageTeamDiv.classList.add('img-box');
+        athleteContainer.appendChild(imageTeamDiv); 
+
+        const teamCrest = stats.team.crest;
+        const teamFlag = document.createElement('img');
+        teamFlag.src = teamCrest;
+        teamFlag.alt = 'team flag';
+        imageTeamDiv.appendChild(teamFlag); 
+
+         //display the athlete profile
+        const playerInfo = document.createElement('div');
+        playerInfo.classList.add('player');
+        athleteContainer.appendChild(playerInfo);
+
+        //display the name, position, birthdate
+        const date = new Date(stats.player.dateOfBirth);
+        const bornOn = date.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+        const profileText = document.createElement('p');
+        
+        profileText.innerText = 
+            `Country : ${stats.team.name}
+             Player : ${stats.player.name}
+             Position : ${stats.player.position}
+             Date Of Birth : ${bornOn}
+            `;
+        playerInfo.appendChild(profileText);
+
+        const goalDiv = document.createElement('div')
+        goalDiv.classList.add('statsCell');
+        athleteContainer.appendChild(goalDiv);
+        goalDiv.innerText = `Goals: ${stats.goals}`;
+
+        const assistsDiv = document.createElement('div')
+        assistsDiv.classList.add('statsCell');
+        athleteContainer.appendChild(assistsDiv);
+        assistsDiv.innerText = `Assists: ${(stats.assists === null ? '0' : stats.assists)}`;
+
+        const penaltyDiv = document.createElement('div')
+        penaltyDiv.classList.add('statsCell');
+        athleteContainer.appendChild(penaltyDiv);
+        penaltyDiv.innerText = `Penalties: ${(stats.penalties === null ? '0' : stats.penalties)}`;
+
+
+        // const athleteContainer = document.createElement('div');
+        // athleteContainer.classList.add('athleteBox');
+        // topContainer.appendChild(athleteContainer);
+
+    })
+
+
+
+}
 
 fifaMatch.getTeamIndex = (squadData) => {
     const teamIndex = document.querySelectorAll('.teamInfo, .img-box');

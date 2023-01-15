@@ -733,7 +733,14 @@ header .wrapper nav .nav-bar li {
   display: flex;
   width: 500px;
   height: 150px;
-  /* border: 2px solid white; */
+}
+.teamBox:hover, .teamBox:focus {
+  background-color: #f0f1f2;
+  color: #2C2C2C;
+  border: solid 1px #f0f1f2;
+}
+.teamBox:hover .more-info img-box, .teamBox:focus .more-info img-box {
+  background-color: #1F2224;
 }
 
 .team {
@@ -797,6 +804,40 @@ div.hide {
 .athleteBox .player p {
   color: white;
   padding-left: 20px;
+}
+
+.statsBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  height: 175px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 2%;
+}
+.statsBox .img-box {
+  /* border: 2px solid white; */
+  width: 150px;
+  margin: 5px;
+}
+.statsBox .img-box img {
+  width: 100%;
+  border: 1px solid lightgrey;
+  /* height: 40px; */
+}
+.statsBox .statsCell {
+  margin: 0px 10px;
+  padding: 0;
+  width: 65px;
+  text-align: center;
+}
+.statsBox p {
+  color: white;
+  margin: 0px 25px;
 }
 
 [data-tab-content] {
