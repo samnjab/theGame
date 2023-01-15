@@ -377,6 +377,12 @@ p,
   text-transform: uppercase;
 }
 
+.wrapper {
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+}
+
 header {
   background-color: #0F4067;
   padding-top: 1.5rem;
@@ -427,10 +433,146 @@ header .wrapper h1 {
   margin-bottom: 100px;
 }
 
-.wrapper {
-  max-width: 1440px;
-  width: 90%;
-  margin: 0 auto;
+.nav-bar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+}
+.nav-bar li {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+.nav-bar .active {
+  border-bottom: #FAFAFA 5px solid;
+}
+.nav-bar .linked {
+  border-bottom: rgba(255, 255, 255, 0) 5px solid;
+}
+
+.nested li {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+}
+.nested li a {
+  color: white;
+}
+.nested li a.active {
+  border-bottom: #f0f1f2 5px solid;
+}
+.nested li a.linked {
+  border-bottom: rgba(255, 255, 255, 0) 5px solid;
+}
+
+fieldset {
+  margin: 1rem 0;
+}
+fieldset form {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+fieldset form input {
+  font-family: "Roboto";
+  font-weight: 400;
+  margin: 10px 5px 10px 5px;
+  padding: 0.5rem;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 300px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 300px;
+}
+fieldset form input::-webkit-input-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input::-moz-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input:-ms-input-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input::-ms-input-placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form input::placeholder {
+  font-size: 16px;
+  text-align: center;
+}
+fieldset form textarea {
+  font-family: "Roboto";
+  font-weight: 400;
+  border: #FAFAFA 2px solid;
+  padding: 1rem;
+  margin: 5px;
+  margin: 0 5px;
+  -ms-flex-preferred-size: calc(100% - 10px);
+      flex-basis: calc(100% - 10px);
+  min-width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 790px;
+  margin: 10px 5px 10px 5px;
+}
+fieldset form textarea::-webkit-input-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea::-moz-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea:-ms-input-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea::-ms-input-placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+fieldset form textarea::placeholder {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
 }
 
 .spinner {
@@ -551,10 +693,6 @@ header .wrapper h1 {
   50% {
     content: ".....";
   }
-}
-header .wrapper fieldset {
-  -ms-flex-preferred-size: 45%;
-      flex-basis: 45%;
 }
 header .wrapper nav {
   -ms-flex-preferred-size: 100%;
@@ -677,4 +815,255 @@ header .wrapper nav {
 .date .match-table .match .more-info .img-box img {
   max-width: 100%;
   height: auto;
+}
+
+.img-box {
+  width: 30px;
+  margin: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.img-box .img {
+  max-width: 100%;
+  width: 30px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+@media (max-width: 390px) {
+  .statsBox {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 1px solid grey;
+  }
+  .statsBox .img-box {
+    width: 135px;
+    margin: 0px;
+  }
+  .statsBox .img-box img {
+    width: 100%;
+    border: 1px solid lightgrey;
+    /* height: 40px; */
+  }
+  .statsBox .statsCell {
+    margin: 0px 10px;
+    padding: 0;
+    width: 65px;
+    text-align: center;
+  }
+  .statsBox p {
+    color: white;
+    padding-left: 20px;
+    margin: 0px 25px;
+  }
+}
+.container {
+  margin-top: 75px;
+  /* border: 2px solid white; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.container p {
+  width: 100%;
+}
+
+.refreshBox {
+  width: 100%;
+}
+.refreshBox button {
+  height: 25px;
+  width: 200px;
+}
+
+.teamBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 500px;
+  height: 150px;
+}
+.teamBox:hover, .teamBox:focus {
+  background-color: #f0f1f2;
+  color: #2C2C2C;
+  border: solid 1px #f0f1f2;
+}
+.teamBox:hover .more-info img-box, .teamBox:focus .more-info img-box {
+  background-color: #1F2224;
+}
+
+.team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.img-box {
+  /* border: 2px solid white; */
+  width: 100px;
+  height: 80px;
+  margin: 20px;
+}
+
+img {
+  width: 100%;
+  border: 1px solid black;
+  /* height: 40px; */
+}
+
+.teamInfo {
+  width: 350px;
+  padding: 20px;
+}
+
+div.hide {
+  display: none;
+}
+
+.athleteBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 450px;
+  height: 175px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 2%;
+}
+.athleteBox .img-box {
+  /* border: 2px solid white; */
+  width: 100px;
+  height: 80px;
+  margin: 5px;
+}
+.athleteBox .img-box img {
+  width: 100%;
+  border: 1px solid lightgrey;
+  /* height: 40px; */
+}
+.athleteBox .player {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: black;
+}
+.athleteBox .player p {
+  color: white;
+  padding-left: 20px;
+}
+
+.statsBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  height: 175px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 2%;
+}
+.statsBox .img-box {
+  /* border: 2px solid white; */
+  width: 150px;
+  margin: 5px;
+}
+.statsBox .img-box img {
+  width: 100%;
+  border: 1px solid lightgrey;
+  /* height: 40px; */
+}
+.statsBox .statsCell {
+  margin: 0px 10px;
+  padding: 0;
+  width: 65px;
+  text-align: center;
+}
+.statsBox p {
+  color: white;
+  margin: 0px 25px;
+}
+
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+div.tabContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+ul.tabContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  width: 50%;
+}
+
+.tab.active {
+  background-color: #403c32;
+}
+
+.tab:hover {
+  background-color: #544f42;
+}
+
+.tab-content {
+  margin-left: 20px;
+  margin-right: 20px;
 }

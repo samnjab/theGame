@@ -694,10 +694,6 @@ fieldset form textarea::placeholder {
     content: ".....";
   }
 }
-header .wrapper fieldset {
-  -ms-flex-preferred-size: 45%;
-      flex-basis: 45%;
-}
 header .wrapper nav {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
