@@ -817,15 +817,6 @@ header .wrapper nav {
   height: auto;
 }
 
-.hide {
-  display: none;
-}
-
-.main-container,
-.all-container,
-.scorer-container {
-  margin-top: 75px;
-  /* border: 2px solid white; */
 .img-box {
   width: 30px;
   margin: 0 10px;
@@ -843,10 +834,11 @@ header .wrapper nav {
       -ms-flex-align: center;
           align-items: center;
 }
-.main-container p,
-.all-container p,
-.scorer-container p {
-  width: 100%;
+.img-box .img {
+  max-width: 100%;
+  width: 30px;
+  height: 20px;
+  border: 1px solid black;
 }
 
 .page .wrapper {
