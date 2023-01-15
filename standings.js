@@ -97,9 +97,10 @@ footballStats.assignCircle = (team, matches) => {
     teamDiv.querySelector('[data-team-name]').textContent = team.name
     teamDiv.querySelector('[data-team-flag]').src = team.flag
     const circleTemplate = document.querySelector('[data-circle-template')
-    const checkMark = '&#10003;'
-    const crossMark = '&#215;'
-    const dashMark = '&#8722;'
+    const checkMark = '\u2713'
+    const crossMark = '\u2715'
+    const dashMark = '\u2212'
+    console.log(dashMark)
     matches.forEach(match => {
         if (match.team1.name == team.name || match.team2.name == team.name){
             const circleDiv = circleTemplate.content.cloneNode(true)
