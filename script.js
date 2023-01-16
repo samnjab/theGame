@@ -50,14 +50,15 @@ fifaMatch.getData = () => {
 
 fifaMatch.getAllPlayers = function(teamData) {
     const teamArray = teamData[1].teams;
-    // console.log(teamArray);
-
     let allPlayers = [];
-    
     for(let i = 0; i < teamArray.length; i++) {
         allPlayers.push(teamArray[i].squad);
     }
-    console.log(allPlayers);
+   
+    //List of 835 players from WC 2022!
+    mergedList = allPlayers.flat(1);
+
+    fifaMatch.displayAllPlayers(teamArray);
 
 } 
 
@@ -99,7 +100,7 @@ fifaMatch.displayTeams = function(teamData) {
 
 
         // appends everything to the team container efter every element is created and loaded
-        document.querySelector('.container').appendChild(teamContainer); //Appends the team container to the page
+        document.querySelector('.main-container').appendChild(teamContainer); //Appends the team container to the page
         
     }
     fifaMatch.getTeamIndex(squadData);
@@ -107,16 +108,17 @@ fifaMatch.displayTeams = function(teamData) {
 }
 
 fifaMatch.getSquad = (arrayIndex, squadData) => {
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.main-container');
     container.innerHTML = "";
 
     const buttonBox = document.createElement('div');
     buttonBox.classList.add('refreshBox');
     container.appendChild(buttonBox);
 
-    const refresh = document.createElement('input');
+    const refresh = document.createElement('button');
+    refresh.innerText = "< Back to teams"
     refresh.setAttribute("type", "button")
-    refresh.setAttribute("value", "<- Back to teams")
+    refresh.setAttribute("value", " Back to teams")
     refresh.setAttribute("onClick", "window.location.reload()")
     buttonBox.appendChild(refresh);
 
@@ -162,18 +164,77 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
 
 }
 
+
+fifaMatch.displayAllPlayers = (teamArray) => {
+    const container = document.querySelector('.scorer-container');
+    container.innerHTML = "";
+    const allArray = teamArray;
+    console.log(allArray);
+    let randomArray = [];
+    console.log(randomArray);
+
+for (let i = 0; i < 25; i++) {
+   
+    const teamIndex = Math.floor(Math.random() * allArray.length);
+   const team = allArray[teamIndex];
+   const flag = team.crest;
+   const country = team.name;
+   const playerIndex = Math.floor(Math.random() * team.squad.length);
+   const player = team.squad[playerIndex];
+    console.log(country);
+
+    //container for athlete profile
+   const allTab = document.querySelector('.wc-flexBox');
+  
+   const playerBox = document.createElement('div');
+   playerBox.classList.add('playerBox');
+   allTab.appendChild(playerBox);
+  
+   const imageTeamDiv = document.createElement('div');
+   imageTeamDiv.classList.add('img-box');
+   playerBox.appendChild(imageTeamDiv); 
+
+   const teamCrest = flag; //stopped here
+   const teamFlag = document.createElement('img');
+   teamFlag.src = teamCrest;
+   teamFlag.alt = 'team flag';
+   imageTeamDiv.appendChild(teamFlag); 
+
+   //display the athlete profile
+   const playerInfo = document.createElement('div');
+   playerInfo.classList.add('player');
+   playerBox.appendChild(playerInfo);
+   
+   //display the name, position, birthdate
+   const date = new Date(player.dateOfBirth);
+   const bornOn = date.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+   const profileText = document.createElement('p');
+   // playerText.classList.add('profile');
+   profileText.innerText = 
+       `Country : ${team.name}
+        Player : ${player.name}
+        Position : ${player.position}
+        Date Of Birth : ${bornOn}
+       `;
+   playerInfo.appendChild(profileText);
+}
+        //end of random player plus flag
+    
+    }
+
+
 fifaMatch.displayTopScorers = (teamData) => {
+    const container = document.querySelector('.scorer-container');
+    container.innerHTML = "";
+
     const topArray = teamData[2];
     const scoreArray = topArray.scorers;
-    console.log(scoreArray);
-
-    const topTab = document.querySelector('.top-tab');
+    const topTab = document.getElementById('top-scorers');
     const topContainer = document.createElement('div');
     topTab.appendChild(topContainer);
 
     scoreArray.forEach(stats => {
-        console.log(stats.player.name);
-
+        
          //container for athlete profile
         const athleteContainer = document.createElement('div');
         athleteContainer.classList.add('statsBox');
@@ -207,29 +268,26 @@ fifaMatch.displayTopScorers = (teamData) => {
             `;
         playerInfo.appendChild(profileText);
 
+        const cellDiv = document.createElement('div');
+        cellDiv.classList.add('cellDiv');
+        athleteContainer.appendChild(cellDiv);
+
         const goalDiv = document.createElement('div')
         goalDiv.classList.add('statsCell');
-        athleteContainer.appendChild(goalDiv);
+        cellDiv.appendChild(goalDiv);
         goalDiv.innerText = `Goals: ${stats.goals}`;
 
         const assistsDiv = document.createElement('div')
         assistsDiv.classList.add('statsCell');
-        athleteContainer.appendChild(assistsDiv);
+        cellDiv.appendChild(assistsDiv);
         assistsDiv.innerText = `Assists: ${(stats.assists === null ? '0' : stats.assists)}`;
 
         const penaltyDiv = document.createElement('div')
         penaltyDiv.classList.add('statsCell');
-        athleteContainer.appendChild(penaltyDiv);
+        cellDiv.appendChild(penaltyDiv);
         penaltyDiv.innerText = `Penalties: ${(stats.penalties === null ? '0' : stats.penalties)}`;
 
-
-        // const athleteContainer = document.createElement('div');
-        // athleteContainer.classList.add('athleteBox');
-        // topContainer.appendChild(athleteContainer);
-
     })
-
-
 
 }
 

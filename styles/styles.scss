@@ -11,10 +11,6 @@
 @use './partials/dates';
 @use './partials/flag-box';
 
-
-
-
-
 .page {
     .wrapper {
         @include flex-center(column, space-between, center);
