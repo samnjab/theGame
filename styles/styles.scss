@@ -10,14 +10,14 @@
 @use './partials/sections';
 @use './partials/dates';
 @use './partials/flag-box';
-// @use './partials/players';
+
+
 
 
 
 .page {
     .wrapper {
         @include flex-center(column, space-between, center);
-
         .matches {
             width: 100%;
         }

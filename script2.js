@@ -46,12 +46,12 @@ footballStats.display = (dates, sortedMatches) => {
                // <<<<<<<<<<< More Info addition >>>>>>>>
                matchDiv.querySelector('[data-competition-name]').textContent = `${match.competition.name}`
                matchDiv.querySelector('[data-competition-emblem]').src = `${match.competition.emblem}`
-               matchDiv.querySelector('[data-match-date]').textContent = `Date: ${match.date}`
-               matchDiv.querySelector('[data-group]').textContent = `Group: ${match.group}`
-               matchDiv.querySelector('[data-stage]').textContent = `Stage: ${match.stage}`
-               matchDiv.querySelector('[data-match-day]').textContent = `Match day:${match.matchDay}`
-               matchDiv.querySelector('[data-status]').textContent = `Status: ${match.status}`
-               matchDiv.querySelector('[data-winner]').textContent = `Winner: ${match.winner}`
+               matchDiv.querySelector('[data-match-date]').textContent = `${match.date}`
+               matchDiv.querySelector('[data-group]').textContent = `${match.group}`
+               matchDiv.querySelector('[data-stage]').textContent = `${(match.stage.charAt(0)+ match.stage.slice(1).toLowerCase()).replace('_', ' ')}`
+               matchDiv.querySelector('[data-match-day]').textContent = `${match.matchDay}`
+               matchDiv.querySelector('[data-status]').textContent = `${match.status.charAt(0) + match.status.slice(1).toLowerCase()}`
+               matchDiv.querySelector('[data-winner]').textContent = `${match.winner}`
                
 
 

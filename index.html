@@ -89,10 +89,54 @@
                 <p data-team2-info></p>
             </div>
             <div data-more-info class="more-info hide">
+                <table>
+                    <caption>
+                        <div data-competition>
+                            <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
+                            <p data-competition-name></p>
+                        </div>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="row">Date</th>
+                            <td data-match-date></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Stage</th>
+                            <td data-stage></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Group</th>
+                            <td data-group></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Match Day</th>
+                            <td data-match-day></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td data-status></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Winner</th>
+                            <td data-winner></td>
+
+                        </tr>
+                    </thead>
+                   
+                </table>
+            </div>
+            
+            <!-- <div data-more-info class="more-info hide">
                 <div data-competition> 
-                    <p data-competition-name></p>
                     <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
+                    <p data-competition-name></p>
                 </div>
+                
                 <div data-match-info>
                     <p data-match-date></p>
                     <p data-group></p>
@@ -101,15 +145,16 @@
                     <p data-status></p>
                     <p data-winner class="winner"></p>
                 </div>
-                <div data-season-info>
+                <!-- <div data-season-info>
                     <p data-season-start></p>
                     <p data-season-end></p>
                     <p data-season-match-day></p>
-                </div>
+                </div> -->
 
-            </div>
+            <!-- </div> --> 
         </a>  
     </template>
+
     <!-- dynamic js template cloning produces the following DOM nodes  -->
     <!-- <div class="matches">
             <div class="date">
