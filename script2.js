@@ -1,8 +1,11 @@
 // initialize namespace
 const footballStats = {};
 // initialize apikey
-footballStats.apikey = '70a843e5cf86426b9a1a9528ec8a7da7';
-footballStats.jsonData = {};
+// footballStats.apikey = '70a843e5cf86426b9a1a9528ec8a7da7';
+footballStats.randomizeApiKey = (array) => {
+    return array[Math.floor(Math.random()*array.length)]
+}
+
 
     // arguments for this function dates array which will be the unique type dates, locally sorted matches 
     // grab the template and go through the dates array with a for loop, display the content of the dates as each for our template, go through dated array for loop again and grab matches correspond to that date, and create a div and create a template 
@@ -46,12 +49,12 @@ footballStats.display = (dates, sortedMatches) => {
                // <<<<<<<<<<< More Info addition >>>>>>>>
                matchDiv.querySelector('[data-competition-name]').textContent = `${match.competition.name}`
                matchDiv.querySelector('[data-competition-emblem]').src = `${match.competition.emblem}`
-               matchDiv.querySelector('[data-match-date]').textContent = `Date: ${match.date}`
-               matchDiv.querySelector('[data-group]').textContent = `Group: ${match.group}`
-               matchDiv.querySelector('[data-stage]').textContent = `Stage: ${match.stage}`
-               matchDiv.querySelector('[data-match-day]').textContent = `Match day:${match.matchDay}`
-               matchDiv.querySelector('[data-status]').textContent = `Status: ${match.status}`
-               matchDiv.querySelector('[data-winner]').textContent = `Winner: ${match.winner}`
+               matchDiv.querySelector('[data-match-date]').textContent = `${match.date}`
+               matchDiv.querySelector('[data-group]').textContent = `${match.group}`
+               matchDiv.querySelector('[data-stage]').textContent = `${(match.stage.charAt(0)+ match.stage.slice(1).toLowerCase()).replace('_', ' ')}`
+               matchDiv.querySelector('[data-match-day]').textContent = `${match.matchDay}`
+               matchDiv.querySelector('[data-status]').textContent = `${match.status.charAt(0) + match.status.slice(1).toLowerCase()}`
+               matchDiv.querySelector('[data-winner]').textContent = `${match.winner}`
                
 
 
@@ -162,6 +165,8 @@ footballStats.getData = (url) => {
         mode: 'cors',
         cache: 'default'
     })
+    footballStats.apikey = footballStats.randomizeApiKey(footballStats.apikeys)
+    console.log('using key:', footballStats.apikey)
     // fetch, extract json, console log object 
     return new Promise((resolve, reject) => {
         fetch(url, {
@@ -292,6 +297,7 @@ footballStats.eventListeners = (matchesWithElements) =>{
 }
 
 footballStats.init = () => {
+    footballStats.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99']
      footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
         console.log(promisedData)

@@ -1,5 +1,8 @@
 const fifaMatch = {};
-fifaMatch.apiKey = '216fc317fce14a3e92c6759cc84f2ceb';
+// fifaMatch.apiKey = '216fc317fce14a3e92c6759cc84f2ceb';
+fifaMatch.randomizeApiKey = (array) => {
+    return array[Math.floor(Math.random()*array.length)]
+}
 
 fifaMatch.getData = () => {
     //endpoint url
@@ -14,25 +17,27 @@ fifaMatch.getData = () => {
         season: '2022',
         cache: 'default'
     })
-
-const teamsAndPlayers = urls.map(url => {
-    return fetch(url, {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': fifaMatch.apiKey,
-        },
-    })
-        .then((res) => {
-            return res.json();
+    fifaMatch.apikey = fifaMatch.randomizeApiKey(fifaMatch.apikeys)
+    console.log('using key:', fifaMatch.apikey)
+    
+    const teamsAndPlayers = urls.map(url => {
+        return fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-Auth-Token': fifaMatch.apikey,
+            },
         })
-        .then((resData) => {
-            // console.log(res);
-            document.querySelector('.load-wrapp').classList.add('hide')
-            return resData;
-        })
-    } // End of getSchedule/Fetch
-
-    )
+            .then((res) => {
+                return res.json();
+            })
+            .then((resData) => {
+                // console.log(res);
+                document.querySelector('.load-wrapp').classList.add('hide')
+                return resData;
+            })
+        } // End of getSchedule/Fetch
+    
+        )
 
     Promise.all(teamsAndPlayers)
             .then((teamData => { //opens access through the promise wrapper
@@ -261,7 +266,8 @@ tabs.forEach(tab => {
 })
 
 fifaMatch.init = () => {
-     fifaMatch.getData();
+    fifaMatch.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99']
+    fifaMatch.getData();
    
 }; //end of init function
 
