@@ -18,7 +18,7 @@ fifaMatch.getData = () => {
         cache: 'default'
     })
     fifaMatch.apikey = fifaMatch.randomizeApiKey(fifaMatch.apikeys)
-    console.log('using key:', fifaMatch.apikey)
+    // console.log('using key:', fifaMatch.apikey)
     
     const teamsAndPlayers = urls.map(url => {
         return fetch(url, {
@@ -59,8 +59,84 @@ fifaMatch.getAllPlayers = function(teamData) {
     mergedList = allPlayers.flat(1);
 
     fifaMatch.displayAllPlayers(teamArray);
+    fifaMatch.searchPlayers(mergedList);
 
 } 
+
+fifaMatch.searchPlayers = (mergedList) => {
+    const theList = mergedList;
+    console.log(theList);
+
+    const textToSearch = document.querySelector('form');
+    console.log(textToSearch);
+    textToSearch.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const input = document.querySelector('input');
+
+        const value = input.value;
+        console.log(value);
+        const responseList = [];
+
+        for(let i = 0; i < theList.length; i++) {
+            
+            const player = theList[i].name.toLowerCase();
+            // console.log(player);
+
+            if(player.includes(value)) {
+                console.log(player);
+                responseList.push(theList[i]);
+            } 
+            
+    }
+    console.log(responseList);
+    fifaMatch.searchDisplay(responseList)
+    })
+
+}
+
+fifaMatch.searchDisplay = (responseList) => {
+    const container = document.querySelector('.wc-flexBox');
+    container.innerHTML = "";
+    const inputList = responseList;
+
+        inputList.forEach(squadList => {
+            //container for athlete profile
+        const athleteContainer = document.createElement('div');
+        athleteContainer.classList.add('athleteBox');
+        container.appendChild(athleteContainer);
+
+        // const imageTeamDiv = document.createElement('div');
+        // imageTeamDiv.classList.add('img-box');
+        // athleteContainer.appendChild(imageTeamDiv); 
+
+        // const teamCrest = squadObject.teams[squadIndex].crest;
+        // const teamFlag = document.createElement('img');
+        // teamFlag.src = teamCrest;
+        // teamFlag.alt = 'team flag';
+        // imageTeamDiv.appendChild(teamFlag); 
+
+        //display the athlete profile
+        const playerInfo = document.createElement('div');
+        playerInfo.classList.add('player');
+        athleteContainer.appendChild(playerInfo);
+        
+        //display the name, position, birthdate
+        const date = new Date(squadList.dateOfBirth);
+        const bornOn = date.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+        const profileText = document.createElement('p');
+        // playerText.classList.add('profile');
+        profileText.innerText = 
+            `Player : ${squadList.name}
+             Position : ${squadList.position}
+             Date Of Birth : ${bornOn}
+            `;
+        playerInfo.appendChild(profileText);
+
+        })
+    
+
+}
 
 
 fifaMatch.displayTeams = function(teamData) {
@@ -164,14 +240,13 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
 
 }
 
-
 fifaMatch.displayAllPlayers = (teamArray) => {
     const container = document.querySelector('.scorer-container');
     container.innerHTML = "";
     const allArray = teamArray;
-    console.log(allArray);
+    // console.log(allArray);
     let randomArray = [];
-    console.log(randomArray);
+    // console.log(randomArray);
 
 for (let i = 0; i < 25; i++) {
    
@@ -181,7 +256,7 @@ for (let i = 0; i < 25; i++) {
    const country = team.name;
    const playerIndex = Math.floor(Math.random() * team.squad.length);
    const player = team.squad[playerIndex];
-    console.log(country);
+    // console.log(country);
 
     //container for athlete profile
    const allTab = document.querySelector('.wc-flexBox');
@@ -306,6 +381,8 @@ fifaMatch.getTeamIndex = (squadData) => {
     
 }
 
+
+
 const tabs = document.querySelectorAll('[data-tab-target]')
 const tabContents = document.querySelectorAll('[data-tab-content]')
 
@@ -324,7 +401,7 @@ tabs.forEach(tab => {
 })
 
 fifaMatch.init = () => {
-    fifaMatch.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99']
+    fifaMatch.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99', '6db1d2cbe8a747be8e975a3e6dd86a4f']
     fifaMatch.getData();
    
 }; //end of init function
