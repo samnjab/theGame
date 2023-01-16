@@ -842,8 +842,12 @@ header .wrapper nav {
 }
 
 @media (max-width: 390px) {
-  .team {
+  div.teamBox {
+    height: 115px;
+  }
+  div.teamBox .team {
     width: 350px;
+    height: 110px;
   }
   ul.tabContainer {
     width: 65%;
@@ -852,18 +856,25 @@ header .wrapper nav {
   ul.tabContainer li {
     font-size: 1rem;
   }
-  .athleteBox {
+  div.athleteBox {
     margin: 6px auto;
-    height: 80px;
+    height: 130px;
+  }
+  div.athleteBox img-box {
+    width: 150px;
   }
   p {
     line-height: 20px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .cellDiv {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    border: 1px solid grey;
   }
   div.statsBox {
     -webkit-box-orient: vertical;
@@ -871,17 +882,28 @@ header .wrapper nav {
         -ms-flex-direction: column;
             flex-direction: column;
     height: auto;
+    border: 1px solid grey;
   }
   .player {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 3px 0px;
   }
   .img-box {
     -ms-flex-item-align: center;
         align-self: center;
+    width: 165px;
+    margin: 5px;
   }
 }
+html {
+  background-color: black;
+}
+
 .main-container,
 .playerBox,
 .wc-flexBox,

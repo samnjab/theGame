@@ -12,6 +12,10 @@
 @use '../partials/flag-box';
 @use '../partials/mediaQuery';
 
+html {
+    background-color: black;
+}
+
 .main-container,
 .playerBox,
 .wc-flexBox,
@@ -118,10 +122,12 @@ div.hide {
     .player {
         display: flex;
         color: black;
+       
 
         p {
             color: white;
             padding-left: 10px;
+
         }
     }
 }

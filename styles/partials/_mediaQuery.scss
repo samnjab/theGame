@@ -1,7 +1,11 @@
 @media (max-width: 390px) {
-      
-.team {
-    width: 350px;
+
+div.teamBox {
+    height: 115px;
+    .team {
+            width: 350px;
+            height: 110px;
+        }
 }
 
 ul.tabContainer {
@@ -11,28 +15,40 @@ ul.tabContainer {
         font-size: 1rem;
     }
 }
-.athleteBox {
+div.athleteBox {
     margin: 6px auto;
-    height: 80px;
+    height: 130px;
+    img-box {
+        width: 150px;
+    }
 }
+
 p {
     line-height: 20px;
+    justify-content: center;
 }
 
 .cellDiv {
     flex-direction: row;
+    border: 1px solid grey;
 }
 div.statsBox {
     flex-direction: column;
     height: auto;
+    border: 1px solid grey;
+    
 }
 
 .player {
     display: flex;
+    justify-content: center;
+    margin: 3px 0px;
 }
 
 .img-box {
     align-self: center;
+    width: 165px;
+    margin: 5px;
 }
 
 }
