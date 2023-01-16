@@ -54,60 +54,44 @@
                 </form>
             </fieldset>
             <div class="standings">
-
+                <div id="round16">
+                    <h4 class="stage-header">Round of 16</h4>
+                
+                </div>
+                <div id="quarter-finals">
+                    <h4 class="stage-header">Quarter Finals</h4>
+                
+                </div>
+                <div id="semi-finals">
+                    <h4 class="stage-header">Semi Finals</h4>
+                
+                </div>
+                <!-- <div id="bronze">
+                    <h4 class="stage-header">Bronze</h4>
+                
+                </div> -->
+                <div id="final">
+                    <h4 class="stage-header">Final</h4>
+                </div>
 
             </div>
         </div>
 
     </section>
-
-    <template data-group-template>
-        <div class="group">
-            <h4 data-group-header class="group-header"></h4>
-            <div data-group-table class="group-table"></div>
-        </div>
-    </template>
-
-    <template data-team-template>
-        <div class="team">
-            <div class="team-main">
-                <div class="name">
-                    <div data-flag-box class="img-box"><img data-team-flag src="" alt=""></div>
-                    <p data-team-name></p>
-                </div>
-                <div data-team-scores class="scores">
-
-                </div>
+    <template data-match-box>
+        <a href="#" class="match">
+            <h4 data-date-header></h4>
+            <div class="team1">
+                <div data-flag-box class="img-box"><img data-flag-team1 src="" alt=""></div>
+                <p data-team1-info></p>
             </div>
-
-            <!-- <div data-more-info class="more-info hide">
-                <div data-competition>
-                    <p data-competition-name></p>
-                    <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
-                </div>
-                <div data-match-info>
-                    <p data-match-date></p>
-                    <p data-group></p>
-                    <p data-stage></p>
-                    <p data-match-day></p>
-                    <p data-status></p>
-                    <p data-winner class="winner"></p>
-                </div>
-                <div data-season-info>
-                    <p data-season-start></p>
-                    <p data-season-end></p>
-                    <p data-season-match-day></p>
-                </div>
-    
-            </div> -->
-        </div>
+            <div class="team2">
+                <div data-flag-box class="img-box"><img data-flag-team2 src="" alt=""></div>
+                <p data-team2-info></p>
+            </div>
+        </a>
     </template>
 
-    <template data-circle-template>
-        <div class="circle">
-            <p data-mark class="filler"></p>
-        </div>
-    </template>
 
 
     <script src="../standings.js"></script>
