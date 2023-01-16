@@ -24,7 +24,10 @@
     p {
         width: 100%;
     }
+}
 
+.searchContainer {
+    display: flex;
 }
 
 .refreshBox {
@@ -155,6 +158,10 @@ div.hide {
         margin: 0px 25px;
     }
 
+}
+
+#wc-players {
+    display: flex;
 }
 
 [data-tab-content] {

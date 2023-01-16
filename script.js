@@ -15,7 +15,7 @@ fifaMatch.getData = () => {
         cache: 'default'
     })
 
-const teamsAndPlayers = urls.map(url => {
+    const teamsAndPlayers = urls.map(url => {
     return fetch(url, {
         method: 'GET',
         headers: {
@@ -46,16 +46,14 @@ const teamsAndPlayers = urls.map(url => {
 fifaMatch.getAllPlayers = function(teamData) {
     const teamArray = teamData[1].teams;
     let allPlayers = [];
-    
     for(let i = 0; i < teamArray.length; i++) {
         allPlayers.push(teamArray[i].squad);
     }
-
+   
     //List of 835 players from WC 2022!
     mergedList = allPlayers.flat(1);
-    console.log(mergedList);
 
-    fifaMatch.displayAllPlayers(mergedList);
+    fifaMatch.displayAllPlayers(teamArray);
 
 } 
 
@@ -160,79 +158,62 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
 
 }
 
-fifaMatch.displayAllPlayers = (mergedList) => {
+
+fifaMatch.displayAllPlayers = (teamArray) => {
     const container = document.querySelector('.scorer-container');
     container.innerHTML = "";
+    const allArray = teamArray;
+    console.log(allArray);
+    let randomArray = [];
+    console.log(randomArray);
 
-    const allPlayers = mergedList;
-    const allTab = document.getElementById('wc-players');
-    const allContainer = document.createElement('div');
-    allTab.appendChild(allContainer);
+for (let i = 0; i < 25; i++) {
+   
+    const teamIndex = Math.floor(Math.random() * allArray.length);
+   const team = allArray[teamIndex];
+   const flag = team.crest;
+   const country = team.name;
+   const playerIndex = Math.floor(Math.random() * team.squad.length);
+   const player = team.squad[playerIndex];
+    console.log(country);
+    //container for athlete profile
+   const allTab = document.getElementById('wc-players');
+   const allContainer = document.createElement('div');
+   allContainer.classList.add('all-container');
+   allTab.appendChild(allContainer);
 
-    // let allPlayersIndex = 0; //initialize chunk index
+   const imageTeamDiv = document.createElement('div');
+   imageTeamDiv.classList.add('img-box');
+   allContainer.appendChild(imageTeamDiv); 
 
-    const allNumPlayers = 2; //only get 5
-    const allNumArray = []
-    for (let i = 0; i < mergedList.length; i += allNumPlayers) {
-       const allNumSlice = mergedList.slice(i, i + allNumPlayers);
-       allNumArray.push(allNumSlice);
+   const teamCrest = flag; //stopped here
+   const teamFlag = document.createElement('img');
+   teamFlag.src = teamCrest;
+   teamFlag.alt = 'team flag';
+   imageTeamDiv.appendChild(teamFlag); 
+
+   //display the athlete profile
+   const playerInfo = document.createElement('div');
+   playerInfo.classList.add('player');
+   allContainer.appendChild(playerInfo);
+   
+   //display the name, position, birthdate
+   const date = new Date(player.dateOfBirth);
+   const bornOn = date.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+   const profileText = document.createElement('p');
+   // playerText.classList.add('profile');
+   profileText.innerText = 
+       `Country : ${team.name}
+        Player : ${player.name}
+        Position : ${player.position}
+        Date Of Birth : ${bornOn}
+       `;
+   playerInfo.appendChild(profileText);
+}
+        //end of random player plus flag
+    
     }
 
-    // showMovies(allNumArray[0]); 
-    console.log(allNumArray);
-    // scoreArray.forEach(stats => {
-        
-    //      //container for athlete profile
-    //     const athleteContainer = document.createElement('div');
-    //     athleteContainer.classList.add('statsBox');
-    //     topContainer.appendChild(athleteContainer);
-
-    //     const imageTeamDiv = document.createElement('div');
-    //     imageTeamDiv.classList.add('img-box');
-    //     athleteContainer.appendChild(imageTeamDiv); 
-
-    //     const teamCrest = stats.team.crest;
-    //     const teamFlag = document.createElement('img');
-    //     teamFlag.src = teamCrest;
-    //     teamFlag.alt = 'team flag';
-    //     imageTeamDiv.appendChild(teamFlag); 
-
-    //      //display the athlete profile
-    //     const playerInfo = document.createElement('div');
-    //     playerInfo.classList.add('player');
-    //     athleteContainer.appendChild(playerInfo);
-
-    //     //display the name, position, birthdate
-    //     const date = new Date(stats.player.dateOfBirth);
-    //     const bornOn = date.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
-    //     const profileText = document.createElement('p');
-        
-    //     profileText.innerText = 
-    //         `Country : ${stats.team.name}
-    //          Player : ${stats.player.name}
-    //          Position : ${stats.player.position}
-    //          Date Of Birth : ${bornOn}
-    //         `;
-    //     playerInfo.appendChild(profileText);
-
-    //     const goalDiv = document.createElement('div')
-    //     goalDiv.classList.add('statsCell');
-    //     athleteContainer.appendChild(goalDiv);
-    //     goalDiv.innerText = `Goals: ${stats.goals}`;
-
-    //     const assistsDiv = document.createElement('div')
-    //     assistsDiv.classList.add('statsCell');
-    //     athleteContainer.appendChild(assistsDiv);
-    //     assistsDiv.innerText = `Assists: ${(stats.assists === null ? '0' : stats.assists)}`;
-
-    //     const penaltyDiv = document.createElement('div')
-    //     penaltyDiv.classList.add('statsCell');
-    //     athleteContainer.appendChild(penaltyDiv);
-    //     penaltyDiv.innerText = `Penalties: ${(stats.penalties === null ? '0' : stats.penalties)}`;
-
-    // })
-
-}
 
 fifaMatch.displayTopScorers = (teamData) => {
     const container = document.querySelector('.scorer-container');
