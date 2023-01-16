@@ -128,15 +128,40 @@ footballStats.assignCircle = (team, matches) => {
 footballStats.display = (groups)=>{
     groups.forEach(group => {
         const groupTemplate = document.querySelector('[data-group-template]')
-        const groupDiv = groupTemplate.content.cloneNode(true)
+        // const groupDiv = groupTemplate.content.cloneNode(true)
+        const groupDiv = groupTemplate.content.firstElementChild.cloneNode(true)
+        groupDiv.setAttribute('id', `${group}`)
         groupDiv.querySelector('[data-group-header]').textContent = group.replace('_',' ')
         const groupTable = groupDiv.querySelector('[data-group-table]')
+        footballStats.teamsWithDivs[group] = []
         footballStats.teams[group].forEach(team => {
-            teamWithDiv = footballStats.assignCircle(team, footballStats.filteredMatches[group]).teamDiv
-            groupTable.append(teamWithDiv)
+            teamWithDiv = footballStats.assignCircle(team, footballStats.filteredMatches[group])
+            footballStats.teamsWithDivs[group].push(teamWithDiv)
+            groupTable.append(teamWithDiv.teamDiv)
         })
         document.querySelector('.standings').append(groupDiv)
+        console.log('group Div is', groupDiv)
     })
+}
+
+
+footballStats.eventListeners = (groups) => {
+    const formElement = document.querySelector('form')
+    formElement.addEventListener('input', e => {
+        e.preventDefault()
+        const value = e.target.value.toLowerCase()
+        groups.forEach(group => {
+            isVisible = false
+            footballStats.teamsWithDivs[group].forEach(teamWithDiv => {
+                if (teamWithDiv.team.name.toLowerCase().includes(value)){
+                    isVisible = true  
+                }
+            })
+            document.getElementById(`${group}`).classList.toggle('hide', !isVisible) 
+        })
+        
+    })
+
 }
 
 
@@ -146,7 +171,7 @@ footballStats.init = () =>{
     stages = ['GROUP_STAGE']
     // , 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','THIRD_PLACE', 'FINAL']
     footballStats.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99']
-    nextStep = async () => {
+    asyncNextStep = async () => {
         stagesMatches = []
         for (i=0;i<stages.length;i++){
             console.log('this is before await')
@@ -186,12 +211,16 @@ footballStats.init = () =>{
             footballStats.teams[group] = footballStats.extractTeams(footballStats.filteredMatches[group])
         }
         console.log('teams object is', footballStats.teams)
+        footballStats.teamsWithDivs = {}
         footballStats.display(groups)
+        console.log('here are teams with their divs', footballStats.teamsWithDivs)
+        
+        footballStats.eventListeners(groups);
         
         
     }
 
-    nextStep(stages)
+    asyncNextStep(stages)
         
 
 
