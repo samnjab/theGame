@@ -842,40 +842,51 @@ header .wrapper nav {
 }
 
 @media (max-width: 390px) {
-  .statsBox {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border: 1px solid grey;
+  .team {
+    width: 350px;
   }
-  .statsBox .img-box {
-    width: 135px;
-    margin: 0px;
+  ul.tabContainer {
+    width: 65%;
+    font-size: 1.6rem;
   }
-  .statsBox .img-box img {
-    width: 100%;
-    border: 1px solid lightgrey;
-    /* height: 40px; */
+  ul.tabContainer li {
+    font-size: 1rem;
   }
-  .statsBox .statsCell {
-    margin: 0px 10px;
-    padding: 0;
-    width: 65px;
-    text-align: center;
+  .athleteBox {
+    margin: 6px auto;
+    height: 80px;
   }
-  .statsBox p {
-    color: white;
-    padding-left: 20px;
-    margin: 0px 25px;
+  p {
+    line-height: 20px;
+  }
+  .cellDiv {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  div.statsBox {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: auto;
+  }
+  .player {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .img-box {
+    -ms-flex-item-align: center;
+        align-self: center;
   }
 }
 .main-container,
-.all-container,
+.playerBox,
+.wc-flexBox,
 .scorer-container {
-  margin-top: 75px;
-  /* border: 2px solid white; */
+  margin-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -884,19 +895,38 @@ header .wrapper nav {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: 100%;
+}
+.main-container .playerBox,
+.playerBox .playerBox,
+.wc-flexBox .playerBox,
+.scorer-container .playerBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 45%;
+  margin: 2%;
 }
 .main-container p,
-.all-container p,
+.playerBox p,
+.wc-flexBox p,
 .scorer-container p {
   width: 100%;
+}
+
+.searchContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .refreshBox {
   width: 100%;
 }
 .refreshBox button {
-  height: 25px;
-  width: 200px;
+  height: 40px;
+  width: 250px;
+  border-radius: 20px;
 }
 
 .teamBox {
@@ -923,14 +953,13 @@ header .wrapper nav {
 
 .img-box {
   /* border: 2px solid white; */
-  width: 100px;
-  height: 80px;
+  width: 150px;
   margin: 20px;
 }
 
 img {
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid grey;
   /* height: 40px; */
 }
 
@@ -975,7 +1004,17 @@ div.hide {
 }
 .athleteBox .player p {
   color: white;
-  padding-left: 20px;
+  padding-left: 10px;
+}
+
+.cellDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .statsBox {

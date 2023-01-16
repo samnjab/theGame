@@ -110,9 +110,10 @@ fifaMatch.getSquad = (arrayIndex, squadData) => {
     buttonBox.classList.add('refreshBox');
     container.appendChild(buttonBox);
 
-    const refresh = document.createElement('input');
+    const refresh = document.createElement('button');
+    refresh.innerText = "< Back to teams"
     refresh.setAttribute("type", "button")
-    refresh.setAttribute("value", "<- Back to teams")
+    refresh.setAttribute("value", " Back to teams")
     refresh.setAttribute("onClick", "window.location.reload()")
     buttonBox.appendChild(refresh);
 
@@ -176,15 +177,17 @@ for (let i = 0; i < 25; i++) {
    const playerIndex = Math.floor(Math.random() * team.squad.length);
    const player = team.squad[playerIndex];
     console.log(country);
-    //container for athlete profile
-   const allTab = document.getElementById('wc-players');
-   const allContainer = document.createElement('div');
-   allContainer.classList.add('all-container');
-   allTab.appendChild(allContainer);
 
+    //container for athlete profile
+   const allTab = document.querySelector('.wc-flexBox');
+  
+   const playerBox = document.createElement('div');
+   playerBox.classList.add('playerBox');
+   allTab.appendChild(playerBox);
+  
    const imageTeamDiv = document.createElement('div');
    imageTeamDiv.classList.add('img-box');
-   allContainer.appendChild(imageTeamDiv); 
+   playerBox.appendChild(imageTeamDiv); 
 
    const teamCrest = flag; //stopped here
    const teamFlag = document.createElement('img');
@@ -195,7 +198,7 @@ for (let i = 0; i < 25; i++) {
    //display the athlete profile
    const playerInfo = document.createElement('div');
    playerInfo.classList.add('player');
-   allContainer.appendChild(playerInfo);
+   playerBox.appendChild(playerInfo);
    
    //display the name, position, birthdate
    const date = new Date(player.dateOfBirth);
@@ -260,19 +263,23 @@ fifaMatch.displayTopScorers = (teamData) => {
             `;
         playerInfo.appendChild(profileText);
 
+        const cellDiv = document.createElement('div');
+        cellDiv.classList.add('cellDiv');
+        athleteContainer.appendChild(cellDiv);
+
         const goalDiv = document.createElement('div')
         goalDiv.classList.add('statsCell');
-        athleteContainer.appendChild(goalDiv);
+        cellDiv.appendChild(goalDiv);
         goalDiv.innerText = `Goals: ${stats.goals}`;
 
         const assistsDiv = document.createElement('div')
         assistsDiv.classList.add('statsCell');
-        athleteContainer.appendChild(assistsDiv);
+        cellDiv.appendChild(assistsDiv);
         assistsDiv.innerText = `Assists: ${(stats.assists === null ? '0' : stats.assists)}`;
 
         const penaltyDiv = document.createElement('div')
         penaltyDiv.classList.add('statsCell');
-        athleteContainer.appendChild(penaltyDiv);
+        cellDiv.appendChild(penaltyDiv);
         penaltyDiv.innerText = `Penalties: ${(stats.penalties === null ? '0' : stats.penalties)}`;
 
     })
