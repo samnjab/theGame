@@ -1,39 +1,54 @@
 @media (max-width: 390px) {
-  
-.statsBox {
-        flex-wrap: wrap;
-        align-items: center;
-        border: 1px solid grey;
 
-        .img-box {
-            width: 135px;
-            margin: 0px;
-
-            img {
-                width: 100%;
-                border: 1px solid lightgrey;
-                /* height: 40px; */
-            }
+div.teamBox {
+    height: 115px;
+    .team {
+            width: 350px;
+            height: 110px;
         }
-        // .player {
-        //     width: ;
-        // }
-        .statsCell {
-            margin: 0px 10px;
-            padding: 0;
-            width: 65px;
-            text-align: center;
-        }
+}
 
-        p {
-            color: white;
-            padding-left: 20px;
-            margin: 0px 25px;
-        }
-
-
+ul.tabContainer {
+    width: 65%;
+    font-size: 1.6rem;
+    li {
+        font-size: 1rem;
     }
+}
+div.athleteBox {
+    margin: 6px auto;
+    height: 130px;
+    img-box {
+        width: 150px;
+    }
+}
 
+p {
+    line-height: 20px;
+    justify-content: center;
+}
 
+.cellDiv {
+    flex-direction: row;
+    border: 1px solid grey;
+}
+div.statsBox {
+    flex-direction: column;
+    height: auto;
+    border: 1px solid grey;
+    
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+    margin: 3px 0px;
+}
+
+.img-box {
+    align-self: center;
+    width: 165px;
+    margin: 5px;
+}
 
 }

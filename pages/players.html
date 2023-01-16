@@ -40,40 +40,50 @@
     </header>
     <section class="page">
         <div class="wrapper">
-                
-            <!-- <fieldset class="Search">
-                <form action="submit">
-                    <label for="team" class="sr-only">search team</label>
-                    <input type="search" id="team" placeholder="search team" team-search> -->
-                    <!-- <label for="player" class="sr-only">search player</label>
-                    <input type="search" id="player" placeholder="search player" player-search>
-                </form>
-            </fieldset> --> 
                 <div class="tabContainer">
                     <ul class="tabContainer">
                         <li data-tab-target="#team-players" class="active tab">Teams</li>
+                        <li data-tab-target="#wc-players" class="tab">WC Players</li>
                         <li data-tab-target="#top-scorers" class="tab">Top Scorers</li>
                     </ul>
                 </div>
                 <div class="tab-content">
-                    <div id="team-players" data-tab-content class="active">
-                        
-                        <div class="container">
+                    <div id="team-players" data-tab-content class="active"> 
+                        <div class="main-container active" >
                             <p>Click a team to see players</p>
-                            <div class="load-wrapp">
-                                <p>Loading...</p>
-                                <div class="load-9">
-                                    <div class="spinner">
-                                        <div class="bubble-1"></div>
-                                        <div class="bubble-2"></div>
+                                <div class="load-wrapp">
+                                    <p>Loading...</p>
+                                    <div class="load-9">
+                                        <div class="spinner">
+                                            <div class="bubble-1"></div>
+                                            <div class="bubble-2"></div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div> <!-- end of Loader -->
                         </div>
-                    </div>
-                    <div id="top-scorers" class="top-tab" data-tab-content>
-                        <h3>World Cup Top Scorers</h3>
-                    </div>
+                    </div> <!-- end of Teams Tab -->
+                    <div id="wc-players" data-tab-content>
+                        <div class="all-container">
+                            <div class="searchContainer">
+                                <!-- <fieldset class="Search">
+                                    <form action="submit">
+                                        <label for="player" class="sr-only">search player</label>
+                                        <input type="search" id="player" placeholder="search player" player-search>
+                                    </form>
+                                </fieldset> -->
+                            </div> <!-- end of search container-->
+                        </div>
+                        <div class="wc-flexBox">
+
+                        </div>
+                    </div> <!-- end of All Players Tab -->
+                    <div id="top-scorers" class="tabs" data-tab-content>
+                        <div class="scorer-container" >
+                            <h3>World Cup Top Scorers</h3>
+                        </div>
+                    </div> <!-- end of Top Scorers Tab -->
+                    
+                    
                 </div>
         </div>
 
