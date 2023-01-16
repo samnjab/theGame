@@ -719,6 +719,9 @@ header .wrapper nav {
   background-color: #0A0C0C;
 }
 
+.date {
+  max-width: 1000px;
+}
 .date.hide {
   display: none;
 }
@@ -747,6 +750,7 @@ header .wrapper nav {
   max-width: 1000px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  min-width: 350px;
 }
 .date .match-table .match {
   -ms-flex-preferred-size: 40%;
@@ -976,15 +980,19 @@ td {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
+  margin: 0 10px;
+  -ms-flex-preferred-size: calc(50% - 20px);
+      flex-basis: calc(50% - 20px);
+  min-width: 400px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 1000px;
   -ms-flex-negative: 1;
       flex-shrink: 1;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
-  min-width: 350px;
-  max-width: 800px;
   -webkit-transform: translateY(50px);
           transform: translateY(50px);
   z-index: 2;
@@ -993,22 +1001,36 @@ td {
   display: none;
 }
 .carousel .slide.side {
+  font-size: 16px;
   opacity: 0.3;
-  -ms-flex-preferred-size: 15%;
-      flex-basis: 15%;
+  margin: 0 10px;
+  -ms-flex-preferred-size: calc(25% - 20px);
+      flex-basis: calc(25% - 20px);
+  min-width: 200px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 800px;
   -ms-flex-negative: 2;
       flex-shrink: 2;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
-  min-width: 200px;
-  max-width: 800px;
   z-index: 1;
 }
-@media (max-width: 750px) {
+@media (max-width: 995px) {
   .carousel .slide.side {
     display: none;
   }
+}
+.carousel .slide.side .match-table {
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+}
+.carousel .slide.side .match-table .match {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 
 .stages {
@@ -1029,63 +1051,10 @@ td {
 .stages .load-wrapp {
   text-align: center;
 }
-.stages .carousel .group-stage {
-  margin: 0 10px;
-  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
-      flex-basis: calc(33.3333333333% - 20px);
-  min-width: 200px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  max-width: 800x;
+
+.date .match-table {
+  max-width: 800px;
 }
-.stages .carousel .round16 {
-  margin: 0 10px;
-  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
-      flex-basis: calc(33.3333333333% - 20px);
-  min-width: 200px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  max-width: 800x;
-}
-.stages .carousel .quarter-finals {
-  margin: 0 10px;
-  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
-      flex-basis: calc(33.3333333333% - 20px);
-  min-width: 200px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  max-width: 800x;
-}
-.stages .carousel .semi-finals {
-  margin: 0 10px;
-  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
-      flex-basis: calc(33.3333333333% - 20px);
-  min-width: 200px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  max-width: 800x;
-}
-.stages .carousel .bronze {
-  margin: 0 10px;
-  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
-      flex-basis: calc(33.3333333333% - 20px);
-  min-width: 200px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  max-width: 800x;
-}
-.stages .carousel .final {
-  margin: 0 10px;
-  -ms-flex-preferred-size: calc(33.3333333333% - 20px);
-      flex-basis: calc(33.3333333333% - 20px);
-  min-width: 200px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  max-width: 800x;
+.date .match-table .match {
+  max-width: 100%;
 }

@@ -719,6 +719,9 @@ header .wrapper nav {
   background-color: #0A0C0C;
 }
 
+.date {
+  max-width: 1000px;
+}
 .date.hide {
   display: none;
 }
@@ -747,6 +750,7 @@ header .wrapper nav {
   max-width: 1000px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  min-width: 350px;
 }
 .date .match-table .match {
   -ms-flex-preferred-size: 40%;

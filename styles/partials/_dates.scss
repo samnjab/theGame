@@ -1,5 +1,6 @@
 @use '../partials/variables' as *;
 .date {
+    max-width:1000px;
     &.hide {
         display: none;
     }
@@ -16,6 +17,7 @@
         @include flex-center(row, space-between, flex-start);
         max-width:1000px;
         flex-wrap: wrap;
+        min-width:350px;
         .match {
             flex-basis: 40%;
             flex-grow: 1;
@@ -103,21 +105,6 @@ table {
     border: 1px solid $off-white;
 }
 
-// thead th:nth-child(1) {
-//     width: 30%;
-// }
-
-// thead th:nth-child(2) {
-//     width: 20%;
-// }
-
-// thead th:nth-child(3) {
-//     width: 15%;
-// }
-
-// thead th:nth-child(4) {
-//     width: 35%;
-// }
 
 th,
 td {

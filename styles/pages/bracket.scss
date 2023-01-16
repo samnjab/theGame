@@ -19,30 +19,14 @@
         text-align: center;
     }
 
-    .carousel {
-        .group-stage {
-            @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
+}
+
+.date{
+    .match-table{
+        max-width:800px;
+        .match{
+            max-width:100%;
         }
 
-        .round16 {
-            @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
-        }
-
-        .quarter-finals {
-            @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
-        }
-
-        .semi-finals {
-            @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
-        }
-
-        .bronze {
-            @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
-        }
-
-        .final {
-            @include wrap($margin:10px, $number-in-a-row:3, $min-width:200px, $max-width:800x);
-        }
     }
-
 }
