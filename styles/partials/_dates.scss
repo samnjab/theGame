@@ -1,5 +1,6 @@
 @use '../partials/variables' as *;
 .date {
+    max-width:1000px;
     &.hide {
         display: none;
     }
@@ -16,6 +17,7 @@
         @include flex-center(row, space-between, flex-start);
         max-width:1000px;
         flex-wrap: wrap;
+        min-width:350px;
         .match {
             flex-basis: 40%;
             flex-grow: 1;
@@ -65,23 +67,47 @@
 
             }
 
-            .more-info {
-                margin: 1rem 0.5rem 1rem 0.5rem;
-
-                .img-box {
-                    width: 50px;
-
-                    img {
-                        max-width: 100%;
-                        height: auto;
-
-                    }
-                }
-
-
-            }
-
-
+           
+           
         }
     }
+}
+
+.more-info{
+    @include flex-center(column, space-between, flex-start);
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    [data-competition]{
+        align-self:center;
+        @include flex-center(row, flex-start, center);
+        p{
+            text-transform:uppercase;
+        }
+        margin:1rem;
+        .img-box {
+            width: 50px;
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+       
+    }
+
+    &.hide {
+        display: none;
+    }
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid $off-white;
+}
+
+
+th,
+td {
+    padding: 20px;
+    border:1px solid $border-color;
 }

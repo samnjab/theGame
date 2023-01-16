@@ -10,14 +10,18 @@
 @use './partials/sections';
 @use './partials/dates';
 @use './partials/flag-box';
+<<<<<<< HEAD
 @use './partials/players';
+=======
+
+
+>>>>>>> dev2
 
 
 
 .page {
     .wrapper {
         @include flex-center(column, space-between, center);
-
         .matches {
             width: 100%;
         }
