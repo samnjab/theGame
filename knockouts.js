@@ -172,7 +172,7 @@ footballStats.populateStages = (stageWithDiv, orderedMatchDivs) =>{
     })
     document.querySelector('.standings').append(stageWithDiv.stageDiv)
 }
-footballStats.eventListeners = () => {
+footballStats.eventListeners = (orderedMatchDivs) => {
     document.querySelector('.prev').addEventListener('click', e => {
         document.getElementById('LAST_16').classList.remove('hide')
         document.getElementById('FINAL').classList.add('hide')
@@ -180,6 +180,22 @@ footballStats.eventListeners = () => {
     document.querySelector('.next').addEventListener('click', e => {
         document.getElementById('LAST_16').classList.add('hide')
         document.getElementById('FINAL').classList.remove('hide')
+    })
+
+    const formElement = document.querySelector('form')
+    formElement.addEventListener('input', e => {
+        e.preventDefault()
+        const value = e.target.value.toLowerCase()
+        for(stage in orderedMatchDivs){
+            orderedMatchDivs[stage].forEach(matchDiv =>{
+                isVisible = false
+                if (matchDiv.match.team1.name.toLowerCase().includes(value) || matchDiv.match.team2.name.toLowerCase().includes(value)){
+                    isVisible = true
+                }
+                matchDiv.matchDiv.classList.toggle('hide', !isVisible)
+            })
+        }
+        
     })
 }
 
@@ -227,7 +243,7 @@ footballStats.init = () =>{
         })
 
         document.getElementById('LAST_16').classList.add('hide')
-        footballStats.eventListeners()
+        footballStats.eventListeners(orderedMatchDivs)
         
 
     }
