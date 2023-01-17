@@ -311,9 +311,12 @@ footballStats.init = () => {
             footballStats.eventListeners(matchesWithElements)
         })
 
-    // .catch((message) => {
-    //     return message
-    // })  
+    .catch((error) => {
+        const errorElement = document.createElement('p')
+        errorElement.textContent = error.message
+        document.querySelector('.load-wrapp').classList.add('hide')
+        document.querySelector('.standings').append(errorElement)
+    })  
  
 })
 }
