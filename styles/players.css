@@ -979,9 +979,9 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
@@ -1041,7 +1041,6 @@ html {
 }
 
 .img-box {
-  /* border: 2px solid white; */
   width: 150px;
   margin: 20px;
 }
@@ -1049,7 +1048,6 @@ html {
 img {
   width: 100%;
   border: 1px solid grey;
-  /* height: 40px; */
 }
 
 .teamInfo {
@@ -1075,7 +1073,6 @@ div.hide {
   border-radius: 2%;
 }
 .athleteBox .img-box {
-  /* border: 2px solid white; */
   width: 100px;
   height: 80px;
   margin: 5px;
@@ -1083,7 +1080,6 @@ div.hide {
 .athleteBox .img-box img {
   width: 100%;
   border: 1px solid lightgrey;
-  /* height: 40px; */
 }
 .athleteBox .player {
   display: -webkit-box;
@@ -1120,14 +1116,12 @@ div.hide {
   border-radius: 2%;
 }
 .statsBox .img-box {
-  /* border: 2px solid white; */
   width: 150px;
   margin: 5px;
 }
 .statsBox .img-box img {
   width: 100%;
   border: 1px solid lightgrey;
-  /* height: 40px; */
 }
 .statsBox .statsCell {
   margin: 0px 10px;
