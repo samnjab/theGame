@@ -211,6 +211,7 @@ footballStats.init = () =>{
         }
         console.log('teams object is', footballStats.teams)
         footballStats.teamsWithDivs = {}
+        document.querySelector('.load-wrapp').classList.add('hide')
         footballStats.display(groups)
         console.log('here are teams with their divs', footballStats.teamsWithDivs)
         

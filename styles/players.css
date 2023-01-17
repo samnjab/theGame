@@ -366,7 +366,7 @@ p,
 .nav-bar {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 1rem;
+  font-size: calc(0.5rem + 1vw);
   letter-spacing: 1px;
   text-align: center;
   line-height: 29px;

@@ -199,9 +199,7 @@ footballStats.init = () =>{
         orderedMatchDivs[stages[0]] = footballStats.orderFirstStage(orderedMatchDivs[stages[1]], matchesWithDivs[stages[0]], stages)
         
         console.log('ordered match divs', orderedMatchDivs)
-
-
-
+        document.querySelector('.load-wrapp').classList.add('hide')
         stagesWithDivs.forEach(stageWithDiv => {
             footballStats.populateStages(stageWithDiv, orderedMatchDivs[stageWithDiv.stage])
         })
