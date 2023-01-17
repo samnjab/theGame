@@ -252,8 +252,8 @@ footballStats.eventListeners = () => {
 
 footballStats.init = () =>{
     stages = ['GROUP_STAGE', 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','THIRD_PLACE', 'FINAL']
-    footballStats.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99']
-    nextStep = async () => {
+    footballStats.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99', '6db1d2cbe8a747be8e975a3e6dd86a4f']
+    asyncNextStep = async () => {
         stagesMatches = []
         for (i=0;i<stages.length;i++){
             console.log('this is before await')
@@ -296,10 +296,8 @@ footballStats.init = () =>{
 
     }
 
-    nextStep(stages)
+    asyncNextStep(stages)
         
-
-
 }
     
     
