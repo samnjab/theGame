@@ -25,7 +25,7 @@
         }
         .standings {
             p {
-                font-size: 12px;
+                font-size: 15px;
             }
             width: 100%;
             @include flex-center(row, space-between, stretch);
@@ -53,7 +53,7 @@
                         }
                         border-top:1px $border-color solid;
                         border-bottom:1px $border-color solid ;
-                        width:200px;
+                        width:210px;
                         padding:20px;
                         .team{
                             margin:20px 10px;
@@ -65,6 +65,40 @@
                     display:none;
                 }
 
+            }
+            position:relative;
+            
+            .carousel-button {
+                position: absolute;
+                z-index: 3;
+                background: none;
+                border: none;
+                font-size: 4rem;
+                top: 200px;
+                transform: translateY(-100px);
+                color: rgba(255, 255, 255, .5);
+                cursor: pointer;
+                border-radius: .25rem;
+                padding: 0 .5rem;
+                background-color: rgba(0, 0, 0, .1);
+            
+                &:hover,
+                &:focus {
+                    color: white;
+                    background-color: rgba(0, 0, 0, .2);
+                }
+            
+                &:focus {
+                    outline: 1px solid black;
+                }
+            
+                &.prev {
+                    left: 1rem;
+                }
+            
+                &.next {
+                    right: 1rem;
+                }
             }
         }
     }
