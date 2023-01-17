@@ -51,6 +51,7 @@
     }
     
     .slide {
+        
         // position: absolute;
         // inset: 0;
         // left:0;
@@ -70,6 +71,9 @@
             @include wrap($margin:10px, $number-in-a-row:2, $min-width:400px, $max-width:1000px);
             flex-shrink:1;
             flex-grow: 2;
+            @media (max-width:450px) {
+                min-width: 300px;
+            }
     
     
             // opacity: 1;
@@ -99,10 +103,13 @@
             }
             .match-table{
                 justify-content: stretch;
+                min-width:200px;
                 .match{
                     flex-basis:100%;
+                    min-width:200px;
                 }
             }
+            
     
         }
     

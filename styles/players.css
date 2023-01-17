@@ -749,6 +749,11 @@ header .wrapper nav {
       flex-wrap: wrap;
   min-width: 350px;
 }
+@media (max-width: 390px) {
+  .date .match-table {
+    min-width: 290px;
+  }
+}
 .date .match-table .match {
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
@@ -783,6 +788,11 @@ header .wrapper nav {
 @media (max-width: 780px) {
   .date .match-table .match {
     max-width: 100%;
+  }
+}
+@media (max-width: 390px) {
+  .date .match-table .match {
+    min-width: 270px;
   }
 }
 .date .match-table .match.hide {

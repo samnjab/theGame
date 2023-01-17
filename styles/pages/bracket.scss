@@ -11,9 +11,11 @@
 @use '../partials/dates';
 @use '../partials/flag-box';
 @use '../partials/carousel';
+@use '../partials/media-queries';
 
 .stages {
     @include flex-center(column, space-between, center);
+    max-width:100%;
 
     .load-wrapp {
         text-align: center;
@@ -22,10 +24,19 @@
 }
 
 .date{
+    @media (max-width:450px) {
+        min-width: 250px;
+    }
     .match-table{
         max-width:800px;
+        @media (max-width:450px) {
+            min-width: 250px;
+        }
         .match{
             max-width:100%;
+            @media (max-width:450px) {
+                min-width: 250px;
+            }
         }
 
     }
