@@ -12,6 +12,7 @@
 @use '../partials/teams';
 @use '../partials/flag-box';
 @use '../partials/nav-bar';
+@use '../partials/media-queries';
 
 
 .page{
@@ -23,6 +24,9 @@
         nav{
             width:60%;
             margin:2rem;
+            @media (max-width:450px) {
+                width:90%;
+            }
         }
         .standings{
             width:100%;

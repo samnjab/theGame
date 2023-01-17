@@ -5,6 +5,9 @@
     .name {
         @include flex-center(row, space-between, center);
         min-width:180px;
+        @media (max-width:400px) {
+            min-width: auto;
+        }
     }
 }
 
