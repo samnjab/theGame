@@ -845,7 +845,7 @@ td {
   border: 1px solid #33383A;
 }
 
-.team .team-main {
+.team {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -859,8 +859,10 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-.team .team-main .name {
+.team .name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -874,6 +876,7 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-width: 180px;
 }
 
 .circle {
@@ -1007,6 +1010,8 @@ td {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .page .wrapper .standings .stage {
   display: -webkit-box;
@@ -1022,7 +1027,24 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 1rem;
+  -ms-flex-preferred-size: calc(25% - 2rem);
+      flex-basis: calc(25% - 2rem);
+  min-width: 250px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 800px;
 }
 .page .wrapper .standings .stage .match {
-  border: 2px #f0f1f2 solid;
+  border-top: 1px #33383A solid;
+  border-bottom: 1px #33383A solid;
+  width: 290px;
+  padding: 20px;
+}
+.page .wrapper .standings .stage .match h4 {
+  margin: 0;
+}
+.page .wrapper .standings .stage .match .team {
+  margin: 20px 10px;
 }

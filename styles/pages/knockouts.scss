@@ -17,19 +17,29 @@
 .page {
     .wrapper {
         @include flex-center(column, space-between, center);
-
         nav {
             width: 60%;
             margin: 2rem;
         }
-
         .standings {
             width: 100%;
             @include flex-center(row, space-between, flex-start);
+            flex-wrap:wrap;
             .stage{
                 @include flex-center(column, space-between, center);
+                @include wrap($margin:1rem, $number-in-a-row:4, $min-width:250px, $max-width:800px);
                 .match{
-                    border:2px $off-white solid;
+                    h4{
+                        margin:0;
+                    }
+                    border-top:1px $border-color solid;
+                    border-bottom:1px $border-color solid ;
+                    width:290px;
+                    padding:20px;
+                    .team{
+                        margin:20px 10px;
+                    }
+                    
                 }
 
             }

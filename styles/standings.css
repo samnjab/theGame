@@ -845,7 +845,7 @@ td {
   border: 1px solid #33383A;
 }
 
-.team .team-main {
+.team {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -859,8 +859,10 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-.team .team-main .name {
+.team .name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -874,6 +876,7 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-width: 180px;
 }
 
 .circle {
@@ -998,4 +1001,7 @@ td {
 .page .wrapper .standings .group {
   width: 75%;
   margin: auto;
+}
+.page .wrapper .standings .group.hide {
+  display: none;
 }
