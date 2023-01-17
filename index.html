@@ -4,48 +4,179 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400;1,500&display=swap');
+    </style>
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>FIFA World Cup</title>
 </head>
 <body>
     <header>
         <div class="wrapper">
             <h1>FIFA World Cup 2022</h1>
-            
-            <fieldset class="Search">
-                <form action="submit">
-                    <label class="sr-only" for="search">search team/player stats</label>
-                    <input type="text" id="search" placeholder="search team/player stats">
-                </form>
-            </fieldset>
-            
             <nav>
-                <ul>
+                <ul class="nav-bar" >
                     <li>
-                        <a href="#">Matches</a>
+                        <a href="index.html" class="active">Matches</a>
                     </li>
                     <li>
-                        <a href="#">Bracket</a>
+                        <a href="./pages/bracket.html" class="linked">Bracket</a>
                     </li>
                     <li>
-                        <a href="#">Standings</a>
+                        <a href="./pages/standings.html" class="linked">Standings</a>
                     </li>
                     <li>
-                        <a href="#">Players</a>
+                        <a href="./pages/players.html" class="linked">Players</a>
                     </li>
                 </ul>
             </nav>
         </div>
        
     </header>
-    <h1>Matches</h1>
-    <div class="matches">
-        <ul class="dates">
-            
-        </ul>
-    </div>
+    <section class="page">
+        <div class="wrapper">
+            <h2>Matches</h2>
+            <fieldset class="Search">
+                <form action="submit">
+                    <label for="search" class="sr-only">search match</label>
+                    <input type="search" id="search" placeholder="search match" match-search>
+                </form>
+            </fieldset>
+            <div class="matches">
+                <div class="load-wrapp">
+                    <p>Loading...</p>
+                    <div class="load-9">
+                        <div class="spinner">
+                            <div class="bubble-1"></div>
+                            <div class="bubble-2"></div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
 
-    <script src = "script2.js"></script>
+    </section>
+
+    <!-- template pseudocode 
+    - use <template> tags to create the input on the page with the following:
+        - div with a class of date
+        - Inside date div, use h4 tags to label/display the date of the match as the title
+        - sibling to the h4, use a div with a class of matchTable
+        - insert all the matches for that day in matchTable, with seperate divs for each match, with a class of match for each div
+    -->
+
+    <template data-match-template>
+        <div class="date">
+            <h4 data-match-header class="match-header"></h4>
+            <div data-match-table class="match-table"></div>
+        </div>
+    </template>
     
-</body>
-</html>
+    
+    
+    <template data-match-box>
+        <a href="#" class="match">
+            <div class="team1">
+                <div data-flag-box class="img-box"><img data-flag-team1 src="" alt=""></div>
+                <p data-team1-info></p>
+            </div>
+            <div class="team2">
+                <div data-flag-box class="img-box"><img data-flag-team2 src="" alt=""></div>
+                <p data-team2-info></p>
+            </div>
+            <div data-more-info class="more-info hide">
+                <table>
+                    <caption>
+                        <div data-competition>
+                            <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
+                            <p data-competition-name></p>
+                        </div>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="row">Date</th>
+                            <td data-match-date></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Stage</th>
+                            <td data-stage></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Group</th>
+                            <td data-group></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Match Day</th>
+                            <td data-match-day></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td data-status></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Winner</th>
+                            <td data-winner></td>
+
+                        </tr>
+                    </thead>
+                   
+                </table>
+            </div>
+            
+            <!-- <div data-more-info class="more-info hide">
+                <div data-competition> 
+                    <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
+                    <p data-competition-name></p>
+                </div>
+                
+                <div data-match-info>
+                    <p data-match-date></p>
+                    <p data-group></p>
+                    <p data-stage></p>
+                    <p data-match-day></p>
+                    <p data-status></p>
+                    <p data-winner class="winner"></p>
+                </div>
+                <!-- <div data-season-info>
+                    <p data-season-start></p>
+                    <p data-season-end></p>
+                    <p data-season-match-day></p>
+                </div> -->
+
+            <!-- </div> --> 
+        </a>  
+    </template>
+
+    <!-- dynamic js template cloning produces the following DOM nodes  -->
+    <!-- <div class="matches">
+            <div class="date">
+                <h4 data-match-header class="match-header"></h4>
+                <div data-match-table class="match-table">
+                    <div class="match">
+                        <div class="team1">
+                            <div class="flag-box" data-flag-box><img data-flag-team1 src="" alt=""></div>
+                            <p data-team1-info>team1.name: team1.score</p>
+                        </div>
+                        <div class="team2">
+                            <div class="flag-box" data-flag-box><img data-flag-team2 src="" alt=""></div>
+                            <p data-team2-info>team2.name: team2.score</p>
+                        </div>
+                        <div>winner</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        
+        <script src = "script2.js"></script>
+    </body>
+    </html>
+    

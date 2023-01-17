@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400;1,500&display=swap');
+    </style>
+    <link rel="stylesheet" href="../styles/standings.css">
+    <title>FIFA World Cup</title>
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <h1>FIFA World Cup 2022</h1>
+            <nav>
+                <ul class="nav-bar">
+                    <li>
+                        <a href="../index.html" class="linked">Matches</a>
+                    </li>
+                    <li>
+                        <a href="./bracket.html" class="linked">Bracket</a>
+                    </li>
+                    <li>
+                        <a href="./standings.html" class="active">Standings</a>
+                    </li>
+                    <li>
+                        <a href="./players.html" class="linked">Players</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <section class="page">
+        <div class="wrapper">
+            <h2>Standings</h2>
+            <nav>
+                <ul class="nav-bar nested">
+                    <li><a href="./standings.html" class="active">Group Stage</a></li>
+                    <li><a href="./knockouts.html" class="linked">Knockouts</a></li>
+                </ul>
+            </nav>
+            <fieldset class="Search">
+                <form action="submit">
+                    <label for="search" class="sr-only">search standings</label>
+                    <input type="search" id="search" placeholder="search standings" standing-search>
+                </form>
+            </fieldset>
+            <div class="standings">
+
+            
+            </div>
+        </div>
+
+    </section>
+
+    <template data-group-template>
+        <div class="group">
+            <h4 data-group-header class="group-header"></h4>
+            <div data-group-table class="group-table"></div>
+        </div>
+    </template>
+
+    <template data-team-template>
+        <div class="team">
+            <div class="team-main">
+                <div class="name">
+                    <div data-flag-box class="img-box"><img data-team-flag src="" alt=""></div>
+                    <p data-team-name></p>
+                </div>
+                <div data-team-scores class="scores">
+
+                </div>
+            </div>
+
+            <!-- <div data-more-info class="more-info hide">
+                <div data-competition>
+                    <p data-competition-name></p>
+                    <div data-competition-emblem-box class="img-box"><img data-competition-emblem src="" alt=""></div>
+                </div>
+                <div data-match-info>
+                    <p data-match-date></p>
+                    <p data-group></p>
+                    <p data-stage></p>
+                    <p data-match-day></p>
+                    <p data-status></p>
+                    <p data-winner class="winner"></p>
+                </div>
+                <div data-season-info>
+                    <p data-season-start></p>
+                    <p data-season-end></p>
+                    <p data-season-match-day></p>
+                </div>
+    
+            </div> -->
+        </div>
+    </template>
+
+    <template data-circle-template>
+        <div class="circle"><p data-mark class="filler"></p></div>
+    </template>
+
+
+<script src="../standings.js"></script>
+</body>
+</html>

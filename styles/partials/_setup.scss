@@ -5,16 +5,3 @@ html { box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
-
-header {
-    display: flex;
-    background-color: rgb(86, 0, 101);
-}
-.wrapper {
-    max-width: 1440px;
-    width: 90%;
-    margin: auto;
-}
-h1 {
-    color: white;
-}

@@ -1,0 +1,48 @@
+@use './variables'as *;
+
+fieldset {
+    margin: 1rem 0;
+
+    form {
+        border: none;
+        @include flex-center();
+        flex-wrap: wrap;
+
+        input {
+            @include style-2();
+            margin: 10px 5px 10px 5px;
+            padding: 0.5rem;
+            border-radius: 20px;
+            font-size: 16px;
+            width: 300px;
+            border-radius: 20px;
+            font-size:16px;
+            width:300px;
+            
+            &::placeholder {
+                font-size: 16px;
+                text-align: center;
+            
+            }
+
+        }
+
+        textarea {
+            @include style-2();
+            border: $white 2px solid;
+            padding: 1rem;
+            margin: 5px;
+            @include wrap($margin:5px, $number-in-a-row:1, $min-width:10px, $max-width:790px);
+            margin: 10px 5px 10px 5px;
+
+            &::placeholder {
+                @include style-2();
+                font-size: 20px;
+                line-height: 32px;
+            }
+        }
+
+
+
+    }
+}

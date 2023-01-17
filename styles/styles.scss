@@ -1,0 +1,54 @@
+@use './partials/setup';
+@use './partials/variables' as *;
+@use './partials/resets';
+@use './partials/typography';
+@use './partials/wrapper';
+@use './partials/header';
+@use './partials/nav-bar';
+@use './partials/form';
+@use './partials/loader';
+@use './partials/sections';
+@use './partials/dates';
+@use './partials/flag-box';
+<<<<<<< HEAD
+@use './partials/players';
+=======
+
+
+>>>>>>> dev2
+
+
+
+.page {
+    .wrapper {
+        @include flex-center(column, space-between, center);
+        .matches {
+            width: 100%;
+        }
+    }
+}
+
+
+.matches {
+    margin:auto;
+    
+    .date{
+        .match-header{
+            margin: 20px auto;
+        }
+        margin:auto;
+        .match-table{
+            margin:auto;
+        }
+    }
+
+
+    .load-wrapp {
+        align-self: center;
+
+    }
+
+    .date {
+        align-self: stretch;
+    }
+}

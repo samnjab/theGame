@@ -1,0 +1,20 @@
+@use 'variables'as *;
+
+header {
+    .wrapper{
+        nav{
+            flex-basis:100%;
+            width:100%;
+        }
+
+    }
+    
+}
+
+.page{
+    background-color: $secondary-color;
+}
+
+
+
+

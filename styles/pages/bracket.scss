@@ -1,0 +1,32 @@
+@use '../partials/setup';
+@use '../partials/variables'as *;
+@use '../partials/resets';
+@use '../partials/typography';
+@use '../partials/wrapper';
+@use '../partials/header';
+@use '../partials/nav-bar';
+@use '../partials/form';
+@use '../partials/loader';
+@use '../partials/sections';
+@use '../partials/dates';
+@use '../partials/flag-box';
+@use '../partials/carousel';
+
+.stages {
+    @include flex-center(column, space-between, center);
+
+    .load-wrapp {
+        text-align: center;
+    }
+
+}
+
+.date{
+    .match-table{
+        max-width:800px;
+        .match{
+            max-width:100%;
+        }
+
+    }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400;1,500&display=swap');
+    </style>
+    <link rel="stylesheet" href="../styles/players.css">
+    <title>FIFA Teams</title>
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <h1>FIFA World Cup 2022</h1>
+            <nav>
+                <ul class="nav-bar">
+                    <li>
+                        <a href="../index.html" class="linked">Matches</a>
+                    </li>
+                    <li>
+                        <a href="./bracket.html" class="linked">Bracket</a>
+                    </li>
+                    <li>
+                        <a href="./standings.html" class="linked">Standings</a>
+                    </li>
+                    <li>
+                        <a href="./players.html" class="active">Players</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <section class="page">
+        <div class="wrapper">
+                <div class="tabContainer">
+                    <ul class="tabContainer">
+                        <li data-tab-target="#team-players" class="active tab">Teams</li>
+                        <li data-tab-target="#wc-players" class="tab">WC Players</li>
+                        <li data-tab-target="#top-scorers" class="tab">Top Scorers</li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div id="team-players" data-tab-content class="active"> 
+                        <div class="main-container active" >
+                            <p>Click a team to see players</p>
+                                <div class="load-wrapp">
+                                    <p>Loading...</p>
+                                    <div class="load-9">
+                                        <div class="spinner">
+                                            <div class="bubble-1"></div>
+                                            <div class="bubble-2"></div>
+                                        </div>
+                                    </div>
+                                </div> <!-- end of Loader -->
+                        </div>
+                    </div> <!-- end of Teams Tab -->
+                    <div id="wc-players" data-tab-content>
+                        <div class="all-container">
+                            <div class="searchContainer">
+                                <!-- <fieldset class="Search">
+                                    <form action="submit">
+                                        <label for="player" class="sr-only">search player</label>
+                                        <input type="search" id="player" placeholder="search player" player-search>
+                                    </form>
+                                </fieldset> -->
+                            </div> <!-- end of search container-->
+                        </div>
+                        <div class="wc-flexBox">
+
+                        </div>
+                    </div> <!-- end of All Players Tab -->
+                    <div id="top-scorers" class="tabs" data-tab-content>
+                        <div class="scorer-container" >
+                            <h3>World Cup Top Scorers</h3>
+                        </div>
+                    </div> <!-- end of Top Scorers Tab -->
+                    
+                    
+                </div>
+        </div>
+
+    </section>
+    <script src="../script.js"></script>
+</body>
+
+</html>

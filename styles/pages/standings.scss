@@ -1,0 +1,36 @@
+@use '../partials/setup';
+@use '../partials/variables'as *;
+@use '../partials/resets';
+@use '../partials/typography';
+@use '../partials/wrapper';
+@use '../partials/header';
+@use '../partials/form';
+@use '../partials/loader';
+
+@use '../partials/sections';
+@use '../partials/dates';
+@use '../partials/teams';
+@use '../partials/flag-box';
+@use '../partials/nav-bar';
+
+
+.page{
+    .wrapper{
+        @include flex-center(column, space-between, center);
+        // fieldset{
+        //     align-self: flex-start;
+        // }
+        nav{
+            width:60%;
+            margin:2rem;
+        }
+        .standings{
+            width:100%;
+            .group{
+                width:75%;
+                margin:auto;
+            }
+        }
+    }
+}
+
