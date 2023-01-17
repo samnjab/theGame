@@ -311,9 +311,13 @@ footballStats.init = () => {
             footballStats.eventListeners(matchesWithElements)
         })
 
-    // .catch((message) => {
-    //     return message
-    // })  
+    .catch((error) => {
+        const errorElement = document.createElement('p')
+        errorElement.textContent = `${error.message}. 60s before API is pinged again`
+        document.querySelector('.load-wrapp').classList.add('hide')
+        document.querySelector('.standings').append(errorElement)
+        setTimeout(footballStats.init, 60000)
+    })  
  
 })
 }

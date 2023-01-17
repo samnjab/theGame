@@ -366,7 +366,7 @@ p,
 .nav-bar {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 1rem;
+  font-size: calc(0.5rem + 1vw);
   letter-spacing: 1px;
   text-align: center;
   line-height: 29px;
@@ -1010,6 +1010,9 @@ td {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+.page .wrapper .standings p {
+  font-size: 12px;
+}
 .page .wrapper .standings .stage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1024,6 +1027,14 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 0.25rem;
+  -ms-flex-preferred-size: calc(25% - 0.5rem);
+      flex-basis: calc(25% - 0.5rem);
+  min-width: 200px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 1000px;
 }
 .page .wrapper .standings .stage .header {
   -webkit-box-flex: 0;
@@ -1031,6 +1042,9 @@ td {
           flex-grow: 0;
   -ms-flex-preferred-size: auto;
       flex-basis: auto;
+}
+.page .wrapper .standings .stage .header h4 {
+  font-size: 18px;
 }
 .page .wrapper .standings .stage .content {
   -webkit-box-flex: 1;
@@ -1054,18 +1068,19 @@ td {
   margin: 0 1rem;
   -ms-flex-preferred-size: calc(25% - 2rem);
       flex-basis: calc(25% - 2rem);
-  min-width: 250px;
+  min-width: 200px;
   flex-grow: 1;
   max-width: 800px;
 }
 .page .wrapper .standings .stage .content .match {
   border-top: 1px #33383A solid;
   border-bottom: 1px #33383A solid;
-  width: 290px;
+  width: 200px;
   padding: 20px;
 }
 .page .wrapper .standings .stage .content .match h4 {
   margin: 0;
+  font-size: 15px;
 }
 .page .wrapper .standings .stage .content .match .team {
   margin: 20px 10px;
@@ -1088,4 +1103,21 @@ td {
 #QUARTER_FINALS .content {
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.team .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 100px;
 }

@@ -146,18 +146,27 @@ footballStats.getMatches = (matches) => {
 footballStats.getStageMatches = async (stage) => {
     footballStats.apikey = footballStats.randomizeApiKey(footballStats.apikeys)
     console.log('using key:', footballStats.apikey)
-
-    const resObj = await fetch(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches?stage=${stage}`, { method:'GET',
-     headers: {
-         'X-Auth-Token':footballStats.apikey
-        }
-    })
-    console.log('fetch result is', resObj)
-
-    const jsonData = await resObj.json()
-    console.log('json result is:', jsonData)
-    return jsonData
+    try{
+        const resObj = await fetch(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches?stage=${stage}`, { method:'GET',
+         headers: {
+             'X-Auth-Token':footballStats.apikey
+            }
+        })
+        console.log('fetch result is', resObj)
     
+        const jsonData = await resObj.json()
+        console.log('json result is:', jsonData)
+        return jsonData
+    }
+    catch (error){
+        const errorElement = document.createElement('p')
+        errorElement.textContent = `${error.message}. 60s before API is pinged again`
+        document.querySelector('.load-wrapp').classList.add('hide')
+        document.querySelector('.standings').append(errorElement)
+        setTimeout(footballStats.init, 60000)
+
+    }
+ 
 }
 footballStats.eventListeners = () => {
     const buttons = document.querySelectorAll('button')
