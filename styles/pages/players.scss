@@ -22,16 +22,14 @@ html {
 .scorer-container {
     margin-top: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    // border: 2px solid white;
     width: 100%;
     .playerBox {
         display: flex;
         width: 45%;
         margin: 2%;
     }
-
     p {
         width: 100%;
     }
@@ -43,7 +41,6 @@ html {
 
 .refreshBox {
     width: 100%;
-
     button {
         height: 40px;
         width: 250px;
@@ -51,18 +48,15 @@ html {
     }
 }
 
-
 .teamBox {
     display: flex;
     width: 500px;
     height: 150px;
-
     &:hover,
     &:focus {
         background-color: $off-white;
         color: $black;
         border: solid 1px $off-white;
-
         .more-info {
             img-box {
                 background-color: $tertiary-color;
@@ -76,7 +70,6 @@ html {
 }
 
 .img-box {
-    /* border: 2px solid white; */
     width: 150px;
     margin: 20px;
 }
@@ -84,7 +77,6 @@ html {
 img {
     width: 100%;
     border: 1px solid grey;
-    /* height: 40px; */
 }
 
 .teamInfo {
@@ -103,31 +95,23 @@ div.hide {
     height: 175px;
     margin: 20px auto;
     padding: 20px;
-    // background-color: white;
     border-radius: 2%;
-   
     .img-box {
-        /* border: 2px solid white; */
         width: 100px;
         height: 80px;
         margin: 5px;
-
         img {
             width: 100%;
             border: 1px solid lightgrey;
-            /* height: 40px; */
         }
     }
 
     .player {
         display: flex;
         color: black;
-       
-
         p {
             color: white;
             padding-left: 10px;
-
         }
     }
 }
@@ -144,18 +128,15 @@ div.hide {
     height: 175px;
     margin: 20px auto;
     padding: 20px;
-    // background-color: white;
     border-radius: 2%;
 
     .img-box {
-        /* border: 2px solid white; */
         width: 150px;
         margin: 5px;
 
         img {
             width: 100%;
             border: 1px solid lightgrey;
-            /* height: 40px; */
         }
     }
 
@@ -166,18 +147,12 @@ div.hide {
         text-align: center;
     }
 
-    // .player {
-    //     display: flex;
-    //     color: black;
-
     p {
         color: white;
-        // padding-left: 20px;
         margin: 0px 25px;
     }
 
 }
-
 
 [data-tab-content] {
     display: none;
@@ -195,7 +170,6 @@ body {
 div.tabContainer {
     display: flex;
     width: 100%;
-
 }
 
 ul.tabContainer {
