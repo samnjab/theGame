@@ -88,10 +88,75 @@ footballStats.createStageDivs = (stages) => {
     return stagesWithDivs
 
 }
+footballStats.indexInPrevious = (matches, team) => {
+    console.log('looking @ previous stage team is', team)
+    pick = matches.filter(match => {
+        console.log('winner is', match.winner)
+        return match.winner == team 
+    })
+    console.log('pick is', pick, 'its index:', matches.indexOf(pick))
 
-footballStats.populateStages = (stageWithDiv, matchesWithDivs) =>{
-    matchesWithDivs.forEach(matchWithDiv => {
-        stageWithDiv.stageDiv.append(matchWithDiv.matchDiv)
+
+    return matches.indexOf(pick[0])
+}
+footballStats.setOrder = (matches, matchesWithDivs, stage, stages) =>{ 
+    index = stages.indexOf(stage)
+    if (index != 0 && index != stages.length - 1){
+        console.log('stage is', stages[index])
+         console.log('before sorting matcheswithdivs looks like', matchesWithDivs)
+        for (i=0; i< matchesWithDivs.length - 1; i++){
+            console.log('looking at team', matchesWithDivs[i].match.team1.name)
+            winner1 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i].match.team1.name)
+            if (winner1 == -1){
+                console.log('winner1 was -1 switching to team2')
+                winner1 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i].match.team2.name)
+            }
+            console.log('its winner was at', winner1)
+            console.log('looking at team', matchesWithDivs[i + 1].match.team1.name)
+            winner2 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i + 1].match.team1.name)
+            if (winner2 == -1){
+                console.log('winner2 was -1 switching to team2')
+                winner2 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i].match.team2.name)
+            }
+            console.log('its winner was at', winner2)
+            if (winner1 > winner2){
+                console.log('switching order')
+                temp = matchesWithDivs[i]
+                matchesWithDivs[i] = matchesWithDivs[i + 1]
+                matchesWithDivs[i + 1] = temp
+            }
+            console.log('after one step of sorting matcheswithdivs looks like', matchesWithDivs)
+
+        }
+        
+    }
+
+    return matchesWithDivs
+}
+
+footballStats.orderFirstStage = (secondStageMatches, matchesWithDivs, stages) => {
+    orderedMatches = []
+    secondStageMatches.forEach(match => {
+        pick1 = matchesWithDivs.filter(matchWithDiv => {
+            return (matchWithDiv.match.team1.name == match.match.team1.name || matchWithDiv.match.team2.name == match.match.team1.name)
+        })
+        console.log('pushing', pick1[0])
+        orderedMatches.push(pick1[0])
+        pick2 = matchesWithDivs.filter(matchWithDiv => {
+            return (matchWithDiv.match.team1.name== match.match.team2.name || matchWithDiv.match.team2.name == match.match.team2.name)
+        })
+        console.log('pushing', pick1[0])
+        orderedMatches.push(pick2[0])
+    })
+    console.log('ordered matches of first stage', orderedMatchDivs)
+    return orderedMatches
+
+}
+
+footballStats.populateStages = (stageWithDiv, orderedMatchDivs) =>{
+    orderedMatchDivs.forEach(matchDiv=>{
+         stageWithDiv.stageDiv.children[1].append(matchDiv.matchDiv)
+        
     })
     document.querySelector('.standings').append(stageWithDiv.stageDiv)
 }
@@ -127,9 +192,21 @@ footballStats.init = () =>{
             matchesWithDivs[stage] = footballStats.createMatchDivs(matches[stage])
         })
 
-        stagesWithDivs.forEach(stageWithDiv => {
-            footballStats.populateStages(stageWithDiv, matchesWithDivs[stageWithDiv.stage])
+        orderedMatchDivs = {}
+        stages.forEach(stage => {
+            orderedMatchDivs[stage] = footballStats.setOrder(matches, matchesWithDivs[stage], stage, stages)
         })
+        orderedMatchDivs[stages[0]] = footballStats.orderFirstStage(orderedMatchDivs[stages[1]], matchesWithDivs[stages[0]], stages)
+        
+        console.log('ordered match divs', orderedMatchDivs)
+
+
+
+        stagesWithDivs.forEach(stageWithDiv => {
+            footballStats.populateStages(stageWithDiv, orderedMatchDivs[stageWithDiv.stage])
+        })
+
+        // document.getElementById('LAST_16').classList.add('hide')
         
 
     }
