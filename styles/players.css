@@ -284,12 +284,18 @@ h1 {
 }
 
 h2 {
+  font-size: 60px;
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+@media (max-width: 390px) {
+  h2 {
+    font-size: 50px;
+  }
 }
 
 h3 {
