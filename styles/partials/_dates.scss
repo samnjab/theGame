@@ -18,12 +18,18 @@
         max-width:1000px;
         flex-wrap: wrap;
         min-width:350px;
+        @media (max-width:390px){
+            min-width:290px;
+        }
         .match {
             flex-basis: 40%;
             flex-grow: 1;
             @include wrap($margin:0px, $number-in-a-row:2, $min-width:350px, $max-width:50%);
             @media (max-width:780px){
                 max-width: 100%;
+            }
+            @media (max-width:390px) {
+                min-width: 270px;
             }
             padding: 1rem;
             @include flex-center(row, space-between, center);
