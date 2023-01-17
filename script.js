@@ -287,7 +287,7 @@ for (let i = 0; i < 25; i++) {
    const profileText = document.createElement('p');
    // playerText.classList.add('profile');
    profileText.innerText = 
-       `Country : ${team.name}
+       `Country : ${country}
         Player : ${player.name}
         Position : ${player.position}
         Date Of Birth : ${bornOn}
@@ -382,23 +382,24 @@ fifaMatch.getTeamIndex = (squadData) => {
     
 }
 
-
-
 const tabs = document.querySelectorAll('[data-tab-target]')
 const tabContents = document.querySelectorAll('[data-tab-content]')
 
 tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = document.querySelector(tab.dataset.tabTarget)
-    tabContents.forEach(tabContent => {
-      tabContent.classList.remove('active')
+    tab.addEventListener('click', () => {
+        const target = document.querySelector(tab.dataset.tabTarget)
+       
+        tabContents.forEach(tabContent => {
+        tabContent.classList.remove('active')
+        })
+
+        tabs.forEach(tab => {
+        tab.classList.remove('active')
+        })
+        
+        tab.classList.add('active')
+        target.classList.add('active')
     })
-    tabs.forEach(tab => {
-      tab.classList.remove('active')
-    })
-    tab.classList.add('active')
-    target.classList.add('active')
-  })
 })
 
 fifaMatch.init = () => {
