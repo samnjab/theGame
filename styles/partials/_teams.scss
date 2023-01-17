@@ -1,10 +1,10 @@
 @use '../partials/variables' as *;
 .team {
-    .team-main {
+    @include flex-center(row, space-between, center);
+    flex-wrap:wrap;
+    .name {
         @include flex-center(row, space-between, center);
-        .name {
-            @include flex-center(row, space-between, center);
-        }
+        min-width:180px;
     }
 }
 

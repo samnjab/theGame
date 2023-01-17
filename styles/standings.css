@@ -275,7 +275,6 @@ section {
 }
 
 h1 {
-  font-size: calc(1.6666666667rem + 7vw);
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -285,7 +284,6 @@ h1 {
 }
 
 h2 {
-  font-size: calc(1rem + 5vw);
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -295,7 +293,6 @@ h2 {
 }
 
 h3 {
-  font-size: calc(0.3333333333rem + 1vw);
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -305,7 +302,7 @@ h3 {
 }
 
 h4 {
-  font-size: calc(0.6rem + 1vw);
+  font-size: 22px;
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -362,14 +359,14 @@ p,
 .paragraph {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: calc(0.5rem + 1vw);
+  font-size: 18px;
   line-height: 32px;
 }
 
 .nav-bar {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: calc(0.5rem + 1vw);
+  font-size: 1rem;
   letter-spacing: 1px;
   text-align: center;
   line-height: 29px;
@@ -845,7 +842,7 @@ td {
   border: 1px solid #33383A;
 }
 
-.team .team-main {
+.team {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -859,8 +856,10 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-.team .team-main .name {
+.team .name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -874,6 +873,7 @@ td {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-width: 180px;
 }
 
 .circle {
@@ -998,4 +998,7 @@ td {
 .page .wrapper .standings .group {
   width: 75%;
   margin: auto;
+}
+.page .wrapper .standings .group.hide {
+  display: none;
 }

@@ -275,7 +275,6 @@ section {
 }
 
 h1 {
-  font-size: calc(1.6666666667rem + 7vw);
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -285,7 +284,6 @@ h1 {
 }
 
 h2 {
-  font-size: calc(1rem + 5vw);
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -295,7 +293,6 @@ h2 {
 }
 
 h3 {
-  font-size: calc(0.3333333333rem + 1vw);
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -305,7 +302,7 @@ h3 {
 }
 
 h4 {
-  font-size: calc(0.6rem + 1vw);
+  font-size: 22px;
   font-family: "Roboto";
   font-weight: 700;
   margin: 20px 0;
@@ -362,14 +359,14 @@ p,
 .paragraph {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: calc(0.5rem + 1vw);
+  font-size: 18px;
   line-height: 32px;
 }
 
 .nav-bar {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: calc(0.5rem + 1vw);
+  font-size: 1rem;
   letter-spacing: 1px;
   text-align: center;
   line-height: 29px;
@@ -909,207 +906,6 @@ td {
   width: 30px;
   height: 20px;
   border: 1px solid black;
-}
-
-.main-container,
-.all-container,
-.scorer-container {
-  margin-top: 75px;
-  /* border: 2px solid white; */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.main-container p,
-.all-container p,
-.scorer-container p {
-  width: 100%;
-}
-
-.refreshBox {
-  width: 100%;
-}
-.refreshBox button {
-  height: 25px;
-  width: 200px;
-}
-
-.teamBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 500px;
-  height: 150px;
-}
-.teamBox:hover, .teamBox:focus {
-  background-color: #f0f1f2;
-  color: #2C2C2C;
-  border: solid 1px #f0f1f2;
-}
-.teamBox:hover .more-info img-box, .teamBox:focus .more-info img-box {
-  background-color: #1F2224;
-}
-
-.team {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.img-box {
-  /* border: 2px solid white; */
-  width: 100px;
-  height: 80px;
-  margin: 20px;
-}
-
-img {
-  width: 100%;
-  border: 1px solid black;
-  /* height: 40px; */
-}
-
-.teamInfo {
-  width: 350px;
-  padding: 20px;
-}
-
-div.hide {
-  display: none;
-}
-
-.athleteBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 450px;
-  height: 175px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 2%;
-}
-.athleteBox .img-box {
-  /* border: 2px solid white; */
-  width: 100px;
-  height: 80px;
-  margin: 5px;
-}
-.athleteBox .img-box img {
-  width: 100%;
-  border: 1px solid lightgrey;
-  /* height: 40px; */
-}
-.athleteBox .player {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: black;
-}
-.athleteBox .player p {
-  color: white;
-  padding-left: 20px;
-}
-
-.statsBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: auto;
-  height: 175px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 2%;
-}
-.statsBox .img-box {
-  /* border: 2px solid white; */
-  width: 150px;
-  margin: 5px;
-}
-.statsBox .img-box img {
-  width: 100%;
-  border: 1px solid lightgrey;
-  /* height: 40px; */
-}
-.statsBox .statsCell {
-  margin: 0px 10px;
-  padding: 0;
-  width: 65px;
-  text-align: center;
-}
-.statsBox p {
-  color: white;
-  margin: 0px 25px;
-}
-
-[data-tab-content] {
-  display: none;
-}
-
-.active[data-tab-content] {
-  display: block;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-}
-
-div.tabContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-}
-
-ul.tabContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.tabs {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  border-bottom: 1px solid whitesmoke;
-}
-
-.tab {
-  cursor: pointer;
-  padding: 10px;
-  width: 50%;
-}
-
-.tab.active {
-  background-color: #403c32;
-}
-
-.tab:hover {
-  background-color: #544f42;
-}
-
-.tab-content {
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .page .wrapper {
