@@ -60,11 +60,15 @@
 }
 
 #SEMI_FINALS{
-    align-self:center;
+    .content {
+        justify-content: space-around;
+    }
 
 }
 #FINAL{
-    align-self:center;
+    .content{
+        justify-content: center;
+    }
 }
 #QUARTER_FINALS{
     .content{

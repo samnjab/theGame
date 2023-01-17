@@ -1074,14 +1074,15 @@ td {
   display: none;
 }
 
-#SEMI_FINALS {
-  -ms-flex-item-align: center;
-      align-self: center;
+#SEMI_FINALS .content {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-#FINAL {
-  -ms-flex-item-align: center;
-      align-self: center;
+#FINAL .content {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #QUARTER_FINALS .content {
