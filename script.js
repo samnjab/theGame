@@ -128,6 +128,7 @@ fifaMatch.searchDisplay = (responseList) => {
         // playerText.classList.add('profile');
         profileText.innerText = 
             `Player : ${squadList.name}
+             Country : ${squadList.nationality}            
              Position : ${squadList.position}
              Date Of Birth : ${bornOn}
             `;
