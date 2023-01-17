@@ -27,6 +27,9 @@
         .standings{
             width:100%;
             .group{
+                h4{
+                    @include responsive-size(1.2rem, 1/2, 1vw);
+                }
                 width:75%;
                 margin:auto;
                 &.hide{

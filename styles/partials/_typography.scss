@@ -77,8 +77,8 @@ p,
 
 .nav-bar {
     @include style-2();
-    font-size: 1rem;
-    // @include responsive-size(1rem, 1/2, 1vw);
+    // font-size: 1rem;
+    @include responsive-size(1rem, 1/2, 1vw);
     letter-spacing: 1px;
     text-align: center;
     line-height: 29px;

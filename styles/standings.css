@@ -366,7 +366,7 @@ p,
 .nav-bar {
   font-family: "Roboto";
   font-weight: 400;
-  font-size: 1rem;
+  font-size: calc(0.5rem + 1vw);
   letter-spacing: 1px;
   text-align: center;
   line-height: 29px;
@@ -998,6 +998,9 @@ td {
 .page .wrapper .standings .group {
   width: 75%;
   margin: auto;
+}
+.page .wrapper .standings .group h4 {
+  font-size: calc(0.6rem + 1vw);
 }
 .page .wrapper .standings .group.hide {
   display: none;
