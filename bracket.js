@@ -164,7 +164,6 @@ footballStats.getStageMatches = async (stage) => {
         document.querySelector('.load-wrapp').classList.add('hide')
         document.querySelector('.standings').append(errorElement)
         setTimeout(footballStats.init, 60000)
-
     }
  
 }

@@ -1009,9 +1009,10 @@ td {
           align-items: stretch;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  position: relative;
 }
 .page .wrapper .standings p {
-  font-size: 12px;
+  font-size: 15px;
 }
 .page .wrapper .standings .stage {
   display: -webkit-box;
@@ -1075,7 +1076,7 @@ td {
 .page .wrapper .standings .stage .content .match {
   border-top: 1px #33383A solid;
   border-bottom: 1px #33383A solid;
-  width: 200px;
+  width: 210px;
   padding: 20px;
 }
 .page .wrapper .standings .stage .content .match h4 {
@@ -1087,6 +1088,34 @@ td {
 }
 .page .wrapper .standings .stage.hide {
   display: none;
+}
+.page .wrapper .standings .carousel-button {
+  position: absolute;
+  z-index: 3;
+  background: none;
+  border: none;
+  font-size: 4rem;
+  top: 200px;
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.page .wrapper .standings .carousel-button:hover, .page .wrapper .standings .carousel-button:focus {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.page .wrapper .standings .carousel-button:focus {
+  outline: 1px solid black;
+}
+.page .wrapper .standings .carousel-button.prev {
+  left: 1rem;
+}
+.page .wrapper .standings .carousel-button.next {
+  right: 1rem;
 }
 
 #SEMI_FINALS .content {

@@ -172,6 +172,16 @@ footballStats.populateStages = (stageWithDiv, orderedMatchDivs) =>{
     })
     document.querySelector('.standings').append(stageWithDiv.stageDiv)
 }
+footballStats.eventListeners = () => {
+    document.querySelector('.prev').addEventListener('click', e => {
+        document.getElementById('LAST_16').classList.remove('hide')
+        document.getElementById('FINAL').classList.add('hide')
+    })
+    document.querySelector('.next').addEventListener('click', e => {
+        document.getElementById('LAST_16').classList.add('hide')
+        document.getElementById('FINAL').classList.remove('hide')
+    })
+}
 
 footballStats.init = () =>{
     stages = ['LAST_16','QUARTER_FINALS', 'SEMI_FINALS', 'FINAL']
@@ -216,7 +226,8 @@ footballStats.init = () =>{
             footballStats.populateStages(stageWithDiv, orderedMatchDivs[stageWithDiv.stage])
         })
 
-        // document.getElementById('LAST_16').classList.add('hide')
+        document.getElementById('LAST_16').classList.add('hide')
+        footballStats.eventListeners()
         
 
     }
