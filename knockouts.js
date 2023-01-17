@@ -12,17 +12,14 @@ footballStats.convertDate = (utcDate) => {
 
 footballStats.getStageMatches = async (stage) => {
     footballStats.apikey = footballStats.randomizeApiKey(footballStats.apikeys)
-    console.log('using key:', footballStats.apikey)
     try{
         const resObj = await fetch(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches?stage=${stage}`, { method:'GET',
          headers: {
              'X-Auth-Token':footballStats.apikey
             }
         })
-        console.log('fetch result is', resObj)
     
         const jsonData = await resObj.json()
-        console.log('json result is:', jsonData)
         return jsonData
         
     }
@@ -101,12 +98,9 @@ footballStats.createStageDivs = (stages) => {
 
 }
 footballStats.indexInPrevious = (matches, team) => {
-    console.log('looking @ previous stage team is', team)
     pick = matches.filter(match => {
-        console.log('winner is', match.winner)
         return match.winner == team 
     })
-    console.log('pick is', pick, 'its index:', matches.indexOf(pick))
 
 
     return matches.indexOf(pick[0])
@@ -114,30 +108,20 @@ footballStats.indexInPrevious = (matches, team) => {
 footballStats.setOrder = (matches, matchesWithDivs, stage, stages) =>{ 
     index = stages.indexOf(stage)
     if (index != 0 && index != stages.length - 1){
-        console.log('stage is', stages[index])
-         console.log('before sorting matcheswithdivs looks like', matchesWithDivs)
         for (i=0; i< matchesWithDivs.length - 1; i++){
-            console.log('looking at team', matchesWithDivs[i].match.team1.name)
             winner1 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i].match.team1.name)
             if (winner1 == -1){
-                console.log('winner1 was -1 switching to team2')
                 winner1 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i].match.team2.name)
             }
-            console.log('its winner was at', winner1)
-            console.log('looking at team', matchesWithDivs[i + 1].match.team1.name)
             winner2 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i + 1].match.team1.name)
             if (winner2 == -1){
-                console.log('winner2 was -1 switching to team2')
                 winner2 = footballStats.indexInPrevious(matches[stages[index - 1]], matchesWithDivs[i].match.team2.name)
             }
-            console.log('its winner was at', winner2)
             if (winner1 > winner2){
-                console.log('switching order')
                 temp = matchesWithDivs[i]
                 matchesWithDivs[i] = matchesWithDivs[i + 1]
                 matchesWithDivs[i + 1] = temp
             }
-            console.log('after one step of sorting matcheswithdivs looks like', matchesWithDivs)
 
         }
         
@@ -152,15 +136,12 @@ footballStats.orderFirstStage = (secondStageMatches, matchesWithDivs, stages) =>
         pick1 = matchesWithDivs.filter(matchWithDiv => {
             return (matchWithDiv.match.team1.name == match.match.team1.name || matchWithDiv.match.team2.name == match.match.team1.name)
         })
-        console.log('pushing', pick1[0])
         orderedMatches.push(pick1[0])
         pick2 = matchesWithDivs.filter(matchWithDiv => {
             return (matchWithDiv.match.team1.name== match.match.team2.name || matchWithDiv.match.team2.name == match.match.team2.name)
         })
-        console.log('pushing', pick1[0])
         orderedMatches.push(pick2[0])
     })
-    console.log('ordered matches of first stage', orderedMatchDivs)
     return orderedMatches
 
 }
@@ -207,21 +188,16 @@ footballStats.init = () =>{
     asyncNextStep = async () => {
         stagesMatches = []
         for (i=0;i<stages.length;i++){
-            console.log('this is before await')
             matches = await footballStats.getStageMatches(stages[i])
             stageMatches = {stage:stages[i], matches:matches}
-            console.log('this comes after await', stageMatches)
             stagesMatches.push(stageMatches)
         }
-        console.log('stagesMatch array after the loop',stagesMatches)
         // uniqueDatesOfStages = {}
         matches = {}
         stagesMatches.forEach(stageMatches => {
             // uniqueDatesOfStages[stageMatches.stage] = footballStats.getDates(stageMatches.matches.matches)
             matches[stageMatches.stage] = footballStats.getMatches(stageMatches.matches.matches)
         })
-
-        console.log('matches:', matches)
         
         stagesWithDivs = footballStats.createStageDivs(stages)
 
@@ -236,7 +212,6 @@ footballStats.init = () =>{
         })
         orderedMatchDivs[stages[0]] = footballStats.orderFirstStage(orderedMatchDivs[stages[1]], matchesWithDivs[stages[0]], stages)
         
-        console.log('ordered match divs', orderedMatchDivs)
         document.querySelector('.load-wrapp').classList.add('hide')
         stagesWithDivs.forEach(stageWithDiv => {
             footballStats.populateStages(stageWithDiv, orderedMatchDivs[stageWithDiv.stage])

@@ -70,7 +70,6 @@ footballStats.display = (dates, sortedMatches) => {
 
         }
         if (matchesWithElements){
-            console.log('we got resolve')
             resolve(matchesWithElements)
         }else{
             reject('data could not be loaded')
@@ -150,7 +149,6 @@ footballStats.getData = (url) => {
     // setup request header
     // footballStats.headers = new Headers();
     // footballStats.headers.append('X-Auth-Token', footballStats.apikey)
-    // console.log(footballStats.headers)
     // setup request options
     // footballStats.requestOptions = {
     //     method:'GET',
@@ -166,7 +164,6 @@ footballStats.getData = (url) => {
         cache: 'default'
     })
     footballStats.apikey = footballStats.randomizeApiKey(footballStats.apikeys)
-    console.log('using key:', footballStats.apikey)
     // fetch, extract json, console log object 
     return new Promise((resolve, reject) => {
         fetch(url, {
@@ -179,13 +176,6 @@ footballStats.getData = (url) => {
             return res.json()
         })
         .then((jsonData) => {
-            // footballStats.jsonData = jsonData;
-            // footballStats.cupLogoHref = jsonData.competition.emblem
-            // footballStats.seasonStart = jsonData.resultSet.first
-            // footballStats.seasonEnd = jsonData.resultSet.last
-            // footballStats.seasonTotal = jsonData.resultSet.played
-        //     // console.log(footballStats.seasonStart, footballStats.seasonEnd, footballStats.seasonTotal)
-        //     // console.log(footballStats.jsonData)
             if (jsonData){
                 resolve(jsonData)
             }else{
@@ -199,30 +189,21 @@ footballStats.getData = (url) => {
 footballStats.eventListeners = (matchesWithElements) =>{
     offBySearch = [...Array(document.querySelectorAll('.date').length).fill(false)]
     offBySearchMatches =[...Array(document.querySelectorAll('.match').length).fill(false)]
-    // console.log(offBySearchMatches)
     const hideOtherMatches = (clickMatches, clickedMatch) => {
         clickMatches.forEach((match, i) => {
-            console.log(match)
-            // match.classList.toggle('hide', match!=clickMatch)
             if (match != clickedMatch && !offBySearchMatches[i]){
-                console.log(offBySearchMatches[i])
-                match.classList.toggle('hide')
-                // console.log(match.parentElement.parentElement.children[0])
-                // match.parentElement.parentElement.children[0].classList.toggle('hide')
-                
+                match.classList.toggle('hide')    
             }
         })
 
     }
+
     const getVisibilityStatus = (dateDivs) =>{
         dateDivsArray = [...dateDivs]
-        // console.log(dateDivsArray)
         // <<<<<<<<<< dateDivsVisibility is an array collection of {dateDiv:address of the div, dateVisible:current visibility of that dateDiv}
         dateDivsVisible = dateDivsArray.map((dateDiv) => {
-            // console.log(dateDiv.style.display)
             if (dateDiv.style.display == 'none'){
                 dateVisible = false
-                console.log(dateVisible)
             }else{
                 dateVisible = true
             }
@@ -288,7 +269,6 @@ footballStats.eventListeners = (matchesWithElements) =>{
             clickedMatch.querySelector('.more-info').classList.toggle('hide')
             hideOtherMatches(clickMatches, clickedMatch)
             const dateDivs = document.querySelectorAll('.date')
-            // console.log(offBySearch)
             hideOtherDates(dateDivs, clickedMatch)
         })
 
@@ -300,9 +280,7 @@ footballStats.init = () => {
     footballStats.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99', '6db1d2cbe8a747be8e975a3e6dd86a4f']
      footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
-        console.log(promisedData)
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
-        console.log(footballStats.matchResultsArray)
         footballStats.dates = footballStats.getDates(promisedData.matches)
         footballStats.sortedMatches = footballStats.sortByDate(footballStats.dates,footballStats.matchResultsArray)
         document.querySelector('.load-wrapp').classList.add('hide')
