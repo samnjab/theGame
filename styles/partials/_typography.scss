@@ -6,7 +6,11 @@ h1 {
 
 h2 {
     // @include responsive-size(3rem, 1/3, 5vw);
+    font-size:60px;
     @include heading-styler();
+    @media (max-width:390px){
+        font-size:50px;
+    }
     
 }
 
