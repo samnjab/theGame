@@ -5,9 +5,9 @@ fifaMatch.randomizeApiKey = (array) => {
 
 fifaMatch.getData = () => {
     const urls = [
-        'https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches',
-        'https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/teams',
-        'https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/scorers'
+        'https://proxy.junocollege.com/https://api.football-data.org/v4/competitions/WC/matches',
+        'https://proxy.junocollege.com/https://api.football-data.org/v4/competitions/WC/teams',
+        'https://proxy.junocollege.com/https://api.football-data.org/v4/competitions/WC/scorers'
     ];
     //header params
     urls.search = new URLSearchParams({

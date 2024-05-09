@@ -10,7 +10,7 @@ footballStats.randomizeApiKey = (array) => {
 footballStats.getStageMatches = async (stage) => {
     footballStats.apikey = footballStats.randomizeApiKey(footballStats.apikeys)
     try{
-        const resObj = await fetch(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches?stage=${stage}`, { method:'GET',
+        const resObj = await fetch(`https://proxy.junocollege.com/https://api.football-data.org/v4/competitions/WC/matches?stage=${stage}`, { method:'GET',
          headers: {
              'X-Auth-Token':footballStats.apikey
             }
@@ -21,10 +21,18 @@ footballStats.getStageMatches = async (stage) => {
 
     catch (error){
         const errorElement = document.createElement('p')
-        errorElement.textContent = `${error.message}. 60s before API is pinged again`
+        if (error.code === 429){
+            errorElement.textContent = `${error.message}. 60s before API is pinged again`
+            setTimeout(footballStats.init, 60000)
+        }
+        else{
+            errorElement.textContent = 'something went wrong'
+        }
+
         document.querySelector('.load-wrapp').classList.add('hide')
         document.querySelector('.standings').append(errorElement)
-        setTimeout(footballStats.init, 60000)
+
+        
 
     }
     
@@ -32,36 +40,40 @@ footballStats.getStageMatches = async (stage) => {
 
 footballStats.getMatches = (matches) => {
     const resultsArray = []
-  
-    matches.forEach(match => {
-        results = {
-             team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:{fullTime: match.score.fullTime.away, halfTime:match.score.halfTime.away}}, 
-             team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:{fullTime:match.score.fullTime.home, halfTime:match.score.halfTime.home}}, 
-             date: footballStats.convertDate(match.utcDate),
-             group: match.group,
-             stage: match.stage,
-             matchDay:match.matchday,
-             competition: {name: match.competition.name, emblem:match.competition.emblem},
-             season:{seasonStart: match.season.startDate, seasonEnd: match.season.endDate, currentMatchDay:match.season.currentMatchday},
-             status:match.status
-         }
+    if(matches?.length >0){
 
-        if(match.score.winner == 'HOME_TEAM'){
-            winner = 'homeTeam'
-            results.winner = match[winner].name
-        }
-        else if (match.score.winner == 'AWAY_TEAM'){
-            winner = 'awayTeam' 
-            results.winner = match[winner].name
-        }
-        else{
-            results.winner = "Draw"
-        }
-        
+        matches.forEach(match => {
+            results = {
+                 team1: {name:match.awayTeam.name, flag:match.awayTeam.crest, score:{fullTime: match.score.fullTime.away, halfTime:match.score.halfTime.away}}, 
+                 team2: {name:match.homeTeam.name, flag:match.homeTeam.crest, score:{fullTime:match.score.fullTime.home, halfTime:match.score.halfTime.home}}, 
+                 date: footballStats.convertDate(match.utcDate),
+                 group: match.group,
+                 stage: match.stage,
+                 matchDay:match.matchday,
+                 competition: {name: match.competition.name, emblem:match.competition.emblem},
+                 season:{seasonStart: match.season?.startDate || 'NA', seasonEnd: match.season.endDate, currentMatchDay:match.season.currentMatchday},
+                 status:match.status
+             }
     
-        resultsArray.push(results) 
-    });
+            if(match.score.winner == 'HOME_TEAM'){
+                winner = 'homeTeam'
+                results.winner = match[winner].name
+            }
+            else if (match.score.winner == 'AWAY_TEAM'){
+                winner = 'awayTeam' 
+                results.winner = match[winner].name
+            }
+            else{
+                results.winner = "Draw"
+            }
+            
+        
+            resultsArray.push(results) 
+        });
+    }
     return resultsArray
+    
+  
 }
 
 footballStats.convertDate = (utcDate) => {
@@ -175,7 +187,9 @@ footballStats.eventListeners = (groups) => {
 footballStats.init = () =>{
     stages = ['GROUP_STAGE']
     // , 'LAST_16','QUARTER_FINALS', 'SEMI_FINALS','THIRD_PLACE', 'FINAL']
-    footballStats.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99', '6db1d2cbe8a747be8e975a3e6dd86a4f']
+    footballStats.apikeys = [
+        'ce76110580a24979bfb7ae9dabb81570']
+        // '70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99', '6db1d2cbe8a747be8e975a3e6dd86a4f']
     asyncNextStep = async () => {
         stagesMatches = []
         for (i=0;i<stages.length;i++){
@@ -187,7 +201,7 @@ footballStats.init = () =>{
 
         matches = {}
         stagesMatches.forEach(stageMatches => {
-            matches[stageMatches.stage] = footballStats.getMatches(stageMatches.matches.matches)
+            matches[stageMatches.stage] = footballStats.getMatches(stageMatches.matches?.matches)
         })
 
         groups = footballStats.constructGroups(7)
