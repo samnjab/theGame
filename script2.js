@@ -11,7 +11,6 @@ footballStats.randomizeApiKey = (array) => {
     // grab the template and go through the dates array with a for loop, display the content of the dates as each for our template, go through dated array for loop again and grab matches correspond to that date, and create a div and create a template 
 footballStats.display = (dates, sortedMatches) => {
     return new Promise((resolve, reject) => {
-    
         const matchTemplate = document.querySelector("[data-match-template]")
         const matchContainer = document.querySelector(".matches")
         const matchesWithElements = []
@@ -47,6 +46,7 @@ footballStats.display = (dates, sortedMatches) => {
             //    const winnerDiv = matchDiv.querySelector('[data-winner]')
             //    winnerDiv.textContent = `Winner : ${match.winner}`
                // <<<<<<<<<<< More Info addition >>>>>>>>
+
                matchDiv.querySelector('[data-competition-name]').textContent = `${match.competition.name}`
                matchDiv.querySelector('[data-competition-emblem]').src = `${match.competition.emblem}`
                matchDiv.querySelector('[data-match-date]').textContent = `${match.date}`
@@ -56,18 +56,12 @@ footballStats.display = (dates, sortedMatches) => {
                matchDiv.querySelector('[data-status]').textContent = `${match.status.charAt(0) + match.status.slice(1).toLowerCase()}`
                matchDiv.querySelector('[data-winner]').textContent = `${match.winner}`
                
-
-
-
-        
                // <<<<<<<< append >>>>>>>>>>>>>>
                matchTable.append(matchDiv)
                
 
                return {match:match, element:matchDiv}
             })
-
-
         }
         if (matchesWithElements){
             resolve(matchesWithElements)
@@ -77,7 +71,6 @@ footballStats.display = (dates, sortedMatches) => {
     }) 
     
 }
-
 
 
 footballStats.convertDate = (utcDate) => {
@@ -278,7 +271,7 @@ footballStats.eventListeners = (matchesWithElements) =>{
 
 footballStats.init = () => {
     footballStats.apikeys = ['ce76110580a24979bfb7ae9dabb81570','70a843e5cf86426b9a1a9528ec8a7da7', '216fc317fce14a3e92c6759cc84f2ceb', '6a015959a852460a971b3fe44d9ddd99', '6db1d2cbe8a747be8e975a3e6dd86a4f']
-     footballStats.getData(`https://proxy-ugwolsldnq-uc.a.run.app/https://api.football-data.org/v4/competitions/WC/matches`)
+     footballStats.getData(`https://proxy.junocollege.com/https://api.football-data.org/v4/competitions/WC/matches`)
     .then((promisedData) =>{
         footballStats.matchResultsArray = footballStats.getMatches(promisedData.matches)
         footballStats.dates = footballStats.getDates(promisedData.matches)
@@ -288,7 +281,6 @@ footballStats.init = () => {
         .then((matchesWithElements) => {
             footballStats.eventListeners(matchesWithElements)
         })
-
     .catch((error) => {
         const errorElement = document.createElement('p')
         errorElement.textContent = `${error.message}. 60s before API is pinged again`
@@ -299,5 +291,6 @@ footballStats.init = () => {
  
 })
 }
+
 footballStats.init();
 
